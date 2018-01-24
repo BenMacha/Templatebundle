@@ -11,7 +11,7 @@
  * @see        http://dali.benmacha.tn/
  */
 
-namespace TemplateBundle\Command;
+namespace benmacha\TemplateBundle\Command;
 
 use Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand;
 use Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator;

@@ -11,7 +11,7 @@
  * @see        http://dali.benmacha.tn/
  */
 
-namespace TemplateBundle;
+namespace benmacha\TemplateBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
