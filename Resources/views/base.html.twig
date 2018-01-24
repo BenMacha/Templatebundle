@@ -1,0 +1,35 @@
+{% include "@Template/Template/head.html.twig" %}
+{% block stylesheets %}{% endblock %}
+{% include "@Template/Template/head-end.html.twig" %}
+<body class="with-side-menu dark-theme chrome-browser {{ app.request.attributes.get('_route') }}">
+{% include "@Template/Template/header.html.twig" %}
+{#{% include "@Template/Template/side-menu.html.twig" %}#}
+{{ Menu_build() }}
+<div class="page-content">
+    <div class="container-fluid">
+        <header class="section-header">
+            <div class="tbl">
+                <div class="tbl-row">
+                    <div class="tbl-cell">
+                        <h3>{% block pagetitle %}{% endblock %}</h3>
+                        <ol class="breadcrumb breadcrumb-simple">
+                            <li><a href="#">LuckyPanel</a></li>
+                            <li><a href="#">{% block subtitle %}{% endblock %}</a></li>
+                            <li class="active">{{  block('pagetitle') }}</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </header>
+        {{  block('content') }}
+    </div>
+    <footer class="footer">
+        <div class="footerContainer">
+            <p class="copyright">&copy; Copyright {{ "now"|date("Y") }}, CubeSolution Tunis Version: <span class="label label-primary">{{ git_version() }}</span> - Last update: <span class="label label-primary">{{ git_date() }}</span>{# - Expirte at: <span class="label label-primary">{{ global_entreprise().expiredAt|date("Y-m-d") }}</span> #}</p>
+        </div>
+    </footer>
+</div>
+
+{% include "@Template/Template/footer.html.twig" %}
+{% block javascripts %}{% endblock %}
+{% include "@Template/Template/foot.html.twig" %}

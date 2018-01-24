@@ -1,0 +1,30 @@
+{% block extends %}
+{{ "{% extends '@Template/base.html.twig' %}" }}
+{% endblock extends %}
+
+{% block body %}
+    {% set hide_edit, hide_delete = true, true %}
+
+    {{ "{% block pagetitle %}{{ '"~entity_singularized|capitalize ~" Add'|trans({},'"~entity_singularized~"') }}{% endblock %}" }}{{ "{% block subtitle %}Admin{% endblock %}" }}
+
+    {{ "{% block stylesheets %}{% endblock %}" }}
+
+    {{ "{% block content %}" }}
+
+    <div class="box-typical box-typical-padding">
+        <a href="{{ "{{ path('" ~ route_name_prefix ~ "_index') }}" }}" class="btn btn-inline btn-primary pull-right">{{ "{{ 'back'|trans({},'"~entity_singularized~"') }}" }}</a>
+        {%- if ('edit' in actions) and (not hide_edit) %}
+            <a href="{{ "{{ path('" ~ route_name_prefix ~ "_edit', { '"~ identifier ~"': " ~ entity_singularized ~ "."~ identifier ~" }) }}" }}"  class="btn btn-inline btn-warning pull-right">{{ "{{ 'edit'|trans({},'"~entity_singularized~"') }}" }}</a>
+        {%- endif %}
+
+        <br><hr>
+        {{ '{{ form_start(form) }}' }}
+            {{ '{{ form_widget(form) }}' }}
+            <input type="submit" value="{{ "{{ 'create'|trans({},'"~entity_singularized~"') }}" }}" class="btn btn-inline btn-success"  />
+        {{ '{{ form_end(form) }}' }}
+    </div>
+{{ include('crud/views/others/record_actions.html.twig.twig') -}}
+{{ "{% endblock %}" }}
+
+{{ "{% block javascripts %}{% endblock %}" }}
+{% endblock body %}
