@@ -1,14 +1,11 @@
 <?php
 
 /**
- * Lucky Stream panel.
+ * Baskel.
  *
- * @category   IPTV
+ * @category   Baskel platform manager
  *
  * @author     Ali Ben Macha       <contact@benmacha.tn>
- * @author     Azri Bilel          <azri.bilel@gmail.com>
- *
- * @see        http://dali.benmacha.tn/
  */
 
 namespace Benmacha\TemplateBundle\Command;

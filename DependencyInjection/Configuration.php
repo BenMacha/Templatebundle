@@ -1,27 +1,23 @@
 <?php
 
-/*
- * This file is part of the NelmioApiDocBundle.
+/**
+ * Baskel.
  *
- * (c) Nelmio <hello@nelm.io>
+ * @category   Baskel platform manager
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * @author     Ali Ben Macha       <contact@benmacha.tn>
  */
 
 namespace Benmacha\TemplateBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder()
     {
-
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('benmacha_template');
 
@@ -31,7 +27,6 @@ class Configuration implements ConfigurationInterface
             ->end();
 
         return $treeBuilder;
-
     }
 
     /*
