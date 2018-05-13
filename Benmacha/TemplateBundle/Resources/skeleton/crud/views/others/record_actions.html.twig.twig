@@ -1,0 +1,6 @@
+
+{%- if ('delete' in actions) and (not hide_delete) %}
+    {{ "{{ form_start(delete_form, {'attr': {'class': 'form_action_delete'}}) }}" }}
+    <input type="submit" value="Delete" class="btn btn-inline btn-danger btn-form_action_delete">
+    {{ '{{ form_end(delete_form) }}' }}
+{%- endif %}

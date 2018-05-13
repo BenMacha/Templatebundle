@@ -1,0 +1,106 @@
+{% macro input(class,label,from,smallText=null) %}
+    <div class="{{ class }}">
+        <div class="form-group">
+            {% if label is not null %}
+                <label class="control-label">
+                    {{ label|raw }}
+                </label>
+            {% endif %}
+            {{ form_widget(from,{attr:{class:"form-control"}}) | raw }}
+            <span class="text-danger">{{ form_errors(from) | raw }}</span>
+            {% if smallText is not null %}
+                <small>{{ smallText }}</small>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro datePicker(class,label,from,smallText=null) %}
+    <div class="{{ class }}">
+        <div class="form-group">
+            {% if label is not null %}
+                <label class="control-label">
+                    {{ label|raw }}
+                </label>
+            {% endif %}
+            {{ form_widget(from,{attr:{class:"form-control pickadate"}}) | raw }}
+            <span class="text-danger">{{ form_errors(from) | raw }}</span>
+            {% if smallText is not null %}
+                <small>{{ smallText }}</small>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro image(class,label,from,image=null,smallText=null) %}
+    <div class="{{ class }}">
+        <div class="form-group">
+            {% if label is not null %}
+                <label class="control-label">
+                    {{ label|raw }}
+                </label>
+            {% endif %}
+            {% if image is not null %}
+                <div class="media-left">
+                    <img src="{{ asset(image) }}" style="width: 58px; height: 58px; border-radius: 2px;" alt="">
+                </div>
+            {% endif %}
+            <div class="media-body">
+                {{ form_widget(from,{attr:{class:"form-control file-styled"}}) | raw }}
+            </div>
+            <span class="text-danger">{{ form_errors(from) | raw }}</span>
+            {% if smallText is not null %}
+                <small>{{ smallText }}</small>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro file(class,label,from,file=null,type=null) %}
+    <div class="{{ class }}">
+        <div class="form-group">
+            {% if label is not null %}
+                <label class="control-label">
+                    {{ label|raw }}
+                </label>
+            {% endif %}
+            <div class="media-body">
+                {{ form_widget(from,{attr:{class:"form-control file-styled"}}) | raw }}
+            </div>
+            <span class="text-danger">{{ form_errors(from) | raw }}</span>
+            {% if file is not null  and file.path is not defined%}
+                <a target="_blank" href="{{ asset(file) }}" ><span class="icon-file-{{ type }}"> View File</span></a>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro wisyhtml5(class,label,from,smallText=null) %}
+    <div class="{{ class }}">
+        <div class="form-group">
+            {% if label is not null %}
+                <label class="control-label">
+                    {{ label|raw }}
+                </label>
+            {% endif %}
+            {{ form_widget(from,{attr:{rows:80,cols:50,class:"wysihtml5 wysihtml5-min form-control"}}) | raw }}
+            <span class="text-danger">{{ form_errors(from) | raw }}</span>
+            {% if smallText is not null %}
+                <small>{{ smallText }}</small>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro checkbox(class,label,from,smallText=null) %}
+    <div class="{{ class }}">
+        <label for="">  </label>
+        <div class="checkbox" style="margin-top:10px;">
+            <label>
+                {{ form_widget(from,{attr:{class:"styled"}}) | raw }}
+                {{ label|raw }}
+            </label>
+            {{ form_errors(from) | raw }}
+        </div>
+    </div>
+{% endmacro %}

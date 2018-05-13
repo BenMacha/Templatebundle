@@ -1,0 +1,27 @@
+{% if is_granted("ROLE_ADMIN") %}
+    <li>
+        <a href="#"><i class="icon-users4"></i> <span>User Management</span></a>
+        <ul>
+            <li {% if app.request.getPathInfo|split('/vendor')|length > 1 %} class="active"{% endif %}>
+                <a href="{{ path('vendors_list') }}">Vendors</a>
+            </li>
+            <li {% if app.request.getPathInfo|split('/ctl')|length > 1 %} class="active"{% endif %}>
+                <a href="{{ path('ctls_list') }}">CTLS</a>
+            </li>
+            <li {% if app.request.getPathInfo|split('/administrators')|length > 1 %} class="active"{% endif %}>
+                <a href="{{ path('admins_list') }}">Adiministrators</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="#"><i class="icon-cog7"></i> <span>Location Management</span></a>
+        <ul>
+            <li {% if app.request.getPathInfo|split('/country')|length > 1 %} class="active"{% endif %}>
+                <a href="{{ path('countries_list') }}">Countries</a>
+            </li>
+            <li {% if app.request.getPathInfo|split('/city')|length > 1 %} class="active"{% endif %}>
+                <a href="{{ path('cities_list') }}">Cities</a>
+            </li>
+        </ul>
+    </li>
+{% endif %}

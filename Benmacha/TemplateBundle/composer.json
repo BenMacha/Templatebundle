@@ -1,5 +1,5 @@
 {
-  "name": "benmacha/template-bundle",
+  "name": "benmacha/templatebundle",
   "description": "Symfony Template Bundle",
   "type": "symfony-bundle",
   "keywords": ["framework","Symfony","template","class","bundle"],
@@ -8,12 +8,7 @@
     "symfony/framework-bundle": "^2.8 || ^3.0 || ^4.0"
   },
   "autoload": {
-    "psr-4": {
-      "BenMacha\\TemplateBundle\\": ""
-    },
-    "exclude-from-classmap": [
-      "/Tests/"
-    ]
+    "psr-4": { "Benmacha\\TemplateBundle\\": "" }
   },
   "extra": {
     "branch-alias": {

@@ -1,0 +1,16 @@
+{% if is_granted("ROLE_ADMIN")  %}
+<li>
+    <a href="#"><i class="icon-boat"></i> <span>Barges Management</span></a>
+    <ul>
+        <li {% if app.request.getPathInfo|split('/barge_company')|length > 1 %} class="active"{% endif %}>
+            <a href="{{ path('barge_company_list') }}">Barge Companies</a>
+        </li>
+        <li {% if app.request.getPathInfo|split('/barge_type')|length > 1 %} class="active"{% endif %}>
+            <a href="{{ path('barge_type_list') }}">Barge Types</a>
+        </li>
+        <li {% if app.request.attributes.get('_route') in ['barge_list','barge_form']  %} class="active"{% endif %}>
+            <a href="{{ path('barge_list') }}">Barges</a>
+        </li>
+    </ul>
+</li>
+{% endif %}

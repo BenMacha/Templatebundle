@@ -1,0 +1,14 @@
+{% for class,messages in app.session.getFlashBag.all %}
+    {% for msg in messages %}
+        <script>
+            $(document).ready(function () {
+                new PNotify({
+                    title: '{{ class|title }}',
+                    text: '{{ msg |raw }}',
+                    addclass: 'bg-{{ class }}',
+                    delay: 10000
+                });
+            })
+        </script>
+    {% endfor %}
+{% endfor %}

@@ -1,0 +1,131 @@
+<div class="mobile-menu-left-overlay"></div>
+<nav class="side-menu">
+    <div class="side-menu-avatar">
+        <div class="avatar-preview avatar-preview-100">
+            {% if app.user.avatar is null %}
+                <img src="{{ asset('img/avatar-1-256.png') }}" alt="">
+            {% else %}
+                <img src="{{ vich_uploader_asset(app.user, 'imageFile') }}" alt="">
+            {% endif %}
+        </div>
+    </div>
+
+    <ul class="side-menu-list">
+        <li class="black"><a href="{{ path('dashboard_index') }}"><i class="font-icon font-icon-home"></i><span class="lbl">{{ 'Dashboard'|trans({},'menu') }}</span></a></li>
+        <li class="black"><a href="{{ path('streamingusermonitor_index') }}"><i class="fa fa-plug"></i><span class="lbl">{{ 'Client Connection Logs'|trans({},'menu') }}</span></a></li>
+        <li class="magenta with-sub">
+            <span><i class="font-icon font-icon-users"></i><span class="lbl">{{ 'Users'|trans({},'menu') }}</span></span>
+            <ul>
+                <li><a href="{{ path('user_index') }}"><span class="lbl">{{ 'Manage Users'|trans({},'menu') }}</span></a></li>
+                <li><a href="{{ path('user_new') }}"><span class="lbl">{{ 'Create New Users'|trans({},'menu') }}</span></a></li>
+            </ul>
+        </li>
+        <li class="red with-sub">
+            <span><i class="font-icon font-icon-player-next"></i><span class="lbl">{{ 'Streaming Line'|trans({},'menu') }}</span></span>
+            <ul>
+                <li><a href="{{ path('streaminglines_index') }}"><span class="lbl">{{ 'Manage Streaming Line'|trans({},'menu') }}</span></a></li>
+                <li><a href="{{ path('streaminglines_new') }}"><span class="lbl">{{ 'Create New Streaming Line'|trans({},'menu') }}</span></a></li>
+            </ul>
+        </li>
+        <li class="red with-sub">
+            <span><i class="font-icon font-icon-burger"></i><span class="lbl">{{ 'Categories'|trans({},'menu') }}</span></span>
+            <ul>
+                <li><a href="{{ path('category_index') }}"><span class="lbl">{{ 'Manage Categories'|trans({},'menu') }}</span></a></li>
+                <li><a href="{{ path('category_new') }}"><span class="lbl">{{ 'Create New Category'|trans({},'menu') }}</span></a></li>
+            </ul>
+        </li>
+        <li class="gold with-sub">
+            <span><i class="font-icon font-icon-widget"></i><span class="lbl">{{ 'Bouquets'|trans({},'menu') }}</span></span>
+            <ul>
+                <li><a href="{{ path('bouquet_index') }}"><span class="lbl">{{ 'Manage Bouquets'|trans({},'menu') }}</span></a></li>
+                <li><a href="{{ path('bouquet_new') }}"><span class="lbl">{{ 'Create New Bouquets'|trans({},'menu') }}</span></a></li>
+            </ul>
+        </li>
+        <li class="gold with-sub">
+            <span><i class="font-icon font-icon-play"></i><span class="lbl">{{ 'Channels'|trans({},'menu') }}</span></span>
+            <ul>
+                <li><a href="{{ path('channel_index') }}"><span class="lbl">{{ 'Manage Channels'|trans({},'menu') }}</span></a></li>
+                <li><a href="{{ path('channel_new') }}"><span class="lbl">{{ 'Create New Channel'|trans({},'menu') }}</span></a></li>
+            </ul>
+        </li>
+
+        <li class="green with-sub">
+            <span><i class="font-icon font-icon-server"></i><span class="lbl">{{ 'Servers'|trans({},'menu') }}</span></span>
+            <ul>
+                <li><a href="{{ path('servers_index') }}"><span class="lbl">{{ 'Manage Servers'|trans({},'menu') }}</span></a></li>
+                <li><a href="{{ path('servers_new') }}"><span class="lbl">{{ 'Create New Servers'|trans({},'menu') }}</span></a></li>
+            </ul>
+        </li>
+        <li class="yellow with-sub">
+            <span><i class="font-icon font-icon-refresh"></i><span class="lbl">{{ 'Transcoders'|trans({},'menu') }}</span></span>
+            <ul>
+                <li><a href="{{ path('transcode_index') }}"><span class="lbl">{{ 'Manage Transcoders'|trans({},'menu') }}</span></a></li>
+                <li><a href="{{ path('transcode_new') }}"><span class="lbl">{{ 'Create New Transcoders'|trans({},'menu') }}</span></a></li>
+            </ul>
+        </li>
+       <li class="blue with-sub">
+            <span><i class="font-icon font-icon-video-fill"></i><span class="lbl">{{ 'Movies'|trans({},'menu') }}</span></span>
+            <ul>
+                <li><a href="{{ path('movie_index') }}"><span class="lbl">{{ 'Manage Movies'|trans({},'menu') }}</span></a></li>
+                <li><a href="{{ path('movie_new') }}"><span class="lbl">{{ 'Create New Movie'|trans({},'menu') }}</span></a></li>
+                <li><a href="{{ path('subtitle_index') }}"><span class="lbl">{{ 'Manage Subtitles'|trans({},'menu') }}</span></a></li>
+                <li><a href="{{ path('subtitle_new') }}"><span class="lbl">{{ 'Create New Subtitle'|trans({},'menu') }}</span></a></li>
+            </ul>
+        </li>
+    </ul>
+
+   {#
+        <ul class="side-menu-list">
+            <li class="black"><a href="{{ path('admin_dashboard') }}"><i class="font-icon font-icon-home"></i><span class="lbl">Administration</span></a></li>
+            <li class="blue"><a href="{{ path('admin_user_index') }}"><i class="font-icon font-icon-users"></i><span class="lbl">Utilisateur</span></a></li>
+            <li class="green with-sub">
+                <span><i class="font-icon font-icon-build"></i><span class="lbl">Entreprise</span></span>
+                <ul>
+                    <li><a href="{{ path('admin_entreprise_index') }}"><span class="lbl">Liste</span></a></li>
+                    <li><a href="{{ path('admin_agence_index') }}"><span class="lbl">Agences</span></a></li>
+                    <li><a href="{{ path('admin_client_index') }}"><span class="lbl">Clients</span></a></li>
+                </ul>
+            </li>
+            <li class="red with-sub">
+                <span><i class="font-icon font-icon-pencil"></i><span class="lbl">Facturation</span></span>
+                <ul>
+                    <li><a href="{{ path('admin_commande_index') }}"><span class="lbl">Commande</span></a></li>
+                    <li><a href="{{ path('admin_facture_index') }}"><span class="lbl">Facture</span></a></li>
+                </ul>
+            </li>
+            <li class="grey with-sub">
+                <span><i class="font-icon font-icon-speed"></i><span class="lbl">Voitures</span></span>
+                <ul>
+                    <li><a href="{{ path('admin_voiture_index') }}"><span class="lbl">Mes voitures</span></a></li>
+                    <li><a href="{{ path('admin_model_index') }}"><span class="lbl">Model</span></a></li>
+                    <li><a href="{{ path('admin_fabriquant_index') }}"><span class="lbl">Fabriquant</span></a></li>
+                    <li><a href="{{ path('admin_lavage_index') }}"><span class="lbl">Lavage</span></a></li>
+                    <li><a href="{{ path('admin_panne_index') }}"><span class="lbl">Panne</span></a></li>
+                    <li><a href="{{ path('admin_entretient_index') }}"><span class="lbl">Entretient</span></a></li>
+                </ul>
+            </li>
+        </ul>
+
+    {% if entreprise.id is not null %}
+    <section>
+        <header class="side-menu-title">Statéstique</header>
+        <ul class="side-menu-list">
+            <li>
+                <a href="#"><i class="tag-color grey-blue"></i><span class="lbl">Entreprise 1/1</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="tag-color green"></i><span class="lbl">Agence {{ entreprise.agences|length }}/{{ entreprise.agence }}</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="tag-color red"></i><span class="lbl">Admin {{ admins|length }}/{{ entreprise.superUser }}</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="tag-color black"></i><span class="lbl">Manager {{ managers|length }}/{{ entreprise.manager }}</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="tag-color pink"></i><span class="lbl">Voitures {{ voitures|length }}/{{ entreprise.voiture }}</span></a>
+            </li>
+        </ul>
+    </section>
+    {% endif %}#}
+</nav>

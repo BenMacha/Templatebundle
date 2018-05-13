@@ -1,0 +1,17 @@
+{% if is_granted("ROLE_ADMIN") or is_granted("ROLE_VENDOR") %}
+<li>
+    <a href="#"><i class="icon-paperplane"></i> <span>Voyage Management</span></a>
+    <ul>
+        {% if is_granted("ROLE_VENDOR") %}
+            <li {% if app.request.attributes.get('_route') =='voyage_form' %} class="active"{% endif %}>
+                <a href="{{ path('voyage_form') }}">New Voyage</a>
+            </li>
+        {% endif %}
+        {% if is_granted("ROLE_CTL") or  is_granted("ROLE_ADMIN") or  is_granted("ROLE_VENDOR") %}
+        <li {% if app.request.attributes.get('_route') =='voyage_list' %} class="active"{% endif %}>
+            <a href="{{ path('voyage_list') }}">Voyages List</a>
+        </li>
+        {% endif %}
+    </ul>
+</li>
+{% endif %}

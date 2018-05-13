@@ -1,0 +1,13 @@
+{% if is_granted("ROLE_ADMIN")  %}
+<li>
+    <a href="#"><i class="icon-move"></i> <span>Ports Management</span></a>
+    <ul>
+        <li {% if app.request.getPathInfo|split('/port_type')|length > 1 %} class="active"{% endif %}>
+            <a href="{{ path('port_type_list') }}">Port Types</a>
+        </li>
+        <li {% if app.request.getPathInfo|split('/port/')|length > 1 %} class="active"{% endif %}>
+            <a href="{{ path('port_list') }}">Ports</a>
+        </li>
+    </ul>
+</li>
+{% endif %}

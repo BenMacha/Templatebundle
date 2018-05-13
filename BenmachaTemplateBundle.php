@@ -11,10 +11,17 @@
  * @see        http://dali.benmacha.tn/
  */
 
-namespace benmacha\TemplateBundle;
+namespace Benmacha\TemplateBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class TemplateBundle extends Bundle
+class BenmachaTemplateBundle extends Bundle
 {
+
+   // public function build(ContainerBuilder $container)
+   // {
+    //    parent::build($container);
+
+        //$container->addCompilerPass(new RegisterPropelModelsPass());
+  //  }
 }

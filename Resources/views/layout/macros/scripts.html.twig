@@ -1,0 +1,127 @@
+{% macro dataTable(path=null,columns=null) %}
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/tables/datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/forms/selects/select2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/pages/datatables_data_sources.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/pages/components_popups.js') }}"></script>
+    {% if path is not null %}
+        <script>
+            var dataTable;
+            $(function () {
+                dataTable = $('#myTable').DataTable({
+                    ajax: {
+                        url: '{{ path(path) }}',
+                        type: "POST"
+                    },
+                    "pageLength": 25,
+                    columns: [{{ columns|raw }}]
+                });
+                $('.dataTables_length select').select2({
+                    minimumResultsForSearch: Infinity,
+                    width: 'auto'
+                });
+                $('.dataTables_filter input[type=search]').attr('placeholder','Type to filter...');
+            });
+        </script>
+    {% endif %}
+{% endmacro %}
+{% macro dashboard() %}
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/visualization/d3/d3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/visualization/d3/d3_tooltip.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/forms/styling/switchery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/forms/styling/uniform.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/forms/selects/bootstrap_multiselect.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/ui/moment/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/pickers/daterangepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/pages/dashboard.js') }}"></script>
+{% endmacro %}
+{% macro notification() %}
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/notifications/bootbox.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/notifications/sweet_alert.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/pages/components_modals.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/notifications/pnotify.min.js') }}"></script>
+{% endmacro %}
+{% macro form() %}
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/core/libraries/jquery_ui/full.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/forms/selects/select2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/forms/styling/uniform.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/pages/form_layouts.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/pages/form_select2.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/forms/styling/uniform.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/forms/styling/switchery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/forms/styling/switch.min.js') }}"></script>
+{% endmacro %}
+
+{% macro datepicker() %}
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/notifications/jgrowl.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/ui/moment/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/pickers/daterangepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/pickers/anytime.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/pickers/pickadate/picker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/pickers/pickadate/picker.date.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/pickers/pickadate/picker.time.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/pickers/pickadate/legacy.js') }}"></script>
+    {#<script type="text/javascript" src="{{ asset('back_template/assets/js/core/app.js') }}"></script>#}
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/pages/picker_date.js') }}"></script>
+{% endmacro %}
+
+{% macro wisyhtml5() %}
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/forms/styling/uniform.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/editors/wysihtml5/wysihtml5.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/editors/wysihtml5/toolbar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/editors/wysihtml5/parsers.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/editors/wysihtml5/locales/bootstrap-wysihtml5.ua-UA.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/notifications/jgrowl.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/pages/editor_wysihtml5.js') }}"></script>
+{% endmacro %}
+{% macro gallery() %}
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/media/fancybox.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/pages/gallery.js') }}"></script>
+{% endmacro %}
+{% macro loading() %}
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/loaders/progressbar.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/pages/components_loaders.js') }}"></script>
+    <script>
+        function loadingBlock()
+        {
+            $(".loadingBlock").block({
+                message: '<i class="icon-spinner4 spinner"></i>',
+                overlayCSS: {
+                    backgroundColor: '#fff',
+                    opacity: 0.8,
+                    cursor: 'wait'
+                },
+                css: {
+                    border: 0,
+                    padding: 0,
+                    backgroundColor: 'none'
+                }
+            });
+        }
+        function unloadingBlock()
+        {
+            $(".loadingBlock").unblock();
+        }
+    </script>
+{% endmacro %}
+{% macro gmaps() %}
+    {#<link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet'/>#}
+    {#<script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>#}
+    {#<script type="text/javascript" src="{{ asset('custom_assets/js/app/controllerDashboard.js') }}"></script>#}
+    {#<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDj7R6AusW0b0mlZpxFwOQXNNC-Wsazg1o"></script>#}
+    {#<script type="text/javascript" src="{{ asset('back_template/assets/js/maps/google/markers/simple.js') }}"></script>#}
+    {#<script type="text/javascript" src="{{ asset('back_template/assets/js/maps/google/markers/animation.js') }}"></script>#}
+    {#<script type="text/javascript" src="{{ asset('back_template/assets/js/maps/google/markers/symbols_predefined.js') }}"></script>#}
+    {#<script type="text/javascript" src="{{ asset('back_template/assets/js/maps/google/markers/symbols_custom.js') }}"></script>#}
+{% endmacro %}
+
+{% macro handsontable_cols() %}
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/tables/handsontable/handsontable.min.js') }}"></script>
+    {#<script type="text/javascript" src="{{ asset('back_template/assets/js/pages/handsontable_cols.js') }}"></script>#}
+{% endmacro %}
+
+
+{% macro rangeslider() %}
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/sliders/ion_rangeslider.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/plugins/ui/moment/moment_locales.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('back_template/assets/js/pages/extra_sliders_ion.js') }}"></script>
+{% endmacro %}

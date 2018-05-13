@@ -11,7 +11,7 @@
  * @see        http://dali.benmacha.tn/
  */
 
-namespace BenMacha\TemplateBundle\Controller;
+namespace Benmacha\TemplateBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

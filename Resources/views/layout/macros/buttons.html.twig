@@ -1,0 +1,86 @@
+{% macro deleteAction(path,text=null) %}
+    <a href="javascript:void(0)" data-popup="tooltip" class="deleteItem text-mauve-icon" data-path="{{ path }}" title="Remove" >
+        <img width="18" src="{{ asset('custom_assets/images/icons/ic_delete.png') }}" class="" alt="">
+        {{ text }}</a>
+{% endmacro %}
+{% macro redirectAction(path,class,text,message=null) %}
+    {% if message %}
+        <a href="javascript:void(0)" class="redictionItem" data-message="{{ message }}" data-path="{{ path }}"><i class="{{ class }}"></i> {{ text }} </a>
+    {% else %}
+        <a href="{{ path }}"><i class="{{ class }}"></i> {{ text }}</a>
+    {% endif %}
+{% endmacro %}
+{% macro deleteRedirectAction(path,message=null) %}
+    {% if message %}
+        <a href="javascript:void(0)" class="redictionItem"  data-path="{{ path }}"><img width="18" src="{{ asset('custom_assets/images/icons/ic_delete.png') }}" ></a>
+    {% else %}
+        <a href="{{ path }}"><i class="{{ class }}"></i> {{ text }}</a>
+    {% endif %}
+{% endmacro %}
+{% macro updateAction(path) %}
+    <a href="{{ path }}" data-popup="tooltip" title="Edit" class="text-mauve-icon">
+        <img width="18" src="{{ asset('custom_assets/images/icons/ic_edit.png') }}" class="" alt="">
+    </a>
+{% endmacro %}
+{% macro viewAction(path) %}
+    <a href="{{ path }}" data-popup="tooltip" title="View"><i class="icon-eye"></i></a>
+{% endmacro %}
+{% macro lockAction(path) %}
+    <a href="{{ path }}" data-popup="tooltip" title="Change Password" class="text-mauve-icon"><i class="icon-lock"></i></a>
+{% endmacro %}
+{% macro addItem(text,path) %}
+    <a href="{{ path }}" type="button" class="btn bg-green">{{ text }}</a>
+{% endmacro %}
+{% macro submitForm() %}
+    <div class="text-right" style="margin-top:10px;">
+        <button type="submit" class="btn bg-rose">
+            Submit form  <i class="icon-arrow-right14 position-right"></i>
+        </button>
+    </div>
+{% endmacro %}
+{% macro filtreForm(class) %}
+    <div class="{{ class }}">
+        <div class="form-group">
+            <label>
+                &nbsp;
+            </label>
+            <button type="submit" class="btn btn-block btn-search">Search<i class="icon-arrow-right14 position-right"></i>
+            </button>
+        </div>
+    </div>
+{% endmacro %}
+{% macro languages() %}
+    <div class="heading-elements">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown language-switch">
+                <a class="dropdown-toggle text-gris-300" data-toggle="dropdown">
+                    <img src="{{ asset('back_template/assets/images/flags/'~app.session.get("locale").code~'.png') }}" class="position-left" alt="">
+                    {{ app.session.get("locale").name }}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li {% if app.session.get("locale").code =="en" %}class="active"{% endif %}><a href="{{ path('change_locale',{locale:"en"}) }}" class="english"><img src="{{ asset('back_template/assets/images/flags/en.png') }}" alt=""> English</a></li>
+                    <li {% if app.session.get("locale").code =="fr" %}class="active"{% endif %}><a href="{{ path('change_locale',{locale:"fr"}) }}" class="espana"><img src="{{ asset('back_template/assets/images/flags/fr.png') }}" alt=""> Francais</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+{% endmacro %}
+
+{% macro imageAction(item) %}
+    <div>
+        <a href="#" class="" data-toggle="modal" data-target="#lightbox">
+            <img src="{{ asset(item) }}" class="img-circle img-sm" alt="...">
+        </a>
+    </div>
+    <div id="lightbox" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

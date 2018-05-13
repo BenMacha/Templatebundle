@@ -1,0 +1,206 @@
+<div class="navbar navbar-inverse navbar-inverse-cargill ">
+    <div class="navbar-header">
+        {#<a class="navbar-brand" href="{{ path('dashboard') }}">#}
+        {#<img src="{{ asset("back_template/assets/images/logo.png") }}" alt="">#}
+        {#</a>#}
+
+        <ul class="nav navbar-nav pull-right visible-xs-block">
+            {#<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>#}
+            {% if app.request.get('_route')== "dashboard" or app.request.get('_route')== "dashboardBarge"%}
+            <li>
+                <a ng-click="showDiv = !showDiv">
+                    <img src="{{ asset("custom_assets/images/icons/barge_blanc.png") }}" width="18">
+                </a>
+            </li>
+            {% endif %}
+            <li>
+                <a class="" data-toggle="collapse" data-target="#navbar-mobile">
+                    <img src="{{ asset("custom_assets/images/icons/img_user.png") }}" width="25">
+                </a>
+            </li>
+            <li>
+                <a class="sidebar-mobile-main-toggle">
+                    <img src="{{ asset("custom_assets/images/icons/ic_menu.png") }}" width="23">
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="navbar-collapse collapse" id="navbar-mobile">
+        <ul class="nav navbar-nav">
+            {% if not is_granted('ROLE_CTL') %}
+                <li>
+                    <a class="sidebar-control sidebar-main-toggle hidden-xs"
+                       data-ng-click="islistExtendedFn()">
+                        <img src="{{ asset("custom_assets/images/icons/ic_menu.png") }}" width="22">
+                    </a>
+                </li>
+            {% endif %}
+            {% if app.request.get('_route')== "dashboardBarge"%}
+                <li class="link-list-nav">
+                    <a ng-click="showDiv = !showDiv">
+                        <img src="{{ asset("custom_assets/images/icons/barge_blanc.png") }}" width="18">
+                    </a>
+                </li>
+            {% endif %}
+            {% if false %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="icon-git-compare"></i>
+                        <span class="visible-xs-inline-block position-right">Git updates</span>
+                        <span class="badge bg-warning-400">9</span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-content">
+                        <div class="dropdown-content-heading">
+                            Git updates
+                            <ul class="icons-list">
+                                <li><a href="#"><i class="icon-sync"></i></a></li>
+                            </ul>
+                        </div>
+
+                        <ul class="media-list dropdown-content-body width-350">
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="#"
+                                       class="btn border-primary text-primary btn-flat btn-rounded btn-icon btn-sm"><i
+                                                class="icon-git-pull-request"></i></a>
+                                </div>
+
+                                <div class="media-body">
+                                    Drop the IE <a href="#">specific hacks</a> for temporal inputs
+                                    <div class="media-annotation">4 minutes ago</div>
+                                </div>
+                            </li>
+
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="#"
+                                       class="btn border-warning text-warning btn-flat btn-rounded btn-icon btn-sm"><i
+                                                class="icon-git-commit"></i></a>
+                                </div>
+
+                                <div class="media-body">
+                                    Add full font overrides for popovers and tooltips
+                                    <div class="media-annotation">36 minutes ago</div>
+                                </div>
+                            </li>
+
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="#"
+                                       class="btn border-info text-info btn-flat btn-rounded btn-icon btn-sm"><i
+                                                class="icon-git-branch"></i></a>
+                                </div>
+
+                                <div class="media-body">
+                                    <a href="#">Chris Arney</a> created a new <span class="text-semibold">Design</span>
+                                    branch
+                                    <div class="media-annotation">2 hours ago</div>
+                                </div>
+                            </li>
+
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="#"
+                                       class="btn border-success text-success btn-flat btn-rounded btn-icon btn-sm"><i
+                                                class="icon-git-merge"></i></a>
+                                </div>
+
+                                <div class="media-body">
+                                    <a href="#">Eugene Kopyov</a> merged <span class="text-semibold">Master</span> and
+                                    <span class="text-semibold">Dev</span> branches
+                                    <div class="media-annotation">Dec 18, 18:36</div>
+                                </div>
+                            </li>
+
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="#"
+                                       class="btn border-primary text-primary btn-flat btn-rounded btn-icon btn-sm"><i
+                                                class="icon-git-pull-request"></i></a>
+                                </div>
+
+                                <div class="media-body">
+                                    Have Carousel ignore keyboard events
+                                    <div class="media-annotation">Dec 12, 05:46</div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="dropdown-content-footer">
+                            <a href="#" data-popup="tooltip" title="All activity"><i
+                                        class="icon-menu display-block"></i></a>
+                        </div>
+                    </div>
+                </li>
+            {% endif %}
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            {% if is_granted("ROLE_ADMIN") and false %}
+                <li class="dropdown language-switch">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="{{ asset('back_template/assets/images/flags/'~app.session.get("locale").code~'.png') }}"
+                             class="position-left" alt="">
+                        {{ app.session.get("locale").name }}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        {#<li {% if app.session.get("locale").code =="en" %}class="active"{% endif %}><a href="{{ path('change_locale',{locale:"en"}) }}" class="english"><img src="{{ asset('back_template/assets/images/flags/en.png') }}" alt=""> English</a></li>
+                        <li {% if app.session.get("locale").code =="fr" %}class="active"{% endif %}><a href="{{ path('change_locale',{locale:"fr"}) }}" class="espana"><img src="{{ asset('back_template/assets/images/flags/fr.png') }}" alt=""> Francais</a></li>#}
+                    </ul>
+                </li>
+            {% endif %}
+            {#{{ render(controller("AppBundle:Notification:notificationNavBar")) }}#}
+            <li class="dropdown dropdown-user hidden-xs">
+                <a class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="{{ asset('custom_assets/images/icons/img_user.png') }}" alt="">
+                    <span>{{ app.user }}</span>
+                    <i class="caret"></i>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-custom dropdown-menu-right">
+                    <li>
+                        <a href="{{ path('change_password') }}" class="text-mauve-icon">
+                            <i class="fa fa-lock fa-lg"></i>
+                            Change password</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="{{ path('logout') }}" class="text-mauve-icon">
+                            <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <ul class="dropdown dropdown-user  dropdown-user-xs visible-xs">
+
+            <li>
+                <span class="user-name">
+                    <img width="25" src="{{ asset('custom_assets/images/icons/img_user.png') }}" alt="">
+                    {{ app.user }}
+                </span>
+            </li>
+
+            <li>
+                <a href="{{ path('change_password') }}" class="text-mauve-icon">
+                    <i class="fa fa-lock fa-lg"></i>
+                    Change password</a>
+            </li>
+            <li>
+                <a href="{{ path('logout') }}" class="text-mauve-icon">
+                    <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
+                    Logout
+                </a>
+            </li>
+
+            {#</a>#}
+
+
+            </ul>
+        </ul>
+    </div>
+</div>
