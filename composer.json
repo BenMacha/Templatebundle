@@ -9,7 +9,7 @@
   },
   "autoload": {
     "psr-4": {
-      "BenMacha\\TemplateBundle\\": ""
+      "Benmacha\\TemplateBundle\\": ""
     },
     "exclude-from-classmap": [
       "/Tests/"

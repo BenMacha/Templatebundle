@@ -1,3 +1,0 @@
-# Templatebundle
-
-Comming soon
