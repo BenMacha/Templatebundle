@@ -1,9 +1,9 @@
-{% include "@Template/Template/head.html.twig" %}
+{% include "@BenmachaTemplate/Template/head.html.twig" %}
 {% block stylesheets %}{% endblock %}
-{% include "@Template/Template/head-end.html.twig" %}
+{% include "@BenmachaTemplate/Template/head-end.html.twig" %}
 <body class="with-side-menu dark-theme chrome-browser {{ app.request.attributes.get('_route') }}">
-{% include "@Template/Template/header.html.twig" %}
-{#{% include "@Template/Template/side-menu.html.twig" %}#}
+{% include "@BenmachaTemplate/Template/header.html.twig" %}
+{#{% include "@BenmachaTemplate/Template/side-menu.html.twig" %}#}
 {{ Menu_build() }}
 <div class="page-content">
     <div class="container-fluid">
@@ -30,6 +30,6 @@
     </footer>
 </div>
 
-{% include "@Template/Template/footer.html.twig" %}
+{% include "@BenmachaTemplate/Template/footer.html.twig" %}
 {% block javascripts %}{% endblock %}
-{% include "@Template/Template/foot.html.twig" %}
+{% include "@BenmachaTemplate/Template/foot.html.twig" %}

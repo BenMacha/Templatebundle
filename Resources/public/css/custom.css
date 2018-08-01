@@ -1,0 +1,21 @@
+.footer {
+    position: absolute;
+    right: 0;
+    /*bottom: 0;*/
+    left: 0;
+    padding: 1rem;
+    text-align: center;
+}
+
+.statistic-box .number {
+    font-size: 1.5rem;
+    line-height: 1;
+    padding: 32px 0 0;
+}
+
+.fa-2{font-size:2em}.fa-3{font-size:4em}.fa-4{font-size:7em}.fa-5{font-size:12em}.fa-6{font-size:20em}
+
+.vich-image  a img {
+    width: 285px;
+    height: 285px;
+}

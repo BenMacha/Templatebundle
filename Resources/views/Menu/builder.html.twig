@@ -2,15 +2,16 @@
 <nav class="side-menu">
     <div class="side-menu-avatar">
         <div class="avatar-preview avatar-preview-100">
-            {% if app.user.avatar is null %}
+            {% if app.user.image is null %}
                 <img src="{{ asset('img/avatar-1-256.png') }}" alt="">
             {% else %}
-                <img src="{{ vich_uploader_asset(app.user, 'imageFile') }}" alt="">
+                <img src="{{ app.user.image }}" alt="">
             {% endif %}
         </div>
     </div>
 
     <ul class="side-menu-list">
+        {#
         <li class="black"><a href="{{ path('dashboard_index') }}"><i class="font-icon font-icon-home"></i><span class="lbl">{{ 'Dashboard'|trans({},'menu') }}</span></a></li>
         <li class="black"><a href="{{ path('streamingusermonitor_index') }}"><i class="fa fa-plug"></i><span class="lbl">{{ 'Client Connection Logs'|trans({},'menu') }}</span></a></li>
         <li class="magenta with-sub">
@@ -72,6 +73,7 @@
                 <li><a href="{{ path('subtitle_new') }}"><span class="lbl">{{ 'Create New Subtitle'|trans({},'menu') }}</span></a></li>
             </ul>
         </li>
+        #}
     </ul>
 
    {#

@@ -39,10 +39,10 @@
 
                     <div class="dropdown user-menu">
                         <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {% if app.user.avatar is null %}
+                            {% if app.user.image is null %}
                                 <img src="{{ asset('img/avatar-1-256.png') }}" alt="">
                             {% else %}
-                                <img src="{{ vich_uploader_asset(app.user, 'imageFile') }}" alt="">
+                                <img src="{{ app.user.image }}" alt="">
                             {% endif %}
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">

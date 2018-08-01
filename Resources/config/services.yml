@@ -2,3 +2,22 @@ services:
 #    template.example:
 #        class: TemplateBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+
+    twig.menu:
+      class: Benmacha\TemplateBundle\Twig\MenuExtention
+      tags:
+          - { name: twig.extension }
+      arguments: ["@doctrine.orm.entity_manager","@twig"]
+
+    twig.git_version:
+        class: Benmacha\TemplateBundle\Twig\GitExtension
+        tags:
+            - { name: twig.extension }
+
+    twig.localized_route_extension:
+        class: Benmacha\TemplateBundle\Twig\LocalizedRouteExtension
+        tags:
+            - { name: twig.extension }
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+        arguments: ["@router"]
