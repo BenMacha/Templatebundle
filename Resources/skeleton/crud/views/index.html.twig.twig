@@ -1,12 +1,17 @@
 {% block extends %}
-{{ "{% extends '@Template/base.html.twig' %}" }}
+    {% import "@BenmachaTemplate/layout/macros/scripts.html.twig" as scripts %}
+    {% import "@BenmachaTemplate/layout/macros/styles.html.twig" as styles %}
+
+    {{ "{% extends '@Template/base.html.twig' %}" }}
 {% endblock extends %}
 
 {% block body %}
 {{ "{% block pagetitle %}{{ '"~entity_pluralized|capitalize ~" List'|trans({},'"~entity_singularized~"') }}{% endblock %}" }}
 {{ "{% block subtitle %}Admin{% endblock %}" }}
 
-{{ "{% block stylesheets %}{% endblock %} " }}
+{{ "{% block stylesheets %}{% endblock %}" }}
+{{ "{{ styles.datatable() }}" }}
+{{ "{% endblock %} " }}
 
 {{ "{% block content %}" }}
     <table id="{{ entity_singularized }}-table"  class="display table table-striped table-bordered" cellspacing="0" width="100%">
@@ -80,6 +85,7 @@
 {{ "{% endblock %}" }}
 
 {{ "{% block javascripts %}"}}
+{{ "{{ scripts.datatable() }}"}}
     <script>
         $(document).ready(function() {
             $('#{{ entity_singularized }}-table').DataTable({
