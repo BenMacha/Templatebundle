@@ -3,9 +3,9 @@
     <div class="side-menu-avatar">
         <div class="avatar-preview avatar-preview-100">
             {% if app.user.image is null %}
-                <img src="{{ asset('img/avatar-1-256.png') }}" alt="">
+                <img src="{{ asset('bundles/benmachatemplate/img/avatar-1-256.png') }}" alt="">
             {% else %}
-                <img src="{{ app.user.image }}" alt="">
+                <img src="{{ asset(app.user.image) }}" alt="">
             {% endif %}
         </div>
     </div>

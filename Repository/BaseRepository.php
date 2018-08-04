@@ -2,6 +2,7 @@
 
 namespace Benmacha\TemplateBundle\Repository;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\Query\Expr;
 /**
  * ModelRepository.

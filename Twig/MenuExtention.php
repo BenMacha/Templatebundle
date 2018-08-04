@@ -42,6 +42,12 @@ class MenuExtention extends \Twig_Extension
         ];
     }
 
+    /**
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function build()
     {
         return $this->twig->render('BenmachaTemplateBundle:Menu:builder.html.twig', []);
