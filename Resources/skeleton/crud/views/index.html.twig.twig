@@ -79,54 +79,14 @@
 
     {% if 'new' in actions -%}
         <br>
-        <a href="{{ "{{ path('" ~ route_name_prefix ~ "_new') }}" }}" class="btn btn-inline btn-success ladda-button" data-style="expand-right" data-size="s"><span class="ladda-label">{{ "{{ 'Create a new "~entity_singularized|capitalize ~"'|trans({},'"~entity_singularized~"') }}" }}</span><span class="ladda-spinner"></span></a>
+        {{ buttons.databaleCreate("'" ~ route_name_prefix ~ "_new'","'Create a new "~entity_singularized|capitalize ~"'","'"~entity_singularized~"'") }}
     {%- endif %}
 
 {{ "{% endblock %}" }}
 
 {{ "{% block javascripts %}"}}
-{{ "{{ scripts.datatable() }}"}}
-    <script>
-        $(document).ready(function() {
-            $('#{{ entity_singularized }}-table').DataTable({
-                "dom": 'Bfrtip',
-                "buttons": [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ],
-                "ajax": {
-                    url: "{{ "{{ path('" ~ route_name_prefix ~ "_index') }}" }}",
-                    data: {
-                        /*join:[{
-                            "join": "VoitureBundle:Voiture",
-                            "alias": 'v',
-                            "condition": "t.voiture = v.id"
-                        },{
-                            "join": "ConfigurationBundle:EntretientType",
-                            "alias": 'e',
-                            "condition": "t.entretienstype = e.id"
-                        }],
-                        hiddenColumn:[{
-                            name:'e.action',
-                            data:'e_action'
-                        },{
-                            name:'v.matricule',
-                            data:'v_matricule'
-                        },{
-                            name:'v.serie',
-                            data:'v_serie'
-                        }]*/
-                    }
-                },
-                "processing": true,
-                "serverSide": true,
-                "sAjaxDataProp": "data",
-                "pageLength": 100,
-                "deferRender": true,
-                "scrollY":     500,
-                "scroller": {
-                    "loadingIndicator": true
-                },
-                "columnDefs": [
+{{ "{{ scripts.datatable('" ~ route_name_prefix ~ "_index') }}"}}
+
                     {%- for field, metadata in fields %}
                         {%- if loop.first %}
                             {
@@ -192,9 +152,6 @@
                             }
                         {%- endif %}
                     {%- endfor %}
-                ]
-            });
-        });
-    </script>
+
 {{ "{% endblock %} " }}
 {% endblock body %}
