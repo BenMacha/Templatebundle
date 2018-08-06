@@ -1,13 +1,20 @@
 <header class="site-header">
     <div class="container-fluid">
 
+
         <a href="#" class="site-logo">
-            <h2 class="hidden-md-down site-logo-text">{{ macha_site_name }}</h2>
+            <img class="hidden-md-down" src="{{ asset('bundles/benmachatemplate/img/logo-2.png') }}" alt="">
+            <img class="hidden-lg-down" src="{{ asset('bundles/benmachatemplate/img/logo-2-mob.png') }}" alt="">
         </a>
+
+        <button id="show-hide-sidebar-toggle" class="show-hide-sidebar">
+            <span>toggle menu</span>
+        </button>
 
         <button class="hamburger hamburger--htla">
             <span>toggle menu</span>
         </button>
+
         <div class="site-header-content">
             <div class="site-header-content-in">
                 <div class="site-header-shown">

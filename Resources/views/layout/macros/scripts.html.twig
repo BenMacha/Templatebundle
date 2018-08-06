@@ -1,4 +1,63 @@
-{% macro datatable() %}
+{% macro datatable(path=null,columns=null,show =true,edit=true,remove=true) %}
+
     <script type="text/javascript" src="{{ asset('bundles/benmachatemplate/js/lib/moment/moment-with-locales.min.js') }}"></script>
     <script src="{{ asset('bundles/benmachatemplate/js/lib/datatables-net/datatables.min.js') }}" type="text/javascript"></script>
-{%  endmacro %}
+    <script src="{{ asset('bundles/benmachatemplate/js/lib/datatables-net/responsive-2.1.0/js/dataTables.responsive.js') }}" type="text/javascript"></script>
+    {% set columns = DatatableRaw('[{"name": "t.id"}, {"name": "t.firstname"}, {"name": "t.lastname"}, {"name": "t.mobile"}, {"name": "t.birthday"}, {"name": "t.lock"}, {"name": "t.createdAt"}, {"name": "t.updatedAt"}]',true,true,true) %}
+
+    <script>
+        $(document).ready(function () {
+
+            var columns = [{% for column in columns %}{ {% for key, data in column %}{% if key == "render" %}"{{ key }}": {{ data|raw }},{% else %}"{{ key }}":"{{ data|raw }}",{% endif %}{% endfor %}},{% endfor %}];
+
+
+            var table = $('#datatable').DataTable({
+                /*"dom": 'Bfrtip',
+                "buttons": [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],*/
+                "ajax": {
+                    url: "{{ path(path) }}",
+                    data: {
+                        /*join:[{
+                            "join": "VoitureBundle:Voiture",
+                            "alias": 'v',
+                            "condition": "t.voiture = v.id"
+                        },{
+                            "join": "ConfigurationBundle:EntretientType",
+                            "alias": 'e',
+                            "condition": "t.entretienstype = e.id"
+                        }],
+                        hiddenColumn:[{
+                            name:'e.action',
+                            data:'e_action'
+                        },{
+                            name:'v.matricule',
+                            data:'v_matricule'
+                        },{
+                            name:'v.serie',
+                            data:'v_serie'
+                        }]*/
+                    }
+                },
+                "processing": true,
+                "serverSide": true,
+                "sAjaxDataProp": "data",
+                "pageLength": 100,
+                "deferRender": true,
+                "scrollY": 500,
+                "scrollX": true,
+                "scroller": {
+                    "loadingIndicator": true
+                },
+                "columns": columns
+            });
+
+            /*setTimeout(function () {
+                table.draw();
+            }, 50);*/
+
+        });
+    </script>
+
+{% endmacro %}

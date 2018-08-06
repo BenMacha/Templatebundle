@@ -6,18 +6,24 @@ services:
 
     twig.menu:
       class: Benmacha\TemplateBundle\Twig\MenuExtention
+      arguments: ["@doctrine.orm.entity_manager","@twig"]
       tags:
           - { name: twig.extension }
-      arguments: ["@doctrine.orm.entity_manager","@twig"]
 
     twig.git_version:
         class: Benmacha\TemplateBundle\Twig\GitExtension
         tags:
             - { name: twig.extension }
 
+    twig.data_table:
+        class: Benmacha\TemplateBundle\Twig\DataTableExtension
+        arguments: ["@doctrine.orm.entity_manager","@twig"]
+        tags:
+            - { name: twig.extension }
+
     twig.localized_route_extension:
         class: Benmacha\TemplateBundle\Twig\LocalizedRouteExtension
+        arguments: ["@router"]
         tags:
             - { name: twig.extension }
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
-        arguments: ["@router"]

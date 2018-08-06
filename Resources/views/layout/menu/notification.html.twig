@@ -1,5 +1,0 @@
-{% if is_granted("ROLE_ADMIN")  %}
-    <li {% if app.request.attributes.get('_route') =='notification_form' %} class="active"{% endif %}>
-        <a href="{{ path('notification_form') }}"><i class="icon-bubble-notification"></i> <span>Notifications & Alerts</span></a>
-    </li>
-{% endif %}

@@ -1,13 +1,22 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: developper
- * Date: 01/08/18
- * Time: 17:32
+ * PHP version 7.* & Symfony 3.4.
+ * LICENSE: This source file is subject to version 3.01 of the PHP license
+ * that is available through the world-wide-web at the following URI:
+ * http://www.php.net/license/3_01.txt.
+ *
+ * Baskel.
+ *
+ * @category   Baskel platform manager
+ *
+ * @author     Ali Ben Macha       <contact@benmacha.tn>
+ * @copyright  Ⓒ 2018 Cubes.TN
+ *
+ * @see       http://www.cubes.tn
  */
 
 namespace Benmacha\TemplateBundle\Twig;
-
 
 /*
  * Class GIT.
@@ -19,14 +28,14 @@ class GitExtension extends \Twig_Extension
      */
     public function getFunctions()
     {
-        return [
-            new \Twig_SimpleFunction('git_version', [$this, 'git_version'], [
-                'is_safe' => ['html'],
-            ]),
-            new \Twig_SimpleFunction('git_date', [$this, 'git_date'], [
-                'is_safe' => ['html'],
-            ]),
-        ];
+        return array(
+            new \Twig_SimpleFunction('git_version', array($this, 'git_version'), array(
+                'is_safe' => array('html'),
+            )),
+            new \Twig_SimpleFunction('git_date', array($this, 'git_date'), array(
+                'is_safe' => array('html'),
+            )),
+        );
     }
 
     /**
