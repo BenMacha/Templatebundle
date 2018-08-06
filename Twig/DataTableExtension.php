@@ -46,20 +46,18 @@ class DataTableExtension extends \Twig_Extension
         );
     }
 
-    /*"render": function (data, type, full, meta) {
-                    var ch = '';
-                    ch += '<a href="' + Routing.generate('user_show', {
-                        _locale: "{{ app.request.locale }}",
-                        id: data
-                    }) + '" class="btn btn-inline btn-primary btn-sm ladda-button" data-style="expand-right" data-size="s"><span class="ladda-label">{{ 'show'|trans({},'user') }}</span><span class="ladda-spinner"></span></a>';
-                    ch += '<a href="' + Routing.generate('user_edit', {
-                        _locale: "{{ app.request.locale }}",
-                        id: data
-                    }) + '" class="btn btn-inline btn-primary btn-sm ladda-button" data-style="expand-right" data-size="s"><span class="ladda-label">{{ 'edit'|trans({},'user') }}</span><span class="ladda-spinner"></span></a>';
-                    return ch;
-                }
+    /**
+     * @param $columns
+     * @param $show
+     * @param $edit
+     * @param $remove
+     *
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     *
+     * @return array|mixed
      */
-
     public function datatableRaw($columns, $show, $edit, $remove)
     {
         $columns = json_decode($columns, true);
@@ -69,11 +67,30 @@ class DataTableExtension extends \Twig_Extension
             // $columns[$i]['render'] = "function (data, type, full, meta) {return getFormattedDate(data);}";
         }
 
+        $ch = '';
+        if ($show) {
+            $ch .= $this->twig->render('@BenmachaTemplate/layout/action/show.html.twig', array(
+                'show' => $show,
+            ));
+        }
+
+        if ($edit) {
+            $ch .= $this->twig->render('@BenmachaTemplate/layout/action/edit.html.twig', array(
+                'edit' => $edit,
+            ));
+        }
+
+        if ($remove) {
+            $ch .= $this->twig->render('@BenmachaTemplate/layout/action/remove.html.twig', array(
+                'remove' => $remove,
+            ));
+        }
+
         $action = array(
             'target' => count($columns),
             'name' => 't.id',
-            'data' => 't_idddd',
-            'render' => "function (data, type, full, meta) {var ch = ''; return ch;}",
+            'data' => 't_id',
+            'render' => "function (data, type, full, meta) {return '".$ch."';}",
         );
 
         $columns[] = $action;

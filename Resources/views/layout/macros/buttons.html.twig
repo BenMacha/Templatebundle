@@ -1,3 +1,7 @@
 {% macro submitForm(text=null) %}
         <button type="submit" class="btn bg-rounded">{% if text is not null %}{{ text }}{% else %}Submit{% endif %}</button>
 {% endmacro %}
+
+{% macro databaleCreate(path, message, translate='global') %}
+        <a href="{{ path(path) }}" class="btn btn-inline btn-success ladda-button" data-style="expand-right" data-size="s"><span class="ladda-label">{{ message|trans({},translate) }}</span><span class="ladda-spinner"></span></a>
+{% endmacro %}
