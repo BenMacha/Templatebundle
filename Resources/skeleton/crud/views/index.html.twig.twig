@@ -1,7 +1,7 @@
 {% block extends %}
-    {% import "@BenmachaTemplate/layout/macros/scripts.html.twig" as scripts %}
-    {% import "@BenmachaTemplate/layout/macros/styles.html.twig" as styles %}
-
+    {{ "{% import '@BenmachaTemplate/layout/macros/scripts.html.twig' as scripts %}" }}
+    {{ "{% import '@BenmachaTemplate/layout/macros/styles.html.twig' as styles %}" }}
+    {{ "{% import '@BenmachaTemplate/layout/macros/buttons.html.twig' as buttons %}" }}
     {{ "{% extends '@Template/base.html.twig' %}" }}
 {% endblock extends %}
 
@@ -14,7 +14,7 @@
 {{ "{% endblock %} " }}
 
 {{ "{% block content %}" }}
-    <table id="{{ entity_singularized }}-table"  class="display table table-striped table-bordered" cellspacing="0" width="100%">
+    <table id="datatable"  class="display table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
             {%- for field, metadata in fields %}
