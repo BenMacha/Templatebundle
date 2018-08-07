@@ -8,6 +8,9 @@
 {% if 'annotation' == format %}
      * @Route("/{{ '{' ~ identifier ~ '}' }}", name="{{ route_name_prefix }}_show", options={"expose"=true})
      * @Method("GET")
+     * @param {{ entity_class }} ${{ entity_singularized }}
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
 {% endif %}
 {% endblock phpdoc_method_annotations %}
      */

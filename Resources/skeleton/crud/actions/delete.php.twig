@@ -21,7 +21,6 @@
 {% endblock method_definition %}
     {
 {% block method_body %}
-
         $form = $this->createDeleteForm(${{ entity_singularized }});
         $form->handleRequest($request);
 

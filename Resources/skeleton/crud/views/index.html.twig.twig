@@ -1,12 +1,12 @@
 {% block extends %}
-    {{ "{% import '@BenmachaTemplate/layout/macros/scripts.html.twig' as scripts %}" }}
-    {{ "{% import '@BenmachaTemplate/layout/macros/styles.html.twig' as styles %}" }}
-    {{ "{% import '@BenmachaTemplate/layout/macros/buttons.html.twig' as buttons %}" }}
-    {{ "{% extends '@Template/base.html.twig' %}" }}
+{{ "{% import '@BenmachaTemplate/layout/macros/scripts.html.twig' as scripts %}" }}
+{{ "{% import '@BenmachaTemplate/layout/macros/styles.html.twig' as styles %}" }}
+{{ "{% import '@BenmachaTemplate/layout/macros/buttons.html.twig' as buttons %}" }}
+{{ "{% extends '@BenmachaTemplate/base.html.twig' %}" }}
 {% endblock extends %}
 
 {% block body %}
-{{ "{% block pagetitle %}{{ '"~entity_pluralized|capitalize ~" List'|trans({},'"~entity_singularized~"') }}{% endblock %}" }}
+{{ "{% block pagetitle %}{{ '"~entity_pluralized|capitalize ~" List'|trans({},'"~entity_singularized~"') }}" }}
 {{ "{% block subtitle %}Admin{% endblock %}" }}
 
 {{ "{% block stylesheets %}{% endblock %}" }}
@@ -25,7 +25,8 @@
 
                 <th width="1">{{ "{{ 'action'|trans({},'"~entity_singularized~"') }}" }}</th>
             </tr>
-        </thead>{#
+        </thead>
+        {#
         <tbody>
         {{ '{% for ' ~ entity_singularized ~ ' in ' ~ entity_pluralized ~ ' %}' }}
             <tr>
@@ -77,81 +78,14 @@
         </tbody>#}
     </table>
 
-    {% if 'new' in actions -%}
-        <br>
-        {{ buttons.databaleCreate("'" ~ route_name_prefix ~ "_new'","'Create a new "~entity_singularized|capitalize ~"'","'"~entity_singularized~"'") }}
-    {%- endif %}
+    {% if 'new' in actions -%}<br>{{ "{{ buttons.databaleCreate('" ~ route_name_prefix ~ "_new','Create a new "~entity_singularized|capitalize ~"','"~entity_singularized~"') }}" }}{%- endif %}
 
 {{ "{% endblock %}" }}
 
 {{ "{% block javascripts %}"}}
-{{ "{{ scripts.datatable('" ~ route_name_prefix ~ "_index') }}"}}
-
-                    {%- for field, metadata in fields %}
-                        {%- if loop.first %}
-                            {
-                                "targets": 0,
-                                "name": 't.{{ field|replace({'_': ''}) }}',
-                                "data": 't_{{ field|replace({'_': ''}) }}',
-                            }
-                        {%- elseif metadata.type in ['datetime'] %}
-                            ,{
-                                "targets": {{ loop.index-1 }},
-                                "name": 't.{{  field|replace({'_': ''}) }}',
-                                "data": 't_{{  field|replace({'_': ''}) }}',
-                                "render": function ( data, type, full, meta ) {
-                                    return  getFormattedDate(data);
-                                }
-                            }
-                        {%- elseif metadata.type in ['date'] %}
-                            ,{
-                                "targets": {{ loop.index-1 }},
-                                "name": 't.{{  field|replace({'_': ''})  }}',
-                                "data": 't_{{  field|replace({'_': ''})  }}',
-                                "render": {
-                                    "display": "date"
-                                }
-                            }
-                        {%- elseif metadata.type in ['time'] %}
-                            ,{
-                                "targets": {{ loop.index-1 }},
-                                "name": 't.{{  field|replace({'_': ''})  }}',
-                                "data": 't-{{  field|replace({'_': ''})  }}',
-                                "render": {
-                                    "display": "date"
-                                }
-                            }
-                        {#{%- elseif metadata.type in ['array'] %}
-
-                        <td>{{ '{% if ' ~ entity_singularized ~ '.' ~ field|replace({'_': ''}) ~ ' %}{{ ' ~ entity_singularized ~ '.' ~ field|replace({'_': ''}) ~ '|join(\', \') }}{% endif %}' }}</td>
-
-                        {%- elseif metadata.type in ['boolean'] %}
-
-                        <td>{{ '{% if ' ~ entity_singularized ~ '.' ~ field|replace({'_': ''}) ~ ' %}Yes{% else %}No{% endif %}' }}</td>#}
-                        {%- else %}
-                            ,{
-                                "targets": {{ loop.index-1 }},
-                                "name": 't.{{ field|replace({'_': ''})  }}',
-                                "data": 't_{{ field|replace({'_': ''})  }}'
-                            }
-                        {%- endif %}
-                        {%- if loop.last %}
-                            ,{
-                                "targets": -1,
-                                "name": 't.id',
-                                "data": "t_id",
-                                "render": function ( data, type, full, meta ) {
-                                    var ch = '';
-                                    {%- for action in record_actions %}
-
-                                        ch+= '<a href="'+Routing.generate('{{ route_name_prefix }}_{{ action }}',{ _locale: "{{ "{{ app.request.locale }}" }}", id:data})+'" class="btn btn-inline btn-primary btn-sm ladda-button" data-style="expand-right" data-size="s"><span class="ladda-label">{{ "{{ '"~action~"'|trans({},'"~entity_singularized~"') }}" }}</span><span class="ladda-spinner"></span></a>';
-                                    {%- endfor %}
-
-                                    return ch;
-                                }
-                            }
-                        {%- endif %}
-                    {%- endfor %}
+{{ "{{ scripts.datatable('" ~ route_name_prefix ~ "_index','[ "}}
+    {%- for field, metadata in fields %}{"name": "t.{{ field|replace({'_': ''}) }}","type":"{{ metadata.type }}"}{%- if not loop.last %},{%- endif %}{%- endfor %}
+{{ " ]','user_show','user_edit', 'user_delete') }}"}}
 
 {{ "{% endblock %} " }}
 {% endblock body %}

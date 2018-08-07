@@ -21,7 +21,6 @@
 {% endblock method_definition %}
     {
 {% block method_body %}
-
         $deleteForm = $this->createDeleteForm(${{ entity_singularized }});
         {% if use_form_type_instance -%}
             $editForm = $this->createForm(new {{ entity_singularized|capitalize }}Type(), ${{ entity_singularized }});
