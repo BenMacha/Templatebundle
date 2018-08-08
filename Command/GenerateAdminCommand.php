@@ -18,9 +18,9 @@
 
 namespace Benmacha\TemplateBundle\Command;
 
+use Benmacha\TemplateBundle\Generator\DoctrineFormGenerator;
 use Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand;
 use Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator;
-use Sensio\Bundle\GeneratorBundle\Generator\DoctrineFormGenerator;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 /**
@@ -42,6 +42,7 @@ class GenerateAdminCommand extends GenerateDoctrineCrudCommand
      * @param BundleInterface|null $bundle
      *
      * @return DoctrineCrudGenerator
+     * @throws \Twig_Error_Loader
      */
     protected function getGenerator(BundleInterface $bundle = null)
     {
