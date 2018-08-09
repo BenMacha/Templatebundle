@@ -1,4 +1,7 @@
 {% block extends %}
+    {{ "{% import '@BenmachaTemplate/layout/macros/scripts.html.twig' as scripts %}" }}
+    {{ "{% import '@BenmachaTemplate/layout/macros/styles.html.twig' as styles %}" }}
+    {{ "{% import '@BenmachaTemplate/layout/macros/buttons.html.twig' as buttons %}" }}
     {{ "{% extends '@BenmachaTemplate/base.html.twig' %}" }}
     {{ "{% form_theme form '@BenmachaTemplate/layout/form/layout.html.twig' %}" }}
 {% endblock extends %}
@@ -6,9 +9,13 @@
 {% block body %}
     {% set hide_edit, hide_delete = true, true %}
 
-    {{ "{% block pagetitle %}{{ '"~entity_singularized|capitalize ~" Add'|trans({},'"~entity_singularized~"') }}{% endblock %}" }}{{ "{% block subtitle %}Admin{% endblock %}" }}
+    {{ "{% block pagetitle %}{{ '"~entity_singularized|capitalize ~" Add'|trans({},'"~entity_singularized~"') }}{% endblock %}" }}
+    {{ "{% block subtitle %}Admin{% endblock %}" }}
 
-    {{ "{% block stylesheets %}{% endblock %}" }}
+    {{ "{% block stylesheets %}" }}
+    {{ "{{ parent() }}" }}
+    {{ "{{ styles.flatpicker() }}" }}
+    {{ "{% endblock %}" }}
 
     {{ "{% block content %}" }}
 
@@ -27,5 +34,8 @@
 {{ include('crud/views/others/record_actions.html.twig.twig') -}}
 {{ "{% endblock %}" }}
 
-{{ "{% block javascripts %}{% endblock %}" }}
+    {{ "{% block javascripts %}" }}
+    {{ "{{ parent() }}" }}
+    {{ "{{ scripts.flatpicker() }}" }}
+    {{ "{% endblock %}" }}
 {% endblock body %}

@@ -22,8 +22,7 @@ class {{ form_class }} extends AbstractType
         $builder
             {%- for field, metadata in fields %}
 
-               /* {{ metadata.name }}  */
-                ->add('{{ field }}', 'text')
+                ->add('{{ field }}')
 
             {%- endfor %};
     }

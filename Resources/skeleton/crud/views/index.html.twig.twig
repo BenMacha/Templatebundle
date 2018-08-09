@@ -6,10 +6,11 @@
 {% endblock extends %}
 
 {% block body %}
-{{ "{% block pagetitle %}{{ '"~entity_pluralized|capitalize ~" List'|trans({},'"~entity_singularized~"') }}" }}
+{{ "{% block pagetitle %}{{ '"~entity_pluralized|capitalize ~" List'|trans({},'"~entity_singularized~"') }}{% endblock %}" }}
 {{ "{% block subtitle %}Admin{% endblock %}" }}
 
-{{ "{% block stylesheets %}{% endblock %}" }}
+{{ "{% block stylesheets %}" }}
+{{ "{{ parent() }}" }}
 {{ "{{ styles.datatable() }}" }}
 {{ "{% endblock %} " }}
 
@@ -83,6 +84,7 @@
 {{ "{% endblock %}" }}
 
 {{ "{% block javascripts %}"}}
+{{ "{{ parent() }}"}}
 {{ "{{ scripts.datatable('" ~ route_name_prefix ~ "_index','[ "}}
     {%- for field, metadata in fields %}{"name": "t.{{ field|replace({'_': ''}) }}","type":"{{ metadata.type }}"}{%- if not loop.last %},{%- endif %}{%- endfor %}
 {{ " ]','user_show','user_edit', 'user_delete') }}"}}
