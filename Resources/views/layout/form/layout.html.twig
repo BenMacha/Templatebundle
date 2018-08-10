@@ -111,7 +111,7 @@
         {{ block('form_widget_simple') }}
     {%- else -%}
         <div {{ block('widget_container_attributes') }}>
-            <input class="form-control flatpickr flatpickr-input" {{ block('widget_attributes') }} readonly="readonly" {% if value.year is defined %}data-default-date="{{ value.year }}-{{ value.month }}-{{ value.day }}"{% endif %}>
+            <input class="form-control flatpickr flatpickr-input" {{ block('widget_attributes') }} readonly="readonly" {% if value.year  is not empty %}data-default-date="{{ value.year }}-{{ value.month }}-{{ value.day }}"{% endif %}>
         </div>
     {%- endif -%}
 {%- endblock date_widget -%}
@@ -122,7 +122,7 @@
     {%- else -%}
         {%- set vars = widget == 'text' ? { 'attr': { 'size': 1 }} : {} -%}
         <div {{ block('widget_container_attributes') }}>
-            <input class="form-control flatpickr flatpickr-input" {{ block('widget_attributes') }} data-enable-time="true" data-time_24hr="true" readonly="readonly" {% if with_seconds %}data-enable-seconds="true"{% endif %} data-no-calendar="true" value="{{ value.hour }}{% if with_minutes %}:{{ value.minute }}{% endif %}{% if with_seconds %}:{{ value.second }}{% endif %}">
+            <input class="form-control flatpickr flatpickr-input" {{ block('widget_attributes') }} data-enable-time="true" data-time_24hr="true" readonly="readonly" {% if with_seconds %}data-enable-seconds="true"{% endif %} data-no-calendar="true" {% if value.hour is not empty %}value="{{ value.hour }}{% if with_minutes %}:{{ value.minute }}{% endif %}{% if with_seconds %}:{{ value.second }}{% endif %}"{% endif %}>
         </div>
     {%- endif -%}
 {%- endblock time_widget -%}
