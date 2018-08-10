@@ -86,7 +86,7 @@
 
 {%- block checkbox_widget -%}
     {% set rand = random() %}
-    <div class="checkbox-toggle -extra-large">
+    <div class="checkbox-toggle -large">
         <input type="checkbox" id="check-toggle-{{ rand }}" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
         <label for="check-toggle-{{ rand }}"></label>
     </div>
@@ -101,10 +101,7 @@
         {{- block('form_widget_simple') -}}
     {%- else -%}
         <div {{ block('widget_container_attributes') }}>
-            {{- form_errors(form.date) -}}
-            {{- form_errors(form.time) -}}
-            {{- form_widget(form.date) -}}
-            {{- form_widget(form.time) -}}
+            <input class="form-control flatpickr flatpickr-input" {{ block('widget_attributes') }} data-enable-time="true" {% if value.time.second  is defined %}data-enable-seconds="true"{% endif %} data-time_24hr="true" readonly="readonly" {% if value.date.year is not empty %}data-default-date="{{ value.date.year }}-{{ value.date.month }}-{{ value.date.day }} {{ value.time.hour }}:{{ value.time.minute }}{% if value.time.second is defined%}:{{ value.time.second }}{% endif %}"{% endif %}>
         </div>
     {%- endif -%}
 {%- endblock datetime_widget -%}
@@ -114,9 +111,7 @@
         {{ block('form_widget_simple') }}
     {%- else -%}
         <div {{ block('widget_container_attributes') }}>
-            {{ dump(value) }}
-            {{ date_pattern }}
-            <input class="form-control flatpickr flatpickr-input" data-enable-time="true" data-enable-seconds="true" readonly="readonly">
+            <input class="form-control flatpickr flatpickr-input" {{ block('widget_attributes') }} readonly="readonly" {% if value.year is defined %}data-default-date="{{ value.year }}-{{ value.month }}-{{ value.day }}"{% endif %}>
         </div>
     {%- endif -%}
 {%- endblock date_widget -%}
@@ -127,7 +122,7 @@
     {%- else -%}
         {%- set vars = widget == 'text' ? { 'attr': { 'size': 1 }} : {} -%}
         <div {{ block('widget_container_attributes') }}>
-            {{ form_widget(form.hour, vars) }}{% if with_minutes %}:{{ form_widget(form.minute, vars) }}{% endif %}{% if with_seconds %}:{{ form_widget(form.second, vars) }}{% endif %}
+            <input class="form-control flatpickr flatpickr-input" {{ block('widget_attributes') }} data-enable-time="true" data-time_24hr="true" readonly="readonly" {% if with_seconds %}data-enable-seconds="true"{% endif %} data-no-calendar="true" value="{{ value.hour }}{% if with_minutes %}:{{ value.minute }}{% endif %}{% if with_seconds %}:{{ value.second }}{% endif %}">
         </div>
     {%- endif -%}
 {%- endblock time_widget -%}
