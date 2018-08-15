@@ -7,3 +7,25 @@
 <script src="{{ asset('bundles/benmachatemplate/js/lib/bootstrap/bootstrap.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('bundles/benmachatemplate/js/plugins.js') }}" type="text/javascript"></script>
 <script src="{{ asset('bundles/benmachatemplate/js/me.js') }}" type="text/javascript"></script>
+
+{% set flash  = app.session.flashBag.all() %}
+{% if flash|length > 0 %}
+<script type="text/javascript" src="{{ asset('bundles/benmachatemplate/js/lib/match-height/jquery.matchHeight.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/benmachatemplate/js/lib/pnotify/pnotify.js') }}"></script>
+<script>
+    $(function() {
+        PNotify.prototype.options.styling = "bootstrap3";
+        {% for type, messages in flash %}
+        {% for  message in messages %}
+            new PNotify({
+                title: '{{ type }}',
+                text: '{{ message }}',
+                type: '{{ type }}',
+                icon: 'font-icon font-icon-{{ type }}',
+                addclass: 'alert-with-icon'
+            });
+        {% endfor %}
+        {% endfor %}
+    });
+</script>
+{% endif %}

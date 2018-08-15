@@ -32,7 +32,8 @@
   },
   "dependencies": {
     "fresh": "^0.5.2",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.5",
+    "node-mime": "^1.6.0",
     "popper.js": "^1.12.5"
   }
 }
