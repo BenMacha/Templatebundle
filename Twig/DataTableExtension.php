@@ -70,19 +70,19 @@ class DataTableExtension extends \Twig_Extension
         $ch = '';
         if ($show) {
             $ch .= $this->twig->render('@BenmachaTemplate/layout/action/show.html.twig', array(
-                'show' => $show,
+                'path' => $show,
             ));
         }
 
         if ($edit) {
             $ch .= $this->twig->render('@BenmachaTemplate/layout/action/edit.html.twig', array(
-                'edit' => $edit,
+                'path' => $edit,
             ));
         }
 
         if ($remove) {
             $ch .= $this->twig->render('@BenmachaTemplate/layout/action/remove.html.twig', array(
-                'remove' => $remove,
+                'path' => $remove,
             ));
         }
 
