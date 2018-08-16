@@ -92,7 +92,7 @@ class Menu
     /**
      * @return string
      */
-    public function getTitleIcon(): string
+    public function getTitleIcon(): ?string
     {
         return $this->titleIcon;
     }
@@ -126,7 +126,11 @@ class Menu
      */
     public function addChild(self $child): void
     {
+        if($child->getPosition())
         $this->childs[$child->getPosition()] = $child;
+        else
+            $this->childs[] = $child;
+
         ksort($this->childs);
     }
 
@@ -150,7 +154,7 @@ class Menu
     /**
      * @return int
      */
-    public function getPosition(): int
+    public function getPosition(): ?int
     {
         return $this->position;
     }

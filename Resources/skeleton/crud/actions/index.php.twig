@@ -10,6 +10,10 @@
 {% endif %}
 {% endblock phpdoc_method_annotations %}
      * @param Request $request
+     * @MenuAnnotation(
+     *     title={"name"="List all {{ entity_pluralized|capitalize }}", "trans"="{{ entity_singularized }}"},
+     *     group={"name"="{{ entity_pluralized }}", "trans"="{{ entity_singularized }}", "icon"="fa fa-home"},
+     * )
      *
      * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
      */

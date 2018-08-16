@@ -13,10 +13,10 @@
         {%  for menu in menus %}
             {% if menu.childs|length > 0 %}
                 <li class="with-sub">
-                    <span><i class="{{ menu.titleIcon }}"></i><span class="lbl">{{ menu.titleName|trans({},menu.titleTrans) }}</span></span>
+                    <span>{% if menu.titleIcon is not null %}<i class="{{ menu.titleIcon }}"></i>{% endif %}<span class="lbl">{{ menu.titleName|trans({},menu.titleTrans) }}</span></span>
                     <ul>
                         {% for child in  menu.childs %}
-                            <li><a href="{% if child.path == "#" %}#{% else %}{{ path(child.path) }}{% endif %}"><span class="lbl">{{ child.titleName|trans({},child.titleTrans) }}</span></a></li>
+                            <li><a href="{% if child.path == "#" %}#{% else %}{{ path(child.path) }}{% endif %}"><i class="{{ child.titleIcon }}"></i><span class="lbl">{{ child.titleName|trans({},child.titleTrans) }}</span></a></li>
                         {% endfor %}
                     </ul>
                 </li>

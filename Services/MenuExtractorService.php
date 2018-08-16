@@ -109,7 +109,9 @@ class MenuExtractorService
                         $group->setPath('#');
                         $group->setTitleName($annotation->getGroup()['name']);
                         $group->setTitleTrans($annotation->getGroup()['trans']);
+                        if(isset($annotation->getGroup()['icon']))
                         $group->setTitleIcon($annotation->getGroup()['icon']);
+                        if(isset($annotation->getGroup()['position']))
                         $group->setPosition($annotation->getGroup()['position']);
                         $group->setRoles($annotation->getRoles());
 
@@ -120,13 +122,17 @@ class MenuExtractorService
                     $menu->setPath($path->getName());
                     $menu->setTitleName($annotation->getTitle()['name']);
                     $menu->setTitleTrans($annotation->getTitle()['trans']);
+                    if(isset($annotation->getTitle()['icon']))
                     $menu->setTitleIcon($annotation->getTitle()['icon']);
+                    if(isset($annotation->getTitle()['position']))
                     $menu->setPosition($annotation->getTitle()['position']);
                     $menu->setRoles($annotation->getRoles());
                     if ($annotation->getGroup()) {
                         $arrayGroup[$annotation->getGroup()['name']]->addChild($menu);
-                    } else {
+                    } else if ($menu->getPosition()){
                         $arrayMenu[$menu->getPosition()] = $menu;
+                    }else {
+                        $arrayMenu[] = $menu;
                     }
                 }
             }
@@ -134,7 +140,11 @@ class MenuExtractorService
 
         /** @var Menu $group */
         foreach ($arrayGroup as $group) {
+            if($group->getPosition())
             $arrayMenu[$group->getPosition()] = $group;
+            else
+                $arrayMenu[] = $group;
+
         }
 
         return $arrayMenu;

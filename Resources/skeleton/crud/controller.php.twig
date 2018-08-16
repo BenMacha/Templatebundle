@@ -7,6 +7,7 @@ use {{ namespace }}\Entity\{{ entity }};
 {% if ('new' in actions or 'edit' in actions) and use_form_type_instance %}
 use {{ namespace }}\Form\{{ entity }}Type;
 {% endif %}
+use Benmacha\TemplateBundle\Annotations\MenuAnnotation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
