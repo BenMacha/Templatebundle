@@ -2,7 +2,7 @@
 {% block stylesheets %}{% endblock %}
 {% include "@BenmachaTemplate/Template/head-end.html.twig" %}
 
-<body class="with-side-menu control-panel control-panel-compact sidebar-hidden {{ app.request.attributes.get('_route') }}">
+<body class="with-side-menu control-panel control-panel-compact {{ app.request.attributes.get('_route') }}">
 {% include "@BenmachaTemplate/Template/header.html.twig" %}
 {#{% include "@BenmachaTemplate/Template/side-menu.html.twig" %}#}
 {{ Menu_build() }}

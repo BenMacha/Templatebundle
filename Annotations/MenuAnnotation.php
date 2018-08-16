@@ -35,8 +35,6 @@ class MenuAnnotation
     public $title = array();
 
     /**
-     * @Required
-     *
      * @var array
      */
     public $group = array();
@@ -63,9 +61,9 @@ class MenuAnnotation
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getGroup(): string
+    public function getGroup(): array
     {
         return $this->group;
     }

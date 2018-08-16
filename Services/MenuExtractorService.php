@@ -18,6 +18,8 @@
 
 namespace Benmacha\TemplateBundle\Services;
 
+use Benmacha\TemplateBundle\Annotations\MenuAnnotation;
+use Benmacha\TemplateBundle\Model\Menu;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Util\ClassUtils;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -88,28 +90,54 @@ class MenuExtractorService
      */
     public function extractAnnotations(array $routes)
     {
-        $array = array();
+        $arrayMenu = array();
+        $arrayGroup = array();
 
         foreach ($routes as $route) {
             if (!$route instanceof Route) {
                 throw new \InvalidArgumentException(sprintf('All elements of $routes must be instances of Route. "%s" given', gettype($route)));
             }
             if ($method = $this->getReflectionMethod($route->getDefault('_controller'))) {
+                /** @var MenuAnnotation $annotation */
                 $annotation = $this->reader->getMethodAnnotation($method, static::ANNOTATION_CLASS);
                 if ($annotation) {
                     $path = $this->reader->getMethodAnnotation($method, static::ROUTE_CLASS);
 
-                    dump($annotation);
-                    dump($path);
-                    dump($method);
-                    dump($route);
+                    if ($annotation->getGroup() and !isset($arrayGroup[$annotation->getGroup()['name']])) {
+                        $group = new Menu();
+
+                        $group->setPath('#');
+                        $group->setTitleName($annotation->getGroup()['name']);
+                        $group->setTitleTrans($annotation->getGroup()['trans']);
+                        $group->setTitleIcon($annotation->getGroup()['icon']);
+                        $group->setPosition($annotation->getGroup()['position']);
+                        $group->setRoles($annotation->getRoles());
+
+                        $arrayGroup[$annotation->getGroup()['name']] = $group;
+                    }
+
+                    $menu = new Menu();
+                    $menu->setPath($path->getName());
+                    $menu->setTitleName($annotation->getTitle()['name']);
+                    $menu->setTitleTrans($annotation->getTitle()['trans']);
+                    $menu->setTitleIcon($annotation->getTitle()['icon']);
+                    $menu->setPosition($annotation->getTitle()['position']);
+                    $menu->setRoles($annotation->getRoles());
+                    if ($annotation->getGroup()) {
+                        $arrayGroup[$annotation->getGroup()['name']]->addChild($menu);
+                    } else {
+                        $arrayMenu[$menu->getPosition()] = $menu;
+                    }
                 }
             }
         }
-        dump($array);
-        die;
 
-        return $array;
+        /** @var Menu $group */
+        foreach ($arrayGroup as $group) {
+            $arrayMenu[$group->getPosition()] = $group;
+        }
+
+        return $arrayMenu;
     }
 
     /**

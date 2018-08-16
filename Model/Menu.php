@@ -23,6 +23,9 @@ class Menu
     /** @var string */
     protected $path;
 
+    /** @var int */
+    protected $position;
+
     /** @var string */
     protected $titleName;
 
@@ -32,46 +35,11 @@ class Menu
     /** @var string */
     protected $titleIcon;
 
-    /** @var string */
-    protected $groupName;
-
-    /** @var string */
-    protected $groupTrans;
-
-    /** @var string */
-    protected $groupIcon;
-
-    /** @var Menu */
-    protected $parent;
+    /** @var array */
+    protected $childs = array();
 
     /** @var array */
-    protected $roles;
-
-    /**
-     * Menu constructor.
-     *
-     * @param string $path
-     * @param string $titleName
-     * @param string $titleTrans
-     * @param string $titleIcon
-     * @param string $groupName
-     * @param string $groupTrans
-     * @param string $groupIcon
-     * @param Menu   $parent
-     * @param array  $roles
-     */
-    public function __construct(string $path, string $titleName, string $titleTrans, string $titleIcon, string $groupName, string $groupTrans, string $groupIcon, self $parent, array $roles)
-    {
-        $this->path = $path;
-        $this->titleName = $titleName;
-        $this->titleTrans = $titleTrans;
-        $this->titleIcon = $titleIcon;
-        $this->groupName = $groupName;
-        $this->groupTrans = $groupTrans;
-        $this->groupIcon = $groupIcon;
-        $this->parent = $parent;
-        $this->roles = $roles;
-    }
+    protected $roles = array();
 
     /**
      * @return string
@@ -138,70 +106,6 @@ class Menu
     }
 
     /**
-     * @return string
-     */
-    public function getGroupName(): string
-    {
-        return $this->groupName;
-    }
-
-    /**
-     * @param string $groupName
-     */
-    public function setGroupName(string $groupName): void
-    {
-        $this->groupName = $groupName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getGroupTrans(): string
-    {
-        return $this->groupTrans;
-    }
-
-    /**
-     * @param string $groupTrans
-     */
-    public function setGroupTrans(string $groupTrans): void
-    {
-        $this->groupTrans = $groupTrans;
-    }
-
-    /**
-     * @return string
-     */
-    public function getGroupIcon(): string
-    {
-        return $this->groupIcon;
-    }
-
-    /**
-     * @param string $groupIcon
-     */
-    public function setGroupIcon(string $groupIcon): void
-    {
-        $this->groupIcon = $groupIcon;
-    }
-
-    /**
-     * @return Menu
-     */
-    public function getParent(): self
-    {
-        return $this->parent;
-    }
-
-    /**
-     * @param Menu $parent
-     */
-    public function setParent(self $parent): void
-    {
-        $this->parent = $parent;
-    }
-
-    /**
      * @return array
      */
     public function getRoles(): array
@@ -216,4 +120,47 @@ class Menu
     {
         $this->roles = $roles;
     }
+
+    /**
+     * @param Menu $child
+     */
+    public function addChild(self $child): void
+    {
+        $this->childs[$child->getPosition()] = $child;
+        ksort($this->childs);
+    }
+
+    /**
+     * @return array
+     */
+    public function getChilds(): array
+    {
+        return $this->childs;
+    }
+
+    /**
+     * @param array $childs
+     */
+    public function setChilds(array $childs): void
+    {
+        $this->childs = $childs;
+        ksort($this->childs);
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition(): int
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param int $position
+     */
+    public function setPosition(int $position): void
+    {
+        $this->position = $position;
+    }
+
 }
