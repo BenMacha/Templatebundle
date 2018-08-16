@@ -4,7 +4,7 @@ Template Bundle
 
 Symfony bundle to generate template with a nice design in your Symfony application.
 
-[![Latest Stable Version](https://poser.pugx.org/benmacha/templatebundle/version)](https://packagist.org/packages/benmacha/templatebundle) [![Total Downloads](https://poser.pugx.org/benmacha/templatebundle/downloads)](https://packagist.org/packages/benmacha/mousetracker) [![Latest Unstable Version](https://poser.pugx.org/benmacha/templatebundle/v/unstable)](//packagist.org/packages/benmacha/templatebundle) [![License](https://poser.pugx.org/benmacha/templatebundle/license)](https://packagist.org/packages/benmacha/templatebundle) 
+[![Latest Stable Version](https://poser.pugx.org/benmacha/templatebundle/version)](https://packagist.org/packages/benmacha/templatebundle) [![Total Downloads](https://poser.pugx.org/benmacha/templatebundle/downloads)](https://packagist.org/packages/benmacha/templatebundle) [![Latest Unstable Version](https://poser.pugx.org/benmacha/templatebundle/v/unstable)](//packagist.org/packages/benmacha/templatebundle) [![License](https://poser.pugx.org/benmacha/templatebundle/license)](https://packagist.org/packages/benmacha/templatebundle) 
 
 ## Installation
 
@@ -36,4 +36,31 @@ Configure the `Bundle` in your `config.yml`:
 ``` yaml
 benmacha_template:
     site_name: 'Template Bundle'
+```
+
+
+## Usage
+
+To generate a CRUD, run this command 
+`NB: The menu will be generated `
+
+``` bash
+$  php bin/console benmacha:generate:crud
+```
+
+Don't forget to extend the repository like this
+
+``` php
+
+<?php
+
+namespace AppBundle\Repository;
+
+use Benmacha\TemplateBundle\Repository\BaseRepository; //add this line
+
+class UserRepository extends BaseRepository // make this extend
+{
+     // Your code   
+}
+        
 ```
