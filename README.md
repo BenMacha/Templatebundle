@@ -1,7 +1,39 @@
-# Templatebundle
+Template Bundle
+===============
+### By D'Ali Ben Macha <contact@benmacha.tn> [https://dali.benmacha.tn](https://dali.benmacha.tn) ###
 
-Comming soon by D'Ali Ben Macha
+Symfony bundle to generate template with a nice design in your Symfony application.
 
-https://www.linkedin.com/in/benmacha/
-https://github.com/benmacha
-https://www.facebook.com/developper
+[![Latest Stable Version](https://poser.pugx.org/benmacha/templatebundle/version)](https://packagist.org/packages/benmacha/templatebundle) [![Total Downloads](https://poser.pugx.org/benmacha/templatebundle/downloads)](https://packagist.org/packages/benmacha/mousetracker) [![Latest Unstable Version](https://poser.pugx.org/benmacha/templatebundle/v/unstable)](//packagist.org/packages/benmacha/templatebundle) [![License](https://poser.pugx.org/benmacha/templatebundle/license)](https://packagist.org/packages/benmacha/templatebundle) 
+
+## Installation
+
+The easiest way to install and configure the TemplateBundle with Symfony is by using
+[Composer](https://getcomposer.org/):
+Add the `benmacha/templatebundle` package to your `require` section in the `composer.json` file.
+
+``` bash
+$ composer require benmacha/templatebundle ^1.0
+```
+Add the Bundle to your application's kernel:
+
+``` php
+
+<?php
+public function registerBundles()
+{
+    $bundles = array(
+        // ...
+            new Benmacha\TemplateBundle\BenmachaTemplateBundle(),
+        // ...
+    );
+    ...
+}
+```
+
+Configure the `Bundle` in your `config.yml`:
+
+``` yaml
+benmacha_template:
+    site_name: 'Template Bundle'
+```
