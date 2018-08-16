@@ -31,6 +31,7 @@ class MenuExtractorService
 {
     const ANNOTATION_CLASS = 'Benmacha\\TemplateBundle\\Annotations\\MenuAnnotation';
     const ROUTE_CLASS = 'Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\Route';
+    const ROUTE_CLASS_DEPRECATED = 'Symfony\\Component\\Routing\\Annotation\\Route';
 
     /**
      * @var ContainerInterface
@@ -101,37 +102,48 @@ class MenuExtractorService
                 /** @var MenuAnnotation $annotation */
                 $annotation = $this->reader->getMethodAnnotation($method, static::ANNOTATION_CLASS);
                 if ($annotation) {
-                    $path = $this->reader->getMethodAnnotation($method, static::ROUTE_CLASS);
+
+                    $path = $this->reader->getMethodAnnotation($method, static::ROUTE_CLASS_DEPRECATED);
+                    if ($path == null)
+                        $path = $this->reader->getMethodAnnotation($method, static::ROUTE_CLASS);
+
+                    if ($annotation->getGroup() and !isset($annotation->getGroup()['name']))
+                        throw new \InvalidArgumentException(sprintf('Group name not found in this path "%s" ', $path->getName()));
 
                     if ($annotation->getGroup() and !isset($arrayGroup[$annotation->getGroup()['name']])) {
                         $group = new Menu();
 
                         $group->setPath('#');
+
                         $group->setTitleName($annotation->getGroup()['name']);
-                        $group->setTitleTrans($annotation->getGroup()['trans']);
-                        if(isset($annotation->getGroup()['icon']))
-                        $group->setTitleIcon($annotation->getGroup()['icon']);
-                        if(isset($annotation->getGroup()['position']))
-                        $group->setPosition($annotation->getGroup()['position']);
+
+                        if(isset($annotation->getGroup()['trans'])) $group->setTitleTrans($annotation->getGroup()['trans']);
+                        if(isset($annotation->getGroup()['icon'])) $group->setTitleIcon($annotation->getGroup()['icon']);
+                        if(isset($annotation->getGroup()['position'])) $group->setPosition($annotation->getGroup()['position']);
+
                         $group->setRoles($annotation->getRoles());
 
                         $arrayGroup[$annotation->getGroup()['name']] = $group;
                     }
 
                     $menu = new Menu();
+
+                    if (!isset($annotation->getTitle()['name']))
+                        throw new \InvalidArgumentException(sprintf('Title name not found in this path "%s" ', $path->getName()));
+
                     $menu->setPath($path->getName());
                     $menu->setTitleName($annotation->getTitle()['name']);
-                    $menu->setTitleTrans($annotation->getTitle()['trans']);
-                    if(isset($annotation->getTitle()['icon']))
-                    $menu->setTitleIcon($annotation->getTitle()['icon']);
-                    if(isset($annotation->getTitle()['position']))
-                    $menu->setPosition($annotation->getTitle()['position']);
+
+                    if(isset($annotation->getTitle()['trans'])) $menu->setTitleTrans($annotation->getTitle()['trans']);
+                    if(isset($annotation->getTitle()['icon'])) $menu->setTitleIcon($annotation->getTitle()['icon']);
+                    if(isset($annotation->getTitle()['position'])) $menu->setPosition($annotation->getTitle()['position']);
+
                     $menu->setRoles($annotation->getRoles());
                     if ($annotation->getGroup()) {
                         $arrayGroup[$annotation->getGroup()['name']]->addChild($menu);
-                    } else if ($menu->getPosition()){
+                    } elseif ($menu->getPosition()) {
                         $arrayMenu[$menu->getPosition()] = $menu;
-                    }else {
+                    } else {
                         $arrayMenu[] = $menu;
                     }
                 }
@@ -140,11 +152,11 @@ class MenuExtractorService
 
         /** @var Menu $group */
         foreach ($arrayGroup as $group) {
-            if($group->getPosition())
-            $arrayMenu[$group->getPosition()] = $group;
-            else
+            if ($group->getPosition()) {
+                $arrayMenu[$group->getPosition()] = $group;
+            } else {
                 $arrayMenu[] = $group;
-
+            }
         }
 
         return $arrayMenu;

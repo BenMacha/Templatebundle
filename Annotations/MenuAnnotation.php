@@ -47,7 +47,7 @@ class MenuAnnotation
     /**
      * @return array
      */
-    public function getRoles(): array
+    public function getRoles()
     {
         return $this->roles;
     }
@@ -55,7 +55,7 @@ class MenuAnnotation
     /**
      * @param array $roles
      */
-    public function setRoles(array $roles): void
+    public function setRoles($roles): void
     {
         $this->roles = $roles;
     }
@@ -63,7 +63,7 @@ class MenuAnnotation
     /**
      * @return array
      */
-    public function getGroup(): array
+    public function getGroup()
     {
         return $this->group;
     }
@@ -71,7 +71,7 @@ class MenuAnnotation
     /**
      * @param string $group
      */
-    public function setGroup(string $group): void
+    public function setGroup($group)
     {
         $this->group = $group;
     }
@@ -79,7 +79,7 @@ class MenuAnnotation
     /**
      * @return array
      */
-    public function getTitle(): array
+    public function getTitle()
     {
         return $this->title;
     }
@@ -87,7 +87,7 @@ class MenuAnnotation
     /**
      * @param array $title
      */
-    public function setTitle(array $title): void
+    public function setTitle($title)
     {
         $this->title = $title;
     }

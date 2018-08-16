@@ -30,7 +30,7 @@ class Menu
     protected $titleName;
 
     /** @var string */
-    protected $titleTrans;
+    protected $titleTrans = 'default';
 
     /** @var string */
     protected $titleIcon;
@@ -44,7 +44,7 @@ class Menu
     /**
      * @return string
      */
-    public function getPath(): string
+    public function getPath()
     {
         return $this->path;
     }
@@ -52,7 +52,7 @@ class Menu
     /**
      * @param string $path
      */
-    public function setPath(string $path): void
+    public function setPath($path)
     {
         $this->path = $path;
     }
@@ -60,7 +60,7 @@ class Menu
     /**
      * @return string
      */
-    public function getTitleName(): string
+    public function getTitleName()
     {
         return $this->titleName;
     }
@@ -68,7 +68,7 @@ class Menu
     /**
      * @param string $titleName
      */
-    public function setTitleName(string $titleName): void
+    public function setTitleName($titleName)
     {
         $this->titleName = $titleName;
     }
@@ -76,7 +76,7 @@ class Menu
     /**
      * @return string
      */
-    public function getTitleTrans(): string
+    public function getTitleTrans()
     {
         return $this->titleTrans;
     }
@@ -84,7 +84,7 @@ class Menu
     /**
      * @param string $titleTrans
      */
-    public function setTitleTrans(string $titleTrans): void
+    public function setTitleTrans($titleTrans)
     {
         $this->titleTrans = $titleTrans;
     }
@@ -92,7 +92,7 @@ class Menu
     /**
      * @return string
      */
-    public function getTitleIcon(): ?string
+    public function getTitleIcon()
     {
         return $this->titleIcon;
     }
@@ -100,7 +100,7 @@ class Menu
     /**
      * @param string $titleIcon
      */
-    public function setTitleIcon(string $titleIcon): void
+    public function setTitleIcon($titleIcon)
     {
         $this->titleIcon = $titleIcon;
     }
@@ -108,7 +108,7 @@ class Menu
     /**
      * @return array
      */
-    public function getRoles(): array
+    public function getRoles()
     {
         return $this->roles;
     }
@@ -116,7 +116,7 @@ class Menu
     /**
      * @param array $roles
      */
-    public function setRoles(array $roles): void
+    public function setRoles($roles)
     {
         $this->roles = $roles;
     }
@@ -124,12 +124,13 @@ class Menu
     /**
      * @param Menu $child
      */
-    public function addChild(self $child): void
+    public function addChild(self $child)
     {
-        if($child->getPosition())
-        $this->childs[$child->getPosition()] = $child;
-        else
+        if ($child->getPosition()) {
+            $this->childs[$child->getPosition()] = $child;
+        } else {
             $this->childs[] = $child;
+        }
 
         ksort($this->childs);
     }
@@ -137,7 +138,7 @@ class Menu
     /**
      * @return array
      */
-    public function getChilds(): array
+    public function getChilds()
     {
         return $this->childs;
     }
@@ -145,7 +146,7 @@ class Menu
     /**
      * @param array $childs
      */
-    public function setChilds(array $childs): void
+    public function setChilds($childs)
     {
         $this->childs = $childs;
         ksort($this->childs);
@@ -162,9 +163,8 @@ class Menu
     /**
      * @param int $position
      */
-    public function setPosition(int $position): void
+    public function setPosition($position)
     {
         $this->position = $position;
     }
-
 }
