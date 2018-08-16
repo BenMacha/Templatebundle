@@ -1,21 +1,43 @@
 <?php
 
-namespace Benmacha\TemplateBundle\Generator;
+/**
+ * PHP version 7.* & Symfony 3.4.
+ * LICENSE: This source file is subject to version 3.01 of the PHP license
+ * that is available through the world-wide-web at the following URI:
+ * http://www.php.net/license/3_01.txt.
+ *
+ * Baskel.
+ *
+ * @category   Baskel platform manager
+ *
+ * @author     Ali Ben Macha       <contact@benmacha.tn>
+ * @copyright  Ⓒ 2018 Cubes.TN
+ *
+ * @see       http://www.cubes.tn
+ */
 
+namespace Benmacha\TemplateBundle\Generator;
 
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Sensio\Bundle\GeneratorBundle\Generator\DoctrineFormGenerator as Generator;
-use Symfony\Component\HttpKernel\Bundle\BundleInterface;
-
 use Symfony\Component\Filesystem\Filesystem;
-use Doctrine\Common\Inflector\Inflector;
+use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 class DoctrineFormGenerator extends Generator
 {
-
     private $filesystem;
     private $className;
     private $classPath;
+
+    /**
+     * @param Filesystem $filesystem
+     * @param string     $rootDir
+     */
+    public function __construct(Filesystem $filesystem)
+    {
+        $this->filesystem = $filesystem;
+        parent::__construct($filesystem);
+    }
 
     public function getClassName()
     {
@@ -28,17 +50,6 @@ class DoctrineFormGenerator extends Generator
     }
 
     /**
-     * @param Filesystem $filesystem
-     * @param string     $rootDir
-     */
-    public function __construct(Filesystem $filesystem)
-    {
-
-        $this->filesystem = $filesystem;
-        parent::__construct($filesystem);
-    }
-
-    /**
      * Generates the entity form class.
      *
      * @param BundleInterface   $bundle         The bundle in which to create the class
@@ -48,7 +59,6 @@ class DoctrineFormGenerator extends Generator
      */
     public function generate(BundleInterface $bundle, $entity, ClassMetadataInfo $metadata, $forceOverwrite = false)
     {
-
         $parts = explode('\\', $entity);
         $entityClass = array_pop($parts);
 
@@ -79,6 +89,4 @@ class DoctrineFormGenerator extends Generator
             'get_name_required' => !method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix'),
         ));
     }
-
-
 }

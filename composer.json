@@ -6,6 +6,7 @@
   "require": {
     "php": "^5.5.9 || ^7.0",
     "ext-json": "*",
+    "doctrine/common": "*",
     "symfony/framework-bundle": "^2.8 || ^3.0 || ^4.0",
     "twig/twig": "^1.0||^2.0"
   },

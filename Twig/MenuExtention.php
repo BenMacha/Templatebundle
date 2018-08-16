@@ -26,6 +26,8 @@ namespace Benmacha\TemplateBundle\Twig;
  */
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class Menu.
@@ -34,6 +36,10 @@ class MenuExtention extends \Twig_Extension
 {
     protected $em;
     protected $twig;
+    /**
+     * @var ContainerInterface
+     */
+    private $container;
 
     /**
      * Menu constructor.
@@ -41,10 +47,11 @@ class MenuExtention extends \Twig_Extension
      * @param EntityManager     $entityManager
      * @param \Twig_Environment $twig
      */
-    public function __construct(EntityManager $entityManager, \Twig_Environment $twig)
+    public function __construct(ContainerInterface $container, EntityManagerInterface $entityManager, \Twig_Environment $twig)
     {
         $this->twig = $twig;
         $this->em = $entityManager;
+        $this->container = $container;
     }
 
     /**
@@ -68,6 +75,10 @@ class MenuExtention extends \Twig_Extension
      */
     public function build()
     {
+        $extractorService = $this->container->get('twig.menu_extractor');
+        dump($extractorService->all());
+        die;
+
         return $this->twig->render('BenmachaTemplateBundle:Menu:builder.html.twig', array());
     }
 }

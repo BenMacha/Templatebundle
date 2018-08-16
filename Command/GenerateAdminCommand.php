@@ -41,8 +41,9 @@ class GenerateAdminCommand extends GenerateDoctrineCrudCommand
     /**
      * @param BundleInterface|null $bundle
      *
-     * @return DoctrineCrudGenerator
      * @throws \Twig_Error_Loader
+     *
+     * @return DoctrineCrudGenerator
      */
     protected function getGenerator(BundleInterface $bundle = null)
     {

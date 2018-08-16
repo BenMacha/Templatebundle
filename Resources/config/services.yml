@@ -6,7 +6,7 @@ services:
 
     twig.menu:
       class: Benmacha\TemplateBundle\Twig\MenuExtention
-      arguments: ["@doctrine.orm.entity_manager","@twig"]
+      arguments: ["@service_container", '@doctrine.orm.default_entity_manager', '@twig']
       tags:
           - { name: twig.extension }
 
@@ -27,3 +27,11 @@ services:
         tags:
             - { name: twig.extension }
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+    twig.menu_extractor:
+        class: Benmacha\TemplateBundle\Services\MenuExtractorService
+        public: true
+        arguments: [
+          "@service_container",
+          "@router",
+          "@annotations.reader"]
