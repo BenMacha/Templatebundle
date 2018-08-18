@@ -8,6 +8,7 @@
     "ext-json": "*",
     "doctrine/common": "*",
     "symfony/framework-bundle": "^2.8 || ^3.0 || ^4.0",
+    "friendsofsymfony/jsrouting-bundle": "^2.2",
     "twig/twig": "^1.0||^2.0"
   },
   "autoload": {
