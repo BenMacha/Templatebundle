@@ -31,7 +31,15 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-            ->scalarNode('site_name')->defaultValue('Macha Template')->end()
+                ->scalarNode('site_name')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('logo_path')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('logo_path_mobile')->isRequired()->cannotBeEmpty()->end()
+                ->arrayNode('user')
+                    ->children()
+                    ->scalarNode('class')->defaultNull()->end()
+                    ->scalarNode('picture')->defaultNull()->end()
+                    ->end()
+                ->end()
             ->end();
 
         return $treeBuilder;

@@ -2,8 +2,16 @@
 <nav class="side-menu">
     <div class="side-menu-avatar">
         <div class="avatar-preview avatar-preview-100">
-                <img src="{{ asset('bundles/benmachatemplate/img/avatar-1-256.png') }}" alt="">
+            {%  if macha_user_picture is defined %}
+                {% if  attribute(app.user, macha_user_picture) is null %}
+                    <img src="{{ asset('bundles/benmachatemplate/img/avatar-1-256.png') }}" alt="">
+                {% else %}
+                    <img src="{{ asset(attribute(app.user, macha_user_picture)) }} " alt="">
+                {% endif %}
 
+            {% else %}
+                <img src="{{ asset('bundles/benmachatemplate/img/avatar-1-256.png') }}" alt="">
+            {% endif %}
         </div>
     </div>
     <ul class="side-menu-list">

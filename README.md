@@ -35,7 +35,13 @@ Configure the `Bundle` in your `config.yml`:
 
 ``` yaml
 benmacha_template:
-    site_name: 'Template Bundle'
+    site_name: 'Ben Macha' #required
+    logo_path: 'bundles/benmachatemplate/img/logo-2.png' #required
+    logo_path_mobile: 'bundles/benmachatemplate/img/logo-2-mob.png' #required
+    user:
+        class: AppBundle\Entity\User
+        picture: image
+
 ```
 
 

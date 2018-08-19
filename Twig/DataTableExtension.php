@@ -90,7 +90,10 @@ class DataTableExtension extends \Twig_Extension
             'target' => count($columns),
             'name' => 't.id',
             'data' => 't_id',
-            'render' => "function (data, type, full, meta) {return '".$ch."';}",
+            'render' => "function (data, type, full, meta) {
+                var ch = '".$ch."';
+                return ch.replace(/idvar/g,data);
+            }",
         );
 
         $columns[] = $action;

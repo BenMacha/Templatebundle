@@ -50,7 +50,14 @@ class BenmachaTemplateExtenstion extends Extension implements ExtensionInterface
 
     public function process(ContainerBuilder $container)
     {
+        //$definitions = $container->getDefinitions();
         $def = $container->getDefinition('twig');
         $def->addMethodCall('addGlobal', array('macha_site_name', $this->config['site_name']));
+        $def->addMethodCall('addGlobal', array('macha_logo_path', $this->config['logo_path']));
+        $def->addMethodCall('addGlobal', array('macha_logo_path_mobile', $this->config['logo_path_mobile']));
+        if (isset($this->config['user']))
+        $def->addMethodCall('addGlobal', array('macha_user_picture', $this->config['user']['picture']));
+        //dump($definitions);die;
+
     }
 }

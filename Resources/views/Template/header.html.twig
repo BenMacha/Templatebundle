@@ -1,8 +1,10 @@
 <header class="site-header">
     <div class="container-fluid">
 
-
-            <a href="#" class="site-logo-text">{{ macha_site_name }}</a>
+        <a href="#" class="site-logo">
+            <img class="hidden-md-down" src="{{ asset(macha_logo_path) }}" alt="">
+            <img class="hidden-lg-down" src="{{ asset(macha_logo_path_mobile) }}" alt="">
+        </a>
 
         <button id="show-hide-sidebar-toggle" class="show-hide-sidebar">
             <span>toggle menu</span>
@@ -42,7 +44,17 @@
 
                     <div class="dropdown user-menu">
                         <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                            {%  if macha_user_picture is defined %}
+                                {% if  attribute(app.user, macha_user_picture) is null %}
+                                    <img src="{{ asset('bundles/benmachatemplate/img/avatar-1-256.png') }}" alt="">
+                                {% else %}
+                                    <img src="{{ asset(attribute(app.user, macha_user_picture)) }} " alt="">
+                                {% endif %}
+
+                            {% else %}
                                 <img src="{{ asset('bundles/benmachatemplate/img/avatar-1-256.png') }}" alt="">
+                            {% endif %}
 
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">

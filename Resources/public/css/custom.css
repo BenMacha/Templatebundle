@@ -6,53 +6,6 @@
     padding: 1rem;
     text-align: center;
 }
-
-.side-menu {
-    width: 240px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: #fff;
-    height: 100%;
-    border-right: solid 1px #c5d6de;
-    overflow: auto;
-    z-index: 60;
-    padding: 60px 0 110px; !important;
-}
-
-.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 51px;
-    background: #fff;
-    border-bottom: solid 1px #c5d6de;
-    padding: 0px 15px 0 0;
-    z-index: 80;
-}
-
-.site-header .site-logo-text {
-    float: left;
-    width: 195px;
-    height: 50px;
-    line-height: 50px;
-    color: #272727;
-    font-size: 1.25rem;
-    font-weight: 600;
-    background: #ffffff;
-    margin: 0 -1px 0 -.9375rem;
-    position: relative;
-    padding: 0;
-    text-align: center;
-}
-
-.statistic-box .number {
-    font-size: 1.5rem;
-    line-height: 1;
-    padding: 32px 0 0;
-}
-
 .page-content {
     padding: 70px 15px 10px;
 }
