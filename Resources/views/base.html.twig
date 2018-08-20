@@ -8,6 +8,7 @@
 {{ Menu_build() }}
 <div class="page-content">
     <div class="container-fluid">
+        {%  if block('pagetitle') %}
         <header class="section-header">
             <div class="tbl">
                 <div class="tbl-row">
@@ -22,6 +23,7 @@
                 </div>
             </div>
         </header>
+        {% endif %}
         {{  block('content') }}
     </div>
     <footer class="footer">

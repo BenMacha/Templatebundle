@@ -87,7 +87,7 @@
 {{ "{{ parent() }}"}}
 {{ "{{ scripts.datatable('" ~ route_name_prefix ~ "_index','[ "}}
     {%- for field, metadata in fields %}{"name": "t.{{ field|replace({'_': ''}) }}","type":"{{ metadata.type }}"}{%- if not loop.last %},{%- endif %}{%- endfor %}
-{{ " ]','"~entity_singularized~"_show','"~entity_singularized~"_edit', '"~entity_singularized~"_delete') }}"}}
+{{ " ]','"~route_name_prefix~"_show','"~route_name_prefix~"_edit', '"~route_name_prefix~"_delete') }}"}}
 
 {{ "{% endblock %} " }}
 {% endblock body %}

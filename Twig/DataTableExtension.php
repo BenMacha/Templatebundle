@@ -61,10 +61,17 @@ class DataTableExtension extends \Twig_Extension
     public function datatableRaw($columns, $show, $edit, $remove)
     {
         $columns = json_decode($columns, true);
+
         for ($i = 0; count($columns) > $i; ++$i) {
             $columns[$i]['target'] = $i;
             $columns[$i]['data'] = str_replace('.', '_', $columns[$i]['name']);
-            // $columns[$i]['render'] = "function (data, type, full, meta) {return getFormattedDate(data);}";
+
+            if($columns[$i]['type'] == 'boolean'){
+                $columns[$i]['render'] = $this->twig->render('@BenmachaTemplate/layout/action/boolean.html.twig', array(
+                    'position' => $i ,
+                ));
+            }
+
         }
 
         $ch = '';
