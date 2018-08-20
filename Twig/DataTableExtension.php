@@ -66,11 +66,12 @@ class DataTableExtension extends \Twig_Extension
             $columns[$i]['target'] = $i;
             $columns[$i]['data'] = str_replace('.', '_', $columns[$i]['name']);
 
-            if($columns[$i]['type'] == 'boolean'){
-                $columns[$i]['render'] = $this->twig->render('@BenmachaTemplate/layout/action/boolean.html.twig', array(
+            //if($columns[$i]['type'] == 'boolean'){
+                $columns[$i]['render'] = $this->twig->render('@BenmachaTemplate/layout/action/type.html.twig', array(
                     'position' => $i ,
+                    'type' => $columns[$i]['type']
                 ));
-            }
+           // }
 
         }
 
