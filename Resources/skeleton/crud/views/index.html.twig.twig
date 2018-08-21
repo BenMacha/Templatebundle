@@ -79,15 +79,18 @@
         </tbody>#}
     </table>
 
-    {% if 'new' in actions -%}<br>{{ "{{ buttons.databaleCreate('" ~ route_name_prefix ~ "_new','Create a new "~entity_singularized|capitalize ~"','"~entity_singularized~"') }}" }}{%- endif %}
 
 {{ "{% endblock %}" }}
 
 {{ "{% block javascripts %}"}}
 {{ "{{ parent() }}"}}
-{{ "{{ scripts.datatable('" ~ route_name_prefix ~ "_index','[ "}}
+{{ "{{ scripts.datatable('" ~ route_name_prefix ~ "_index',"}}
+    {%- if 'new' in actions -%}{{ "'" ~ route_name_prefix ~ "_new'"}}{%- else -%}{{ "null" }}{%- endif -%}
+    {{ ",'"~route_name_prefix~"_show',"}}
+    {%- if 'edit' in actions -%}{{ "'" ~ route_name_prefix ~ "_edit',"}}{%- else -%}{{ "null," }}{%- endif -%}
+    {%- if 'delete' in actions -%}{{ "'" ~ route_name_prefix ~ "_delete','["}}{%- else -%}{{ "null,'[" }}{%- endif -%}
     {%- for field, metadata in fields %}{"name": "t.{{ field|replace({'_': ''}) }}","type":"{{ metadata.type }}"}{%- if not loop.last %},{%- endif %}{%- endfor %}
-{{ " ]','"~route_name_prefix~"_show','"~route_name_prefix~"_edit', '"~route_name_prefix~"_delete') }}"}}
+{{ " ]') }}"}}
 
 {{ "{% endblock %} " }}
 {% endblock body %}

@@ -1,5 +1,21 @@
 <?php
 
+/**
+ * PHP version 7.* & Symfony 3.4.
+ * LICENSE: This source file is subject to version 3.01 of the PHP license
+ * that is available through the world-wide-web at the following URI:
+ * http://www.php.net/license/3_01.txt.
+ *
+ * BenMacha Symfony template generator.
+ *
+ * @category   Template Generator
+ *
+ * @author     Ali Ben Macha       <contact@benmacha.tn>
+ * @copyright  Ⓒ 2018 Cubes.TN
+ *
+ * @see       http://www.cubes.tn
+ */
+
 namespace {{ namespace }}\Form{{ entity_namespace ? '\\' ~ entity_namespace : '' }};
 
 {% block use_statements %}
@@ -22,8 +38,8 @@ class {{ form_class }} extends AbstractType
         $builder
             {%- for field, metadata in fields %}
 
-                /* {{ metadata.type }} */
-                ->add('{{ field }}', null, array())
+
+                ->add('{{ field }}', null, array()) /* {{ metadata.type }} */
 
             {%- endfor %};
     }

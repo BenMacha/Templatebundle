@@ -1,34 +1,34 @@
 services:
-#    template.example:
-#        class: TemplateBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
 
+    benmacha.entity.service:
+        class: Benmacha\TemplateBundle\Services\BenmachaEntityService
+        arguments: ['@doctrine.orm.default_entity_manager']
 
-    twig.menu:
-      class: Benmacha\TemplateBundle\Twig\MenuExtention
-      arguments: ["@service_container", '@doctrine.orm.default_entity_manager', '@twig']
-      tags:
-          - { name: twig.extension }
+    benmacha.twig.menu:
+        class: Benmacha\TemplateBundle\Twig\MenuExtention
+        arguments: ["@service_container", '@doctrine.orm.default_entity_manager', '@twig']
+        tags:
+            - { name: twig.extension }
 
-    twig.git_version:
+    benmacha.twig.menu.extractor:
+        class: Benmacha\TemplateBundle\Services\MenuExtractorService
+        public: true
+        arguments: ["@service_container","@router","@annotations.reader"]
+
+    benmacha.twig.git.version:
         class: Benmacha\TemplateBundle\Twig\GitExtension
         tags:
             - { name: twig.extension }
 
-    twig.data_table:
+    benmacha.twig.data.table:
         class: Benmacha\TemplateBundle\Twig\DataTableExtension
         arguments: ["@doctrine.orm.entity_manager","@twig"]
         tags:
             - { name: twig.extension }
 
-    twig.localized_route_extension:
+    benmacha.twig.localized.route.extension:
         class: Benmacha\TemplateBundle\Twig\LocalizedRouteExtension
         arguments: ["@router"]
         tags:
             - { name: twig.extension }
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
-
-    twig.menu_extractor:
-        class: Benmacha\TemplateBundle\Services\MenuExtractorService
-        public: true
-        arguments: ["@service_container","@router","@annotations.reader"]

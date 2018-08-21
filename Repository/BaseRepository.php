@@ -119,4 +119,8 @@ abstract class BaseRepository extends EntityRepository
 
         return $output;
     }
+
+    public function changeBoolean($value){
+
+    }
 }

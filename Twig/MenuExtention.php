@@ -75,7 +75,7 @@ class MenuExtention extends \Twig_Extension
      */
     public function build()
     {
-        $extractorService = $this->container->get('twig.menu_extractor');
+        $extractorService = $this->container->get('benmacha.twig.menu.extractor');
 
         return $this->twig->render('BenmachaTemplateBundle:Menu:builder.html.twig', array(
             'menus' => $extractorService->all(),

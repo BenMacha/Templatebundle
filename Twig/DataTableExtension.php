@@ -13,7 +13,7 @@
  * @author     Ali Ben Macha       <contact@benmacha.tn>
  * @copyright  Ⓒ 2018 Cubes.TN
  *
- * @see       http://www.cubes.tn
+ * @see        http://www.cubes.tn
  */
 
 namespace Benmacha\TemplateBundle\Twig;
@@ -64,15 +64,12 @@ class DataTableExtension extends \Twig_Extension
 
         for ($i = 0; count($columns) > $i; ++$i) {
             $columns[$i]['target'] = $i;
+            //$columns[$i]['className'] = 'eeeeeee';
             $columns[$i]['data'] = str_replace('.', '_', $columns[$i]['name']);
-
-            //if($columns[$i]['type'] == 'boolean'){
-                $columns[$i]['render'] = $this->twig->render('@BenmachaTemplate/layout/action/type.html.twig', array(
-                    'position' => $i ,
-                    'type' => $columns[$i]['type']
-                ));
-           // }
-
+            $columns[$i]['render'] = $this->twig->render('@BenmachaTemplate/layout/action/type.html.twig', array(
+                'position' => $i,
+                'type' => $columns[$i]['type']
+            ));
         }
 
         $ch = '';
@@ -88,18 +85,12 @@ class DataTableExtension extends \Twig_Extension
             ));
         }
 
-        if ($remove) {
-            $ch .= $this->twig->render('@BenmachaTemplate/layout/action/remove.html.twig', array(
-                'path' => $remove,
-            ));
-        }
-
         $action = array(
             'target' => count($columns),
             'name' => 't.id',
             'data' => 't_id',
             'render' => "function (data, type, full, meta) {
-                var ch = '".$ch."';
+                var ch = '" . $ch . "';
                 return ch.replace(/idvar/g,data);
             }",
         );

@@ -12,7 +12,7 @@
      * @param Request $request
      * @MenuAnnotation(
      *     title={"name"="New {{ entity_singularized }}", "trans"="{{ entity_singularized }}"},
-     *     group={"name"="{{ entity_pluralized }}", "trans"="{{ entity_singularized }}", "icon"="fa fa-home"},
+     *     group={"name"="{{ entity_pluralized|capitalize }}", "trans"="{{ entity_singularized }}", "icon"="fa fa-home"},
      * )
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
@@ -28,7 +28,7 @@
         {% if use_form_type_instance -%}
             $form = $this->createForm(new {{ entity_singularized|capitalize }}Type(), ${{ entity_singularized }}, array('user' => $this->getUser()));
         {% else -%}
-            $form = $this->createForm('{{ namespace }}\Form\{{ entity }}Type', ${{ entity_singularized }});
+            $form = $this->createForm({{ entity }}Type::class, ${{ entity_singularized }});
         {% endif -%}
         $form->handleRequest($request);
 
