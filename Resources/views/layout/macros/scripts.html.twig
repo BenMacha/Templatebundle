@@ -9,7 +9,6 @@
 
             var table = $('#datatable').DataTable({
                 "dom": 'Bfrtip',
-                "select": true,
                 "buttons": [
                     {%- if newPath is not null -%}
                     {
@@ -34,6 +33,8 @@
                             } );
                             this.disable();
                         },action: function ( e, dt, node, config ) {
+                            var data = table.rows( { selected: true } ).ids().toArray();
+                            console.log(data);
                             alert( 'Button activated' );
                         }
                     },
@@ -64,32 +65,39 @@
                         }]*/
                     }
                 },
+
                 "processing": true,
-                "pagingType": "full_numbers",
                 "serverSide": true,
+                "pagingType": "full_numbers",
                 "sAjaxDataProp": "data",
                 "pageLength": 100,
                 "searching": true,
                 "deferRender": true,
                 "scrollY": 500,
                 "scrollX": true,
+                "rowId": 't_id',
+                "select": {
+                    style: 'multi'
+                },
                 "scroller": {
                     "loadingIndicator": true
                 },
                 "columns": [{% for column in columns %}{ {% for key, data in column %}{% if key == "render" %}"{{ key }}": {{ data|raw }},{% else %}"{{ key }}":"{{ data|raw }}",{% endif %}{% endfor %}},{% endfor %}]
             });
             table.on( 'deselect', function ( e, dt, type, indexes ) {
-                console.log(e)
-                console.log(dt)
-                console.log(type)
-                console.log(indexes)
+                var data = table.rows( { selected: true } ).ids().toArray();
+                console.log(data)
+
             });
             table.on( 'select', function ( e, dt, type, indexes ) {
                 //table.rows( $('#datatable tr.active') ).remove().draw();
-                console.log(e)
+                var data = table.rows( { selected: true } ).ids().toArray();
+console.log(data)
+
+                /*console.log(e)
                 console.log(dt)
                 console.log(type)
-                console.log(indexes)
+                console.log(indexes)*/
             });
             setTimeout(function () {
                 table.draw();
