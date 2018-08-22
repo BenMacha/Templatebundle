@@ -15,16 +15,14 @@
     {{ "{% block stylesheets %}" }}
     {{ "{{ parent() }}" }}
     {{ "{{ styles.flatpicker() }}" }}
+    {{ "{{ styles.swalAlert() }}" }}
     {{ "{% endblock %}" }}
 
     {{ "{% block content %}" }}
 
     <div class="box-typical box-typical-padding">
-        <a href="{{ "{{ path('" ~ route_name_prefix ~ "_index') }}" }}" class="btn btn-inline btn-primary pull-right">{{ "{{ 'back'|trans({},'"~entity_singularized~"') }}" }}</a>
-    {%- if ('edit' in actions) and (not hide_edit) %}
-        <a href="{{ "{{ path('" ~ route_name_prefix ~ "_edit', { '"~ identifier ~"': " ~ entity_singularized ~ "."~ identifier ~" }) }}" }}"  class="btn btn-inline btn-warning pull-right">{{ "{{ 'edit'|trans({},'"~entity_singularized~"') }}" }}</a>
-    {%- endif %}
-
+        <a href="{{ "{{ path('" ~ route_name_prefix ~ "_index') }}" }}" class="btn btn-inline btn-primary pull-left">{{ "{{ 'back'|trans({},'"~entity_singularized~"') }}" }}</a>
+        <a href="#" data-path="{{ "{{ path('" ~ route_name_prefix ~ "_delete') }}" }}" data-id="{{ "{{ "~entity_singularized~".id }}" }}" class="btn-form_action_delete btn btn-inline btn-danger pull-right">{{ "{{ 'remove'|trans({},'"~entity_singularized~"') }}" }}</a>
         <br><hr>
         {{ '{{ form_start(edit_form) }}' }}
         {{ '{{ form_widget(edit_form) }}' }}
@@ -32,11 +30,44 @@
         {{ '{{ form_end(edit_form) }}' }}
     </div>
 
-    {{ include('crud/views/others/record_actions.html.twig.twig') -}}
     {{ "{% endblock %}" }}
 
     {{ "{% block javascripts %}" }}
     {{ "{{ parent() }}" }}
     {{ "{{ scripts.flatpicker() }}" }}
+    {{ "{{ scripts.swalAlert() }}" }}
+    <script>
+        $('.btn-form_action_delete').click(function (event) {
+            var id = $(this).data('id');
+            var path = $(this).data('path');
+
+            swal({
+                    title: "Are you sure?",
+                    text: "You will not be able to recover this !",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonText: "Yes, delete it!",
+                    cancelButtonText: "No, cancel!",
+                    closeOnConfirm: true,
+                    closeOnCancel: true
+                },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        $.ajax({
+                            type: "POST",
+                            url: path,
+                            data: {
+                                "_method": "DELETE",
+                                "ids": [id]
+                            },
+                            success: function(result) {
+                                location.href = "{{ "{{ path('" ~ route_name_prefix ~ "_index') }}" }}";
+                            }
+                        });
+                    }
+                });
+        });
+    </script>
     {{ "{% endblock %}" }}
 {% endblock body %}
