@@ -14,34 +14,5 @@ function getFormattedDate(tmp) {
     //return day + '/' + month + '/' + year;
 }
 
-$('.btn-form_action_delete').click(function (event) {
-    event.preventDefault();
-
-    swal({
-            title: "Are you sure?",
-            text: "You will not be able to recover this !",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel!",
-            closeOnConfirm: false,
-            closeOnCancel: false
-        },
-        function (isConfirm) {
-            if (isConfirm) {
-                $('.form_action_delete').submit();
-            } else {
-                swal({
-                    title: "Cancelled",
-                    text: "Your in safe :)",
-                    type: "error",
-                    confirmButtonClass: "btn-danger"
-                });
-            }
-        });
-
-});
-
 // fix check-toggle
 $('.checkbox-toggle.-extra-large').parent().find('.form-control-static').remove();

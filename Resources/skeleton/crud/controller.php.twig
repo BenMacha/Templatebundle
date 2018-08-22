@@ -57,12 +57,12 @@ class {{ entity_class }}Controller extends Controller
         {%- include 'crud/actions/index.php.twig' %}
     {%- endif %}
 
-    {%- if 'show' in actions %}
-        {%- include 'crud/actions/show.php.twig' %}
-    {%- endif %}
-
     {%- if 'new' in actions %}
         {%- include 'crud/actions/new.php.twig' %}
+    {%- endif %}
+
+    {%- if 'show' in actions %}
+        {%- include 'crud/actions/show.php.twig' %}
     {%- endif %}
 
     {%- if 'edit' in actions %}

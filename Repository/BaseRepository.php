@@ -120,7 +120,12 @@ abstract class BaseRepository extends EntityRepository
         return $output;
     }
 
-    public function changeBoolean($value){
-
+    public function ArrayIdRemove($ids){
+        $qb = $this->createQueryBuilder('t')
+            ->delete()
+            ->where('t.id IN (:ids)')
+             ->setParameter('ids', $ids)
+            ->getQuery();
+        return $qb->execute();
     }
 }
