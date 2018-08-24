@@ -16,7 +16,7 @@
 
 {{ "{% block content %}" }}
     <table id="datatable"  class="display table table-striped table-bordered" cellspacing="0" width="100%">
-        <thead>
+       {# <thead>
             <tr>
             {%- for field, metadata in fields %}
 
@@ -27,7 +27,7 @@
                 <th width="1">{{ "{{ 'action'|trans({},'"~entity_singularized~"') }}" }}</th>
             </tr>
         </thead>
-        {#
+
         <tbody>
         {{ '{% for ' ~ entity_singularized ~ ' in ' ~ entity_pluralized ~ ' %}' }}
             <tr>

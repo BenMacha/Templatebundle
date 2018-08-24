@@ -88,6 +88,7 @@ class DataTableExtension extends \Twig_Extension
         $action = array(
             'target' => count($columns),
             'name' => 't.id',
+            'title' => 'Action',
             'data' => 't_id',
             'render' => "function (data, type, full, meta) {
                 var ch = '" . $ch . "';
