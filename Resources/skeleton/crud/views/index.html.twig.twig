@@ -89,7 +89,11 @@
     {{ ",'"~route_name_prefix~"_show',"}}
     {%- if 'edit' in actions -%}{{ "'" ~ route_name_prefix ~ "_edit',"}}{%- else -%}{{ "null," }}{%- endif -%}
     {%- if 'delete' in actions -%}{{ "'" ~ route_name_prefix ~ "_delete','["}}{%- else -%}{{ "null,'[" }}{%- endif -%}
-    {%- for field, metadata in fields %}{"name": "t.{{ field|replace({'_': ''}) }}","type":"{{ metadata.type }}"}{%- if not loop.last %},{%- endif %}{%- endfor %}
+    {% for field, metadata in fields %}
+
+        {"title":"{{ "' ~ '"~field|capitalize~"'|trans({},'"~entity_singularized~"') ~ '" }}", "name": "t.{{ field|replace({'_': ''}) }}", "type":"{{ metadata.type }}"}{% if not loop.last %},{% endif %}
+    {% endfor %}
+
 {{ " ]') }}"}}
 
 {{ "{% endblock %} " }}
