@@ -7,7 +7,7 @@ function (data, type, full, meta) {
 {%- else -%}
     ch = data;
 {%- endif -%}
-    if(typeof EmpName != 'undefined' && EmpName)
+    if(typeof ch != 'undefined' && ch)
         return ch.replace(/idvar/g,data);
     return ch;
 }
