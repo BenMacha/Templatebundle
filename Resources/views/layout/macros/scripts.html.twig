@@ -1,4 +1,4 @@
-{% macro datatable(path=null,newPath=null,show =null,edit=null,remove=null,columns=null) %}
+{% macro datatable(path=null,newPath=null,show =null,edit=null,remove=null,columns=null,join=null) %}
     <script type="text/javascript"
             src="{{ asset('bundles/benmachatemplate/js/lib/moment/moment-with-locales.min.js') }}"></script>
     <script src="{{ asset('bundles/benmachatemplate/js/lib/datatables-net/datatables.min.js') }}"
@@ -75,16 +75,10 @@
                 "ajax": {
                     url: "{{ path(path) }}",
                     data: {
-                        /*join:[{
-                            "join": "VoitureBundle:Voiture",
-                            "alias": 'v',
-                            "condition": "t.voiture = v.id"
-                        },{
-                            "join": "ConfigurationBundle:EntretientType",
-                            "alias": 'e',
-                            "condition": "t.entretienstype = e.id"
-                        }],
-                        hiddenColumn:[{
+                        {% if join is not null %}
+                        join:{{ join|raw }},
+                        {% endif %}
+                       /* hiddenColumn:[{
                             name:'e.action',
                             data:'e_action'
                         },{
