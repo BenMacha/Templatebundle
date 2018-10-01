@@ -149,6 +149,15 @@
     <script src="{{ asset('bundles/benmachatemplate/js/lib/bootstrap-sweetalert/sweetalert.min.js') }}"></script>
 {% endmacro %}
 
+
+{% macro ckeditor() %}
+    <script src="{{ asset('bundles/benmachatemplate/js/lib/ckeditor/ckeditor.js') }}"></script>
+{% endmacro %}
+
+{% macro colorpicker() %}
+    <script src="{{ asset('bundles/benmachatemplate/js/lib/jscolor.js') }}"></script>
+{% endmacro %}
+
 {% macro mapbox(init=false) %}
     <script src="//api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js"></script>
     {% if init %}
