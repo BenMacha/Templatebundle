@@ -19,6 +19,18 @@
   font-size: 1rem /*16*/;
   position: relative;
 }
+.sign-box-login {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  background: #fff;
+  border: solid 1px #d8e2e7;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  padding: 20px;
+  font-size: 1rem /*16*/;
+  position: relative;
+}
 .sign-box .sign-avatar {
   width: 100px;
   height: 100px;
