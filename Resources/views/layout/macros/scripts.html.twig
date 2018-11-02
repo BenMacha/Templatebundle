@@ -78,16 +78,16 @@
                         {% if join is not null %}
                         join:{{ join|raw }},
                         {% endif %}
-                       /* hiddenColumn:[{
-                            name:'e.action',
-                            data:'e_action'
-                        },{
-                            name:'v.matricule',
-                            data:'v_matricule'
-                        },{
-                            name:'v.serie',
-                            data:'v_serie'
-                        }]*/
+                        /* hiddenColumn:[{
+                             name:'e.action',
+                             data:'e_action'
+                         },{
+                             name:'v.matricule',
+                             data:'v_matricule'
+                         },{
+                             name:'v.serie',
+                             data:'v_serie'
+                         }]*/
                     }
                 },
                 "processing": true,
@@ -143,10 +143,32 @@
     <script src="{{ asset('bundles/benmachatemplate/js/lib/bootstrap-sweetalert/sweetalert.min.js') }}"></script>
 {% endmacro %}
 
+{%- macro select2(class = null) -%}
+    <script src="{{ asset('bundles/benmachatemplate/js/lib/select2/select2.min.js') }}"></script>
+    {%- if class is not null -%}
+        <script>
 
-{% macro ckeditor() %}
+            $(document).ready(function () {
+                $('{{ class }}').select2()
+            });
+        </script>
+    {%- endif -%}
+{%- endmacro -%}
+
+{%- macro ckeditor(class = null) -%}
     <script src="{{ asset('bundles/benmachatemplate/js/lib/ckeditor/ckeditor.js') }}"></script>
-{% endmacro %}
+    {%- if class is not null -%}
+        <script>
+
+            $(document).ready(function () {
+
+                CKEDITOR.replace('{{ class }}');
+                CKEDITOR.config.height = 350;
+                CKEDITOR.config.width = 'auto';
+            });
+        </script>
+    {%- endif -%}
+{%- endmacro -%}
 
 {% macro colorpicker() %}
     <script src="{{ asset('bundles/benmachatemplate/js/lib/pickr/pickr.min.js') }}"></script>
@@ -171,18 +193,18 @@
                 $(".mapblock").width(width);
                 $(".mapblock").height(height);
                 $("#map").width(width).height(height);
-                console.log(width,height);
+                console.log(width, height);
                 map.resize();
 
             });
-            $(window).resize(function() {
+            $(window).resize(function () {
                 var width = $(".activity").width();
                 var height = $(".activity").height();
                 $(".mapblock").width(width);
                 $(".mapblock").height(height);
                 $("#map").width(width);
                 $("#map").height(height);
-                console.log(width,height);
+                console.log(width, height);
                 map.resize();
             });
         </script>
