@@ -143,6 +143,10 @@
     <script src="{{ asset('bundles/benmachatemplate/js/lib/bootstrap-sweetalert/sweetalert.min.js') }}"></script>
 {% endmacro %}
 
+{% macro dropzone() %}
+    <script src="{{ asset('bundles/benmachatemplate/js/lib/dropzonejs/dropzone.js') }}"></script>
+{% endmacro %}
+
 {%- macro select2(class = null) -%}
     <script src="{{ asset('bundles/benmachatemplate/js/lib/select2/select2.min.js') }}"></script>
     {%- if class is not null -%}
