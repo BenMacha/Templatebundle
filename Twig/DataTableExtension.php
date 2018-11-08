@@ -61,11 +61,10 @@ class DataTableExtension extends \Twig_Extension
     public function datatableRaw($columns, $show, $edit, $remove)
     {
         $columns = json_decode($columns, true);
-
         $nb = count($columns);
+
         for ($i = 0; $nb > $i; ++$i) {
             $columns[$i]['target'] = $i;
-            //$columns[$i]['className'] = 'eeeeeee';
             $columns[$i]['data'] = str_replace('.', '_', $columns[$i]['name']);
             $columns[$i]['render'] = $this->twig->render('@BenmachaTemplate/layout/action/type.html.twig', array(
                 'position' => $i,

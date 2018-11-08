@@ -4,10 +4,12 @@ function (data, type, full, meta) {
     ch = '<div class="checkbox-toggle"><input disabled type="checkbox"';
     if(data == 1) ch += ' checked';
     ch +=' id="check-toggle-'+full.t_id+'-'+{{ position }}+'"> <label for="check-toggle-'+full.t_id+'-'+{{ position }}+'"></label></div>';
+{%- elseif type == 'picture' -%}
+    ch = '<img src="/'+ data +'" width="100px" alt="">';
 {%- else -%}
     ch = data;
 {%- endif -%}
-    if(typeof ch != 'undefined' && ch)
+if(typeof ch != 'undefined' && ch)
         return ch.replace(/idvar/g,data);
     return ch;
 }
