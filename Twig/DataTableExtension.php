@@ -62,7 +62,8 @@ class DataTableExtension extends \Twig_Extension
     {
         $columns = json_decode($columns, true);
 
-        for ($i = 0; count($columns) > $i; ++$i) {
+        $nb = count($columns);
+        for ($i = 0; $nb > $i; ++$i) {
             $columns[$i]['target'] = $i;
             //$columns[$i]['className'] = 'eeeeeee';
             $columns[$i]['data'] = str_replace('.', '_', $columns[$i]['name']);
@@ -86,7 +87,7 @@ class DataTableExtension extends \Twig_Extension
         }
 
         $action = array(
-            'target' => count($columns),
+            'target' => $nb,
             'name' => 't.id',
             'title' => 'Action',
             'data' => 't_id',
