@@ -6,14 +6,14 @@
  * that is available through the world-wide-web at the following URI:
  * http://www.php.net/license/3_01.txt.
  *
- * Baskel.
+ * BenMacha Template.
  *
- * @category   Baskel platform manager
+ * @category   Symfony Template
  *
  * @author     Ali Ben Macha       <contact@benmacha.tn>
  * @copyright  Ⓒ 2018 Cubes.TN
  *
- * @see        http://www.cubes.tn
+ * @see       http://www.cubes.tn
  */
 
 namespace Benmacha\TemplateBundle\Twig;
@@ -68,7 +68,7 @@ class DataTableExtension extends \Twig_Extension
             $columns[$i]['data'] = str_replace('.', '_', $columns[$i]['name']);
             $columns[$i]['render'] = $this->twig->render('@BenmachaTemplate/layout/action/type.html.twig', array(
                 'position' => $i,
-                'type' => $columns[$i]['type']
+                'type' => $columns[$i]['type'],
             ));
         }
 
@@ -91,7 +91,7 @@ class DataTableExtension extends \Twig_Extension
             'title' => 'Action',
             'data' => 't_id',
             'render' => "function (data, type, full, meta) {
-                var ch = '" . $ch . "';
+                var ch = '".$ch."';
                 return ch.replace(/idvar/g,data);
             }",
         );

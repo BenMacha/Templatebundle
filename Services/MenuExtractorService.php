@@ -6,9 +6,9 @@
  * that is available through the world-wide-web at the following URI:
  * http://www.php.net/license/3_01.txt.
  *
- * Baskel.
+ * BenMacha Template.
  *
- * @category   Baskel platform manager
+ * @category   Symfony Template
  *
  * @author     Ali Ben Macha       <contact@benmacha.tn>
  * @copyright  Ⓒ 2018 Cubes.TN
@@ -102,14 +102,14 @@ class MenuExtractorService
                 /** @var MenuAnnotation $annotation */
                 $annotation = $this->reader->getMethodAnnotation($method, static::ANNOTATION_CLASS);
                 if ($annotation) {
-
                     $path = $this->reader->getMethodAnnotation($method, static::ROUTE_CLASS_DEPRECATED);
-                    if ($path == null)
+                    if (null == $path) {
                         $path = $this->reader->getMethodAnnotation($method, static::ROUTE_CLASS);
+                    }
 
-                    if ($annotation->getGroup() and !isset($annotation->getGroup()['name']))
+                    if ($annotation->getGroup() and !isset($annotation->getGroup()['name'])) {
                         throw new \InvalidArgumentException(sprintf('Group name not found in this path "%s" ', $path->getName()));
-
+                    }
                     if ($annotation->getGroup() and !isset($arrayGroup[$annotation->getGroup()['name']])) {
                         $group = new Menu();
 
@@ -117,9 +117,15 @@ class MenuExtractorService
 
                         $group->setTitleName($annotation->getGroup()['name']);
 
-                        if(isset($annotation->getGroup()['trans'])) $group->setTitleTrans($annotation->getGroup()['trans']);
-                        if(isset($annotation->getGroup()['icon'])) $group->setTitleIcon($annotation->getGroup()['icon']);
-                        if(isset($annotation->getGroup()['position'])) $group->setPosition($annotation->getGroup()['position']);
+                        if (isset($annotation->getGroup()['trans'])) {
+                            $group->setTitleTrans($annotation->getGroup()['trans']);
+                        }
+                        if (isset($annotation->getGroup()['icon'])) {
+                            $group->setTitleIcon($annotation->getGroup()['icon']);
+                        }
+                        if (isset($annotation->getGroup()['position'])) {
+                            $group->setPosition($annotation->getGroup()['position']);
+                        }
 
                         $group->setRoles($annotation->getRoles());
 
@@ -128,15 +134,21 @@ class MenuExtractorService
 
                     $menu = new Menu();
 
-                    if (!isset($annotation->getTitle()['name']))
+                    if (!isset($annotation->getTitle()['name'])) {
                         throw new \InvalidArgumentException(sprintf('Title name not found in this path "%s" ', $path->getName()));
-
+                    }
                     $menu->setPath($path->getName());
                     $menu->setTitleName($annotation->getTitle()['name']);
 
-                    if(isset($annotation->getTitle()['trans'])) $menu->setTitleTrans($annotation->getTitle()['trans']);
-                    if(isset($annotation->getTitle()['icon'])) $menu->setTitleIcon($annotation->getTitle()['icon']);
-                    if(isset($annotation->getTitle()['position'])) $menu->setPosition($annotation->getTitle()['position']);
+                    if (isset($annotation->getTitle()['trans'])) {
+                        $menu->setTitleTrans($annotation->getTitle()['trans']);
+                    }
+                    if (isset($annotation->getTitle()['icon'])) {
+                        $menu->setTitleIcon($annotation->getTitle()['icon']);
+                    }
+                    if (isset($annotation->getTitle()['position'])) {
+                        $menu->setPosition($annotation->getTitle()['position']);
+                    }
 
                     $menu->setRoles($annotation->getRoles());
                     if ($annotation->getGroup()) {

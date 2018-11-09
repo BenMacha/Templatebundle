@@ -6,9 +6,9 @@
  * that is available through the world-wide-web at the following URI:
  * http://www.php.net/license/3_01.txt.
  *
- * Baskel.
+ * BenMacha Template.
  *
- * @category   Baskel platform manager
+ * @category   Symfony Template
  *
  * @author     Ali Ben Macha       <contact@benmacha.tn>
  * @copyright  Ⓒ 2018 Cubes.TN
@@ -55,9 +55,9 @@ class BenmachaTemplateExtenstion extends Extension implements ExtensionInterface
         $def->addMethodCall('addGlobal', array('macha_site_name', $this->config['site_name']));
         $def->addMethodCall('addGlobal', array('macha_logo_path', $this->config['logo_path']));
         $def->addMethodCall('addGlobal', array('macha_logo_path_mobile', $this->config['logo_path_mobile']));
-        if (isset($this->config['user']))
-        $def->addMethodCall('addGlobal', array('macha_user_picture', $this->config['user']['picture']));
+        if (isset($this->config['user'])) {
+            $def->addMethodCall('addGlobal', array('macha_user_picture', $this->config['user']['picture']));
+        }
         //dump($definitions);die;
-
     }
 }

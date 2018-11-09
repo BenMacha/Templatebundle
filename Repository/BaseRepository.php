@@ -6,9 +6,9 @@
  * that is available through the world-wide-web at the following URI:
  * http://www.php.net/license/3_01.txt.
  *
- * Baskel.
+ * BenMacha Template.
  *
- * @category   Baskel platform manager
+ * @category   Symfony Template
  *
  * @author     Ali Ben Macha       <contact@benmacha.tn>
  * @copyright  Ⓒ 2018 Cubes.TN
@@ -81,14 +81,14 @@ abstract class BaseRepository extends EntityRepository
         }
 
         $search = array();
-        if (isset($request['columns']) and isset($request['search']) and $request['search']['value'] != '') {
+        if (isset($request['columns']) and isset($request['search']) and '' != $request['search']['value']) {
             foreach ($request['columns'] as $column) {
                 if ('true' == $column['searchable']) {
                     $search[] = $qb->expr()->like($column['name'], '\'%'.$request['search']['value'].'%\'');
                 }
             }
         }
-        if (isset($request['hiddenColumn']) and isset($request['search']) and $request['search']['value'] != '') {
+        if (isset($request['hiddenColumn']) and isset($request['search']) and '' != $request['search']['value']) {
             foreach ($request['hiddenColumn'] as $column) {
                 $search[] = $qb->expr()->like($column['name'], '\'%'.$request['search']['value'].'%\'');
             }
@@ -120,12 +120,14 @@ abstract class BaseRepository extends EntityRepository
         return $output;
     }
 
-    public function ArrayIdRemove($ids){
+    public function ArrayIdRemove($ids)
+    {
         $qb = $this->createQueryBuilder('t')
             ->delete()
             ->where('t.id IN (:ids)')
              ->setParameter('ids', $ids)
             ->getQuery();
+
         return $qb->execute();
     }
 }

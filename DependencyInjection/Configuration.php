@@ -6,9 +6,9 @@
  * that is available through the world-wide-web at the following URI:
  * http://www.php.net/license/3_01.txt.
  *
- * Baskel.
+ * BenMacha Template.
  *
- * @category   Baskel platform manager
+ * @category   Symfony Template
  *
  * @author     Ali Ben Macha       <contact@benmacha.tn>
  * @copyright  Ⓒ 2018 Cubes.TN
