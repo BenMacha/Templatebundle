@@ -57,8 +57,8 @@ abstract class BaseRepository extends EntityRepository
 
         if (isset($request['join'])) {
             foreach ($request['join'] as $join) {
-                $qb->innerJoin($join['join'], $join['alias'], Expr\Join::WITH, $join['condition']);
-                $FilteredTotal->innerJoin($join['join'], $join['alias'], Expr\Join::WITH, $join['condition']);
+                $qb->leftJoin($join['join'], $join['alias'], Expr\Join::WITH, $join['condition']);
+                $FilteredTotal->leftJoin($join['join'], $join['alias'], Expr\Join::WITH, $join['condition']);
             }
         }
         if (isset($request['start']) and null != $request['start']) {
