@@ -700,10 +700,10 @@
 					left += width - calendarWidth;
 				} else {
 					if (this.o.rtl) {
-						// Default to right
+						// macha to right
 						this.picker.addClass('datepicker-orient-right');
 					} else {
-						// Default to left
+						// macha to left
 						this.picker.addClass('datepicker-orient-left');
 					}
 				}

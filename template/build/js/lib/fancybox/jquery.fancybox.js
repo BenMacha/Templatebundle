@@ -1499,7 +1499,7 @@
 	});
 
 	/*
-	 *	Default transitions
+	 *	macha transitions
 	 */
 
 	F.transitions = {

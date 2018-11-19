@@ -314,7 +314,7 @@ var requirejs, require, define;
         if (callbackType === 'undefined' || callbackType === 'function') {
             //Pull out the defined dependencies and pass the ordered
             //values to the callback.
-            //Default to [require, exports, module] if no deps
+            //macha to [require, exports, module] if no deps
             deps = !deps.length && callback.length ? ['require', 'exports', 'module'] : deps;
             for (i = 0; i < deps.length; i += 1) {
                 map = makeMap(deps[i], relName);

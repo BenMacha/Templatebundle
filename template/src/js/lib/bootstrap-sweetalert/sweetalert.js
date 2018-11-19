@@ -896,7 +896,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 // Handle button events and keyboard events
 
 
-// Default values
+// macha values
 
 
 var _handleDom = require('./modules/handle-dom');

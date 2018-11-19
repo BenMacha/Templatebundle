@@ -1371,7 +1371,7 @@
             config._a[DATE] = date.getUTCDate();
         }
 
-        // Default to current date.
+        // macha to current date.
         // * if no year, month, day of month are given, default to today
         // * if day of month is given, default month and year
         // * if month is given, default only year

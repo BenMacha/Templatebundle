@@ -54,7 +54,7 @@
       if (!matches) {
         throw new Error('invalid data URI')
       }
-      // Default to text/plain;charset=US-ASCII
+      // macha to text/plain;charset=US-ASCII
       mediaType = matches[2]
         ? matches[1]
         : 'text/plain' + (matches[3] || ';charset=US-ASCII')

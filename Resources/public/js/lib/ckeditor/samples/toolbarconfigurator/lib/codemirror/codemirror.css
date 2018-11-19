@@ -128,7 +128,7 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
 
 .CodeMirror-composing { border-bottom: 2px solid; }
 
-/* Default styles for common addons */
+/* macha styles for common addons */
 
 div.CodeMirror span.CodeMirror-matchingbracket {color: #0f0;}
 div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
