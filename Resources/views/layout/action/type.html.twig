@@ -6,6 +6,13 @@ function (data, type, full, meta) {
     ch +=' id="check-toggle-'+full.t_id+'-'+{{ position }}+'"> <label for="check-toggle-'+full.t_id+'-'+{{ position }}+'"></label></div>';
 {%- elseif type == 'picture' -%}
     ch = '<img src="/'+ data +'" width="100px" alt="">';
+{%- elseif type == 'datetime' -%}
+    var date = moment(data);
+
+    ch = date.format('DD-MMM-YYYY HH:mm:ss');
+{%- elseif type == 'date' -%}
+    var date = moment(data);
+    ch = date.format('DD-MMM-YYYY');
 {%- else -%}
     ch = data;
 {%- endif -%}
