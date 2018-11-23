@@ -2,6 +2,12 @@
     <link rel="stylesheet" href="{{ asset('bundles/benmachatemplate/css/lib/datatables-net/datatables.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('bundles/benmachatemplate/css/separate/vendor/datatables-net.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('bundles/benmachatemplate/css/lib/bootstrap-sweetalert/sweetalert.css') }}">
+     <style>
+        tr.selected >td {
+            color: #343434 !important;
+            background-color: rgba(0,136,204,.8)!important ;
+        }
+    </style>
 {% endmacro %}
 
 {% macro flatpicker() %}
