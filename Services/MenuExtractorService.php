@@ -171,7 +171,6 @@ class MenuExtractorService
             }
         }
 
-        dump($arrayMenu);
         //die;
         ksort($arrayMenu);
 
