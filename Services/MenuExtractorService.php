@@ -124,7 +124,7 @@ class MenuExtractorService
                             $group->setTitleIcon($annotation->getGroup()['icon']);
                         }
                         if (isset($annotation->getGroup()['position'])) {
-                            $group->setPosition($annotation->getGroup()['position']);
+                            $group->setPosition((int) $annotation->getGroup()['position']);
                         }
 
                         $group->setRoles($annotation->getRoles());
@@ -147,14 +147,14 @@ class MenuExtractorService
                         $menu->setTitleIcon($annotation->getTitle()['icon']);
                     }
                     if (isset($annotation->getTitle()['position'])) {
-                        $menu->setPosition($annotation->getTitle()['position']);
+                        $menu->setPosition((int) $annotation->getTitle()['position']);
                     }
 
                     $menu->setRoles($annotation->getRoles());
                     if ($annotation->getGroup()) {
                         $arrayGroup[$annotation->getGroup()['name']]->addChild($menu);
                     } elseif ($menu->getPosition()) {
-                        $arrayMenu[$menu->getPosition()] = $menu;
+                        $arrayMenu[(int )$menu->getPosition()] = $menu;
                     } else {
                         $arrayMenu[] = $menu;
                     }
@@ -165,11 +165,15 @@ class MenuExtractorService
         /** @var Menu $group */
         foreach ($arrayGroup as $group) {
             if ($group->getPosition()) {
-                $arrayMenu[$group->getPosition()] = $group;
+                $arrayMenu[(int) $group->getPosition()] = $group;
             } else {
                 $arrayMenu[] = $group;
             }
         }
+
+        dump($arrayMenu);
+        //die;
+        ksort($arrayMenu);
 
         return $arrayMenu;
     }
