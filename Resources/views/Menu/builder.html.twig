@@ -15,19 +15,39 @@
         </div>
     </div>
     <ul class="side-menu-list">
-        {%  for menu in menus %}
-            {% if menu.childs|length > 0 %}
-                <li class="with-sub">
-                    <span>{% if menu.titleIcon is not null %}<i class="{{ menu.titleIcon }}"></i>{% endif %}<span class="lbl">{{ menu.titleName|trans({},menu.titleTrans) }}</span></span>
+        {%- for menu in menus -%}
+            {%- if menu.childs|length > 0 -%}
+                {%- set dataChild = '' -%}
+                {%- for child in menu.childs -%}
+                    {%- if child.roles|length > 0 -%}
+                        {%- for role in app.user.roles if role in child.roles  -%}
+                            {%- set dataChild = dataChild ~ '<li><a href="' -%}
+                            {%- if child.path == "#" -%}{%- set dataChild = dataChild ~ '#' -%}{%- else -%}{%- set dataChild = dataChild ~ path(child.path) -%}{%- endif -%}
+                            {%- set dataChild = dataChild ~ '"><i class="'~ child.titleIcon ~'"></i><span class="lbl">'~child.titleName|trans({},child.titleTrans)~ '</span></a></li>' -%}
+                        {%- endfor -%}
+                    {%- else -%}
+                        {%- set dataChild = dataChild ~ '<li><a href="' -%}
+                        {%- if child.path == "#" -%}{%- set dataChild = dataChild ~ '#' -%}{%- else -%}{%- set dataChild = dataChild ~ path(child.path) -%}{%- endif -%}
+                        {%- set dataChild = dataChild ~ '"><i class="'~ child.titleIcon ~'"></i><span class="lbl">'~child.titleName|trans({},child.titleTrans)~ '</span></a></li>' -%}
+                    {%- endif -%}
+                {%- endfor -%}
+                {%- if dataChild|length > 0 -%}
+                    <li class="with-sub">
+                    <span>{%- if menu.titleIcon is not null -%}<i class="{{ menu.titleIcon }}"></i>{%- endif -%}<span class="lbl">{{ menu.titleName|trans({},menu.titleTrans) }}</span></span>
                     <ul>
-                        {% for child in  menu.childs %}
-                            <li><a href="{% if child.path == "#" %}#{% else %}{{ path(child.path) }}{% endif %}"><i class="{{ child.titleIcon }}"></i><span class="lbl">{{ child.titleName|trans({},child.titleTrans) }}</span></a></li>
-                        {% endfor %}
+                        {{ dataChild|raw }}
                     </ul>
                 </li>
-            {% else %}
-                <li><a href="{% if menu.path == "#" %}#{% else %}{{ path(menu.path) }}{% endif %}"><i class="{{ menu.titleIcon }}"></i><span class="lbl">{{ menu.titleName|trans({},menu.titleTrans) }}</span></a></li>
-            {% endif %}
-        {% endfor %}
+                {%- endif -%}
+            {%- else -%}
+                {%- if menu.roles |length > 0 -%}
+                    {%- for role in app.user.roles if role in menu.roles -%}
+                        <li><a href="{% if menu.path == "#" %}#{%- else -%}{{ path(menu.path) }}{%- endif -%}"><i class="{{ menu.titleIcon }}"></i><span class="lbl">{{ menu.titleName|trans({},menu.titleTrans) }}</span></a></li>
+                    {% endfor %}
+                {%- else -%}
+                <li><a href="{%- if menu.path == "#" -%}#{%- else -%}{{ path(menu.path) }}{%- endif -%}"><i class="{{ menu.titleIcon }}"></i><span class="lbl">{{ menu.titleName|trans({},menu.titleTrans) }}</span></a></li>
+                {%- endif -%}
+            {%- endif -%}
+        {%- endfor -%}
     </ul>
 </nav>
