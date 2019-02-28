@@ -56,18 +56,6 @@ class MenuExtractorService
     }
 
     /**
-     * Return a list of route to inspect for ApiDoc annotation
-     * You can extend this method if you don't want all the routes
-     * to be included.
-     *
-     * @return Route[] An array of routes
-     */
-    public function getRoutes()
-    {
-        return $this->router->getRouteCollection()->all();
-    }
-
-    /**
      * Extracts annotations from all known routes.
      *
      * @param mixed $view
@@ -225,5 +213,17 @@ class MenuExtractorService
         }
 
         return null;
+    }
+
+    /**
+     * Return a list of route to inspect for ApiDoc annotation
+     * You can extend this method if you don't want all the routes
+     * to be included.
+     *
+     * @return Route[] An array of routes
+     */
+    public function getRoutes()
+    {
+        return $this->router->getRouteCollection()->all();
     }
 }

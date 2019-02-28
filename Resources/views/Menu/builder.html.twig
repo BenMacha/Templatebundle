@@ -1,53 +1,66 @@
-<div class="mobile-menu-left-overlay"></div>
-<nav class="side-menu">
-    <div class="side-menu-avatar">
-        <div class="avatar-preview avatar-preview-100">
-            {%  if macha_user_picture is defined %}
-                {% if  attribute(app.user, macha_user_picture) is null %}
-                    <img src="{{ asset('bundles/benmachatemplate/img/avatar-1-256.png') }}" alt="">
-                {% else %}
-                    <img src="{{ asset(attribute(app.user, macha_user_picture)) }} " alt="">
-                {% endif %}
-
-            {% else %}
-                <img src="{{ asset('bundles/benmachatemplate/img/avatar-1-256.png') }}" alt="">
-            {% endif %}
+<!-- Site nav (vertical) -->
+<nav class="site-nav clearfix" role="navigation">
+    <div class="profile clearfix mb15">
+        <img src="{{ asset(app.user.picture) }}" alt="admin">
+        <div class="group">
+            <h5 class="name">{{ app.user.firstName }} {{ app.user.lastname }}</h5>
+            <small class="desig text-uppercase">{{ app.user.roles|join(' | ')  }}</small>
         </div>
     </div>
-    <ul class="side-menu-list">
-        {%- for menu in menus -%}
-            {%- if menu.childs|length > 0 -%}
-                {%- set dataChild = '' -%}
-                {%- for child in menu.childs -%}
-                    {%- if child.roles|length > 0 -%}
-                        {%- for role in app.user.roles if role in child.roles  -%}
-                            {%- set dataChild = dataChild ~ '<li><a href="' -%}
-                            {%- if child.path == "#" -%}{%- set dataChild = dataChild ~ '#' -%}{%- else -%}{%- set dataChild = dataChild ~ path(child.path) -%}{%- endif -%}
-                            {%- set dataChild = dataChild ~ '"><i class="'~ child.titleIcon ~'"></i><span class="lbl">'~child.titleName|trans({},child.titleTrans)~ '</span></a></li>' -%}
-                        {%- endfor -%}
-                    {%- else -%}
-                        {%- set dataChild = dataChild ~ '<li><a href="' -%}
-                        {%- if child.path == "#" -%}{%- set dataChild = dataChild ~ '#' -%}{%- else -%}{%- set dataChild = dataChild ~ path(child.path) -%}{%- endif -%}
-                        {%- set dataChild = dataChild ~ '"><i class="'~ child.titleIcon ~'"></i><span class="lbl">'~child.titleName|trans({},child.titleTrans)~ '</span></a></li>' -%}
-                    {%- endif -%}
-                {%- endfor -%}
-                {%- if dataChild|length > 0 -%}
-                    <li class="with-sub">
-                    <span>{%- if menu.titleIcon is not null -%}<i class="{{ menu.titleIcon }}"></i>{%- endif -%}<span class="lbl">{{ menu.titleName|trans({},menu.titleTrans) }}</span></span>
-                    <ul>
-                        {{ dataChild|raw }}
-                    </ul>
-                </li>
-                {%- endif -%}
-            {%- else -%}
+
+    <ul class="list-unstyled clearfix nav-list mb15">
+        {% for menu in menus %}
+            {% if menu.childs|length > 0 %}
+                {% set dataChild = '' %}
+                {% set parentpath = false %}
+                {% for child in menu.childs %}
+                    {% if app.request.get('_route') == child.path %}
+                        {% set parentpath = true %}
+                    {% endif %}
+                    {% if child.roles|length > 0 %}
+                        {% for role in app.user.roles if role in child.roles  %}
+                            {% if app.request.get('_route') == child.path %}{% set dataChild = dataChild ~ '<li class="active"><a href="' %}{% else %}{% set dataChild = dataChild ~ '<li><a href="' %}{% endif %}
+                            {% if child.path == "#" %}{% set dataChild = dataChild ~ 'javascript:;' %}{% else %}{% set dataChild = dataChild ~ path(child.path) %}{% endif %}
+                            {% set dataChild = dataChild ~ '"><i class="'~ child.titleIcon ~'"></i>'~child.titleName|trans({},child.titleTrans)~ '</a></li>' %}
+                        {% endfor %}
+                    {% else %}
+                        {% if app.request.get('_route') == child.path %}{% set dataChild = dataChild ~ '<li class="active"><a href="' %}{% else %}{% set dataChild = dataChild ~ '<li><a href="' %}{% endif %}
+                        {% if child.path == "#" %}{% set dataChild = dataChild ~ 'javascript:;' %}{% else %}{% set dataChild = dataChild ~ path(child.path) %}{% endif %}
+                        {% set dataChild = dataChild ~ '"><i class="'~ child.titleIcon ~'"></i>'~child.titleName|trans({},child.titleTrans)~ '</a></li>' %}
+                    {% endif %}
+                {% endfor %}
+                {% if dataChild|length > 0 %}
+                    <li{% if  parentpath %} class="open"{% endif %}>
+                        <a href="javascript:;" >
+                            {% if menu.titleIcon is not null %}<i class="{{ menu.titleIcon }}"></i>{% endif %}
+                            <span class="text">{{ menu.titleName|trans({},menu.titleTrans) }}</span>
+                            <i class="arrow ion-chevron-left"></i>
+                        </a>
+                            <ul class="inner-drop list-unstyled">
+                                {{ dataChild|raw }}
+                            </ul>
+                    </li>
+                {% endif %}
+            {% else -%}
                 {%- if menu.roles |length > 0 -%}
                     {%- for role in app.user.roles if role in menu.roles -%}
-                        <li><a href="{% if menu.path == "#" %}#{%- else -%}{{ path(menu.path) }}{%- endif -%}"><i class="{{ menu.titleIcon }}"></i><span class="lbl">{{ menu.titleName|trans({},menu.titleTrans) }}</span></a></li>
-                    {% endfor %}
+                        <li{% if app.request.get('_route') == menu.path %} class="active"{% endif %}>
+                            <a href="{% if menu.path == "#" %}javascript:;{% else %}{{ path(menu.path) }}{% endif %}">
+                                <i class="{{ menu.titleIcon }}"></i>
+                                <span class="text">{{ menu.titleName|trans({},menu.titleTrans) }}</span>
+                            </a>
+                        </li>
+                    {%- endfor -%}
                 {%- else -%}
-                <li><a href="{%- if menu.path == "#" -%}#{%- else -%}{{ path(menu.path) }}{%- endif -%}"><i class="{{ menu.titleIcon }}"></i><span class="lbl">{{ menu.titleName|trans({},menu.titleTrans) }}</span></a></li>
+                    <li{% if app.request.get('_route') == menu.path %} class="active"{% endif %}>
+                        <a href="{% if menu.path == "#" %}javascript:;{% else %}{{ path(menu.path) }}{% endif %}">
+                            <i class="{{ menu.titleIcon }}"></i>
+                            <span class="text">{{ menu.titleName|trans({},menu.titleTrans) }}</span>
+                        </a>
+                    </li>
                 {%- endif -%}
             {%- endif -%}
-        {%- endfor -%}
+        {% endfor %}
     </ul>
+
 </nav>

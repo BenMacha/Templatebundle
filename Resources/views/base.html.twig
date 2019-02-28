@@ -1,47 +1,194 @@
-{% set output %}
-    {% include "@BenmachaTemplate/Template/head.html.twig" %}
-    {% block stylesheets %}{% endblock %}
-    {% include "@BenmachaTemplate/Template/head-end.html.twig" %}
+{%- set output -%}
+    <!DOCTYPE html>
+    <html>
+    <head lang="{{ app.request.locale }}">
+        <meta charset="{{ _charset }}" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>{{ macha_site_name|raw }}</title>
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/png" href="{{ asset('bundles/admin/img/favicon.png') }}" />
 
-    <body class="with-side-menu control-panel control-panel-compact {{ app.request.attributes.get('_route') }}">
+        {% include "@BenmachaTemplate/Template/header.html.twig" %}
+        {% block stylesheets %}{% endblock %}
 
-    {% include "@BenmachaTemplate/Template/header.html.twig" %}
-    {#{% include "@BenmachaTemplate/Template/side-menu.html.twig" %}#}
-    {{ Menu_build() }}
-    <div class="page-content">
-        <div class="container-fluid">
-            {%  if block('pagetitle') %}
-                <header class="section-header">
-                    <div class="tbl">
-                        <div class="tbl-row">
-                            <div class="tbl-cell">
-                                <h3>{% block pagetitle %}{% endblock %}</h3>
-                                <ol class="breadcrumb breadcrumb-simple">
-                                    <li><a href="#">{{ macha_site_name }}</a></li>
-                                    <li><a href="#">{% block subtitle %}{% endblock %}</a></li>
-                                    <li class="active">{{  block('pagetitle') }}</li>
-                                </ol>
+    </head>
+    <body id="app" class="app theme-two off-canvas nav-expand {% block bodyclass %}{% endblock %} {{ app.request.attributes.get('_route') }}">
+
+    <header class="site-head" id="site-head">
+        <ul class="list-unstyled left-elems">
+            <li>
+                <a href="javascript:;" class="nav-trigger ion ion-drag"></a>
+            </li>
+            <li>
+                <div class="form-search hidden-xs">
+                    <form id="site-search" action="javascript:;">
+                        <input type="search" class="form-control" placeholder="Type here for search..  .">
+                        <button type="submit" class="ion ion-ios-search-strong"></button>
+                    </form>
+                </div>
+            </li>
+            <li>
+                <div class="site-logo visible-xs">
+                    <a href="javascript:;" class="text-uppercase h3">
+                        <span class="text">{{ macha_site_name|raw }}</span>
+                    </a>
+                </div>
+            </li>
+            <li class="fullscreen hidden-xs">
+                <a href="javascript:;"><i class="ion ion-qr-scanner"></i></a>
+            </li>
+            {# <!-- notification drop -->
+                    <li class="notify-drop hidden-xs dropdown">
+                        <a href="javascript:;" data-toggle="dropdown">
+                            <i class="ion ion-speakerphone"></i>
+                            <span class="badge badge-danger badge-xs circle">3</span>
+                        </a>
+
+                        <div class="panel panel-default dropdown-menu">
+                            <div class="panel-heading">
+                                You have 3 new notifications
+                                <a href="javascript:;" class="right btn btn-xs btn-pink mt-3">Show All</a>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="list-unstyled">
+                                    <li class="clearfix">
+                                        <a href="javascript:;">
+                                            <span class="ion ion-archive left bg-success"></span>
+                                            <div class="desc">
+                                                <strong>App downloaded</strong>
+                                                <p class="small text-muted">1 min ago</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a href="javascript:;">
+                                            <span class="ion ion-alert-circled left bg-danger"></span>
+                                            <div class="desc">
+                                                <strong>Application Error</strong>
+                                                <p class="small text-muted">4 hours ago</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a href="javascript:;">
+                                            <span class="ion ion-person left bg-info"></span>
+                                            <div class="desc">
+                                                <strong>New User Registered</strong>
+                                                <p class="small text-muted">2 days ago</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                    </div>
-                </header>
-            {% endif %}
-            {{  block('content') }}
-        </div>
-        <footer class="footer">
-            <div class="footerContainer">
-                <p class="copyright">&copy; Copyright {{ "now"|date("Y") }}, <a href="//cubes.tn">CubeSolution Tunis</a> by <a href="//dali.benmacha.tn">D'Ali Ben Macha</a> Version: <span class="label label-primary">{{ git_version() }}</span> - Last update: <span class="label label-primary">{{ git_date() }}</span>{# - Expirte at: <span class="label label-primary">{{ global_entreprise().expiredAt|date("Y-m-d") }}</span> #}</p>
+
+                    </li>	<!-- #end notification drop -->
+            #}
+        </ul>
+        <ul class="list-unstyled right-elems">
+            <li class="profile-drop hidden-xs dropdown">
+                <a href="javascript:;" data-toggle="dropdown">
+                    <img src="{{ asset(app.user.picture) }}" alt="admin-pic">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="javascript:;"><span class="ion ion-person">&nbsp;&nbsp;</span>Profile</a></li>
+                    <li><a href="javascript:;"><span class="ion ion-settings">&nbsp;&nbsp;</span>Settings</a></li>
+                    <li class="divider"></li>
+                    <li><a href="javascript:;"><span class="ion ion-lock-combination">&nbsp;&nbsp;</span>Lock Screen</a></li>
+                    <li><a href="{{ path('logout') }}"><span class="ion ion-power">&nbsp;&nbsp;</span>Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+
+    <div class="main-container clearfix nav-expand">
+        <aside class="nav-wrap nav-expand" id="site-nav" data-perfect-scrollbar>
+            <div class="nav-head">
+                <a href="{{ path('admin_homepage') }}" class="site-logo text-uppercase">
+                    <img width="45px" src="{{ asset('logo/logo-mob.svg') }}">
+                    <span class="text">{{ macha_site_name|raw }}</span>
+                </a>
             </div>
-        </footer>
+            {{ Menu_build() }}
+            <footer class="nav-foot">
+                <p>{{ "now"|date("Y") }} &copy; <span><a href="//cubes.tn">CubeSolution Tunis</a></span></p>
+            </footer>
+        </aside>
+
+        <div class="content-container fixedHeader nav-expand" id="content">
+            <div class="page page-{{ app.request.attributes.get('_route') }}">
+            {%  if block('pagetitle') is defined %}
+                <ol class="breadcrumb breadcrumb-small">
+                    <li>{{ macha_site_name }}</li>
+                    <li class="active"><a href="#">{{  block('pagetitle') }}</a></li>
+                </ol>
+            {% endif %}
+            <div class="page-wrap">
+                {{  block('content') }}
+            </div>
+            </div>
+        </div>
     </div>
+<!--
+    <div class="site-settings clearfix hidden-xs">
+        <div class="settings clearfix">
+            <div class="trigger ion ion-settings left"></div>
+            <div class="wrapper left">
+                <ul class="list-unstyled other-settings">
+                    <li class="clearfix mb10">
+                        <div class="left small">Nav Horizontal</div>
+                        <div class="md-switch right">
+                            <label>
+                                <input type="checkbox" id="navHorizontal">
+                                <span>&nbsp;</span>
+                            </label>
+                        </div>
+                    </li>
+                    <li class="clearfix mb10">
+                        <div class="left small">Fixed Header</div>
+                        <div class="md-switch right">
+                            <label>
+                                <input type="checkbox"  id="fixedHeader">
+                                <span>&nbsp;</span>
+                            </label>
+                        </div>
+                    </li>
+                    <li class="clearfix mb10">
+                        <div class="left small">Nav Full</div>
+                        <div class="md-switch right">
+                            <label>
+                                <input type="checkbox"  id="navFull">
+                                <span>&nbsp;</span>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+                <hr/>
+                <ul class="themes list-unstyled" id="themeColor">
+                    <li data-theme="theme-zero" class="active"></li>
+                    <li data-theme="theme-one"></li>
+                    <li data-theme="theme-two"></li>
+                    <li data-theme="theme-three"></li>
+                    <li data-theme="theme-four"></li>
+                    <li data-theme="theme-five"></li>
+                    <li data-theme="theme-six"></li>
+                    <li data-theme="theme-seven"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+-->
     {% include "@BenmachaTemplate/Template/footer.html.twig" %}
     {% block javascripts %}{% endblock %}
-    {% include "@BenmachaTemplate/Template/foot.html.twig" %}
-{% endset -%}
+
+    </body>
+    </html>
+{%- endset -%}
 {%- if app.environment  == 'dev'%}
-{{ output }}
+    {{ output }}
 {%- else -%}
-    {% spaceless %}
+    {%- spaceless -%}
         {{ output }}
-    {% endspaceless %}
+    {%- endspaceless -%}
 {%- endif -%}

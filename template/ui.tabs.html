@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from solutionportal.net/themes/materia/html/ui.tabs.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Feb 2019 07:25:41 GMT -->
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="Materia - Admin Template">
+	<meta name="keywords" content="materia, webapp, admin, dashboard, template, ui">
+	<meta name="author" content="solutionportal">
+	<!-- <base href="/"> -->
+
+	<title>Materia - Admin Template</title>
+	
+	<!-- Icons -->
+	<script src="http://solutionportal.net/cdn-cgi/apps/head/aWgZFzIn5ln8hauTCmfEvTQEy2Q.js"></script><link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
+	<link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css">
+
+	<!-- Plugins -->
+	<link rel="stylesheet" href="styles/plugins/waves.css">
+	<link rel="stylesheet" href="styles/plugins/perfect-scrollbar.css">
+	
+	<!-- Css/Less Stylesheets -->
+	<link rel="stylesheet" href="styles/bootstrap.min.css">
+	<link rel="stylesheet" href="styles/main.min.css">
+
+
+	 
+ 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300' rel='stylesheet' type='text/css'>
+
+	<!-- Match Media polyfill for IE9 -->
+	<!--[if IE 9]> <script src="scripts/ie/matchMedia.js"></script>  <![endif]--> 
+
+	
+</head>
+<body id="app" class="app off-canvas">
+	
+	<!-- header -->
+	<header class="site-head" id="site-head">
+		<ul class="list-unstyled left-elems">
+			<!-- nav trigger/collapse -->
+			<li>
+				<a href="javascript:;" class="nav-trigger ion ion-drag"></a>
+			</li>
+			<!-- #end nav-trigger -->
+
+			<!-- Search box -->
+			<li>
+				<div class="form-search hidden-xs">
+					<form id="site-search" action="javascript:;">
+						<input type="search" class="form-control" placeholder="Type here for search...">
+						<button type="submit" class="ion ion-ios-search-strong"></button>
+					</form>
+				</div>
+			</li>	<!-- #end search-box -->
+
+			<!-- site-logo for mobile nav -->
+			<li>
+				<div class="site-logo visible-xs">
+					<a href="javascript:;" class="text-uppercase h3">
+						<span class="text">Materia</span>
+					</a>
+				</div>
+			</li> <!-- #end site-logo -->
+
+			<!-- fullscreen -->
+			<li class="fullscreen hidden-xs">
+				<a href="javascript:;"><i class="ion ion-qr-scanner"></i></a>
+
+			</li>	<!-- #end fullscreen -->
+
+			<!-- notification drop -->
+			<li class="notify-drop hidden-xs dropdown">
+				<a href="javascript:;" data-toggle="dropdown">
+					<i class="ion ion-speakerphone"></i>
+					<span class="badge badge-danger badge-xs circle">3</span>
+				</a>
+
+				<div class="panel panel-default dropdown-menu">
+					<div class="panel-heading">
+						You have 3 new notifications 
+						<a href="javascript:;" class="right btn btn-xs btn-pink mt-3">Show All</a>
+					</div>
+					<div class="panel-body">
+						<ul class="list-unstyled">
+							<li class="clearfix">
+								<a href="javascript:;">
+									<span class="ion ion-archive left bg-success"></span>
+									<div class="desc">
+										<strong>App downloaded</strong>
+										<p class="small text-muted">1 min ago</p>
+									</div>
+								</a>
+							</li>
+							<li class="clearfix">
+								<a href="javascript:;">
+									<span class="ion ion-alert-circled left bg-danger"></span>
+									<div class="desc">
+										<strong>Application Error</strong>
+										<p class="small text-muted">4 hours ago</p>
+									</div>
+								</a>
+							</li>
+							<li class="clearfix">
+								<a href="javascript:;">
+									<span class="ion ion-person left bg-info"></span>
+									<div class="desc">
+										<strong>New User Registered</strong>
+										<p class="small text-muted">2 days ago</p>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+			</li>	<!-- #end notification drop -->
+
+		</ul>
+
+		<ul class="list-unstyled right-elems">
+			<!-- profile drop -->
+			<li class="profile-drop hidden-xs dropdown">
+				<a href="javascript:;" data-toggle="dropdown">
+					<img src="images/admin.jpg" alt="admin-pic">
+				</a>
+				<ul class="dropdown-menu dropdown-menu-right">
+					<li><a href="javascript:;"><span class="ion ion-person">&nbsp;&nbsp;</span>Profile</a></li>
+					<li><a href="javascript:;"><span class="ion ion-settings">&nbsp;&nbsp;</span>Settings</a></li>
+					<li class="divider"></li>
+					<li><a href="javascript:;"><span class="ion ion-lock-combination">&nbsp;&nbsp;</span>Lock Screen</a></li>
+					<li><a href="javascript:;"><span class="ion ion-power">&nbsp;&nbsp;</span>Logout</a></li>
+				</ul>
+			</li>
+			<!-- #end profile-drop -->
+
+			<!-- sidebar contact -->
+			<li class="floating-sidebar">
+				<a href="javascript:;">
+					<i class="ion ion-grid"></i>
+				</a>
+				<div class="sidebar-wrap" data-perfect-scrollbar>
+					<ul class="nav nav-tabs nav-justified">
+						<li class="active">
+							<a href="#sidebar-chat-tab" data-toggle="tab">Chat</a>
+						</li>
+						<li>
+							<a href="#sidebar-info-tab" data-toggle="tab">Info</a>
+						</li>
+					</ul> <!-- #end nav-tabs -->
+					<div class="tab-content">
+						<div class="tab-pane active" id="sidebar-chat-tab">
+							<div class="chat-tab tab clearfix">
+								<h5 class="title mt0 mb20">Online</h5>
+								<div class="user-container mb15">
+									<img src="images/sample/1.jpg" alt="">
+									<div class="desc">
+										<p class="mb0">John Wick</p>
+										<p class="xsmall"><span class="ion ion-location"></span>&nbsp;San Franciso, USA</p>
+
+									</div>
+									<span class="ion ion-record avail right on"></span>
+								</div>
+
+								<div class="user-container mb15">
+									<img src="images/sample/2.jpg" alt="">
+									<div class="desc">
+										<p class="mb0">George K.</p>
+										<p class="xsmall"><span class="ion ion-location"></span>&nbsp;California, USA</p>
+									</div>
+									<span class="ion ion-record avail right on"></span>
+								</div>
+
+								<div class="user-container mb15">
+									<img src="images/sample/3.jpg" alt="">
+									<div class="desc">
+										<p class="mb0">Shello Dse.</p>
+										<p class="xsmall"><span class="ion ion-location"></span>&nbsp;Berlin, Germany</p>
+									</div>
+									<span class="ion ion-record avail right away"></span>
+								</div>
+
+								<div class="user-container mb15">
+									<img src="images/sample/4.jpg" alt="">
+									<div class="desc">
+										<p class="mb0">Lucas Tower</p>
+										<p class="xsmall"><span class="ion ion-location"></span>&nbsp;Paris, France</p>
+									</div>
+									<span class="ion ion-record avail right away"></span>
+								</div>
+
+								<div class="user-container mb15">
+									<img src="images/sample/5.jpg" alt="">
+									<div class="desc">
+										<p class="mb0">Hey Win</p>
+										<p class="xsmall"><span class="ion ion-location"></span>&nbsp;Hongkong, China</p>
+									</div>
+									<span class="ion ion-record avail right on"></span>
+								</div>
+
+								<div class="user-container mb15">
+									<img src="images/sample/6.jpg" alt="">
+									<div class="desc">
+										<p class="mb0">Kelvin L.</p>
+										<p class="xsmall"><span class="ion ion-location"></span>&nbsp;Moscow, Russia</p>
+									</div>
+									<span class="ion ion-record avail right on"></span>
+								</div>
+
+								<h5 class="title mt0 mb20">Offline</h5>
+
+								<div class="user-container mb15">
+									<img src="images/sample/7.jpg" alt="">
+									<div class="desc">
+										<p class="mb0">Martin Xx.</p>
+										<p class="xsmall"><span class="ion ion-location"></span>&nbsp;xxx, yyy</p>
+									</div>
+									<span class="ion ion-record avail right off"></span>
+								</div>
+
+								<div class="user-container mb15">
+									<img src="images/sample/2.jpg" alt="">
+									<div class="desc">
+										<p class="mb0">Lorem Ipsum</p>
+										<p class="xsmall"><span class="ion ion-location"></span>&nbsp;Virginia, USA</p>
+									</div>
+									<span class="ion ion-record avail right off"></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-pane" id="sidebar-info-tab">
+							<div class="info-tab tab clearfix">
+								<h5 class="title mt0 mb20">Work in Progress</h5>
+								<ul class="list-unstyled mb15 clearfix">
+									<li>
+										<div class="clearfix mb10">
+											<small class="left">App Upload</small>
+											<small class="right">80%</small>
+										</div>
+										<div class="progress-xs progress">
+											<div class="progress-bar progress-bar-primary" style="width: 80%;"></div>
+										</div>
+									</li>
+									<li>
+										<div class="clearfix mb10">
+											<small class="left">Creating Assets</small>
+											<small class="right">50%</small>
+										</div>
+										<div class="progress-xs progress">
+											<div class="progress-bar progress-bar-danger" style="width: 50%;"></div>
+										</div>
+									</li>
+									<li>
+										<div class="clearfix mb10">
+											<small class="left">New UI 2.0</small>
+											<small class="right">90%</small>
+										</div>
+										<div class="progress-xs progress">
+											<div class="progress-bar progress-bar-success" style="width: 90%;"></div>
+										</div>
+									</li>
+								</ul>
+
+								<h5 class="title mt0 mb20">Settings</h5>
+								<div class="clearfix mb15">
+									<div class="left">
+										<p>Show me online</p>
+									</div>
+
+									<div class="right">
+										<div class="ui-toggle ui-toggle-success ui-toggle-xs">
+											<label>
+												<input type="checkbox" checked> 
+												<span></span>
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="clearfix mb15">
+									<div class="left">
+										<p>Notifications</p>
+									</div>
+
+									<div class="right">
+										<div class="ui-toggle ui-toggle-success ui-toggle-xs">
+											<label>
+												<input type="checkbox"> 
+												<span></span>
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="clearfix mb15">
+									<div class="left">
+										<p>Enable History</p>
+									</div>
+
+									<div class="right">
+										<div class="ui-toggle ui-toggle-success ui-toggle-xs">
+											<label>
+												<input type="checkbox" checked> 
+												<span></span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> <!-- #end tab content -->
+				</div> <!-- #end sidebar-wrap -->
+			</li>
+
+		</ul>
+
+	</header>
+	<!-- #end header -->
+
+
+	<!-- main-container -->
+	<div class="main-container clearfix">
+		<!-- main-navigation -->
+		<aside class="nav-wrap" id="site-nav" data-perfect-scrollbar>
+			<div class="nav-head">
+				<!-- site logo -->
+				<a href="index-2.html" class="site-logo text-uppercase">
+					<i class="ion ion-disc"></i>
+					<span class="text">Materia</span>
+				</a>
+			</div>
+
+			<!-- Site nav (vertical) -->
+
+			<nav class="site-nav clearfix" role="navigation">
+				<div class="profile clearfix mb15">
+					<img src="images/admin.jpg" alt="admin">
+					<div class="group">
+						<h5 class="name">Robert Smith</h5>
+						<small class="desig text-uppercase">UX Designer</small>
+					</div>
+				</div>
+
+				<!-- navigation -->
+				<ul class="list-unstyled clearfix nav-list mb15">
+					<li>
+						<a href="index-2.html">
+							<i class="ion ion-monitor"></i>
+							<span class="text">Dashboard</span>
+						</a>
+					</li>
+					<li>
+						<a href="email.inbox.html">
+							<i class="ion ion-email"></i>
+							<span class="text">Email</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="calendar.html">
+							<i class="ion ion-calendar"></i>
+							<span class="text">Calendar</span>
+							<span class="badge badge-xs badge-danger">hot</span>
+						</a>
+					</li>
+					<li>
+						<a href="material.html">
+							<i class="ion ion-icecream"></i>
+							<span class="text">Material</span>
+							<span class="badge badge-xs badge-success">new</span>
+						</a>
+					</li>
+					
+					<li class="open">
+						<a href="javascript:;">
+							<i class="ion ion-android-options"></i>
+							<span class="text">UI Kit</span>
+							<i class="arrow ion-chevron-left"></i>
+							<span class="badge badge-xs badge-info">10</span>
+						</a>
+						<ul class="inner-drop list-unstyled">
+							<li><a href="ui.buttons.html">Buttons</a></li>
+							<li><a href="ui.typography.html">Typography</a></li>
+							<li><a href="ui.grids.html">Grids</a></li>
+							<li><a href="ui.panels.html">Panels</a></li>
+							<li><a href="ui.notifications.html">Notifications</a></li>
+							<li class="active"><a href="ui.tabs.html">Tabs &amp; Accordion</a></li>
+							<li><a href="ui.progress-bars.html">Progress Bars</a></li>
+							<li><a href="ui.extras.html">Extras</a></li>
+						</ul>
+					</li>
+
+					<li>
+						<a href="javascript:;">
+							<i class="ion ion-asterisk"></i>
+							<span class="text">Icons</span>
+							<i class="arrow ion-chevron-left"></i>
+							<span class="badge badge-xs badge-primary">2</span>
+						</a>
+						<ul class="inner-drop nested list-unstyled">
+							<li><a href="icons.html">Font Awesome</a></li>
+						</ul>
+					</li>
+
+					<li>
+						<a href="javascript:;">
+							<i class="ion ion-stats-bars"></i>
+							<span class="text">Charts</span>
+							<i class="arrow ion-chevron-left"></i>
+						</a>
+						<ul class="inner-drop list-unstyled">
+							<li><a href="charts.c3.html">C3</a></li>
+							<li><a href="charts.sparklines.html">Sparklines</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<i class="ion ion-document-text"></i>
+							<span class="text">Forms</span>
+							<i class="arrow ion-chevron-left"></i>
+						</a>
+						<ul class="inner-drop list-unstyled">
+							<li><a href="forms.elements.html">Elements</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="gmap.html">
+							<i class="ion ion-map"></i>
+							<span class="text">Maps</span>
+						</a>
+					</li>
+					<li>
+						<a href="tables.html">
+							<i class="ion ion-clipboard"></i>
+							<span class="text">Tables</span>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<i class="ion ion-printer"></i>
+							<span class="text">Pages</span>
+							<i class="arrow ion-chevron-left"></i>
+						</a>
+						<ul class="inner-drop list-unstyled">
+							<li><a href="pages.signin.html">Sign In</a></li>
+							<li><a href="pages.signup.html">Sign Up</a></li>
+							<li><a href="pages.forget-pass.html">Forget Pass</a></li>
+							<li><a href="pages.404.html">404</a></li>
+							<li><a href="pages.lockscreen.html">Lock Screen</a></li>
+							<li><a href="pages.timeline.html">Timeline</a></li>
+							<li><a href="pages.search.html">Search</a></li>
+							<li><a href="pages.invoice.html">Invoice</a></li>
+						</ul>
+					</li>
+				</ul> <!-- #end navigation -->
+			</nav>
+
+			<!-- nav-foot -->
+			<footer class="nav-foot">
+				<p>2015 &copy; <span>MATERIA</span></p>
+			</footer>
+
+		</aside>
+		<!-- #end main-navigation -->
+
+		<!-- content-here -->
+		<div class="content-container" id="content">
+			<div class="page page-ui-tabs">
+
+				<ol class="breadcrumb breadcrumb-small">
+					<li>UI Kit</li>
+					<li class="active"><a href="ui.tabs.html">Tabs and Accordions</a></li>
+				</ol>
+				<div class="page-wrap">
+					<!-- row -->
+					<div class="row">
+						<h3 class="text-uppercase small text-bold mb30 ml15">Tab Styles</h3>
+						<!-- style one -->
+						<div class="col-md-6 mb30">
+							<div class="page-tabs-lead mb30">
+								<h4 class="text-light">Style One - Default</h4>
+							</div>
+							<!-- tab style -->
+							<div class="clearfix">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#tab-home" data-toggle="tab">Home</a></li>
+									<li><a href="#tab-about" data-toggle="tab">About</a></li>
+									<li><a href="#tab-portfolio" data-toggle="tab">Portfolio</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="tab-home">
+
+										<div class="clearfix">
+											<p>HTML version of tab using bootstrap framework</p>
+											<p>
+												Bestiarum vero nullum iudicium puto. Tenent mordicus. Nam ista vestra: Si gravis, brevis; Quamquam tu hanc copiosiorem etiam soles dicere. Isto modo, ne si avia <strong>quidem eius</strong> nata non esset.
+											</p>
+											<button type="button" class="btn btn-xs btn-gplus ion ion-social-googleplus icon"></button>
+											<button type="button" class="btn btn-xs btn-github ion ion-social-github icon"></button>
+											<button type="button" class="btn btn-xs btn-dribbble ion ion-social-dribbble icon"></button>
+											<button type="button" class="btn btn-xs btn-youtube ion ion-social-youtube icon"></button>
+										</div>
+									</div>
+									<div class="tab-pane" id="tab-about">
+
+										<h5 class="mt0">Hye, I'm John Doe</h5>
+										<div class="clearfix">
+											<p>Cui Tubuli nomen odio non est? Eam stabilem appellas. Sin tantum modo ad indicia veteris memoriae cognoscenda, curiosorum.</p>
+											<button class="btn btn-pink btn-sm">See My Portfolio</button>
+										</div>
+									</div>
+									<div class="tab-pane" id="tab-portfolio">
+
+										<p>Philosophi autem in suis lectulis plerumque moriuntur. Non risu potius quam oratione eiciendum? Quid turpius quam sapientis vitam ex insipientium sermone pendere? O magnam vim ingenii causamque iustam, cur nova existeret disciplina! Perge porro.</p>
+										<button class="btn btn-pink btn-sm">Go to Tab 2</button>
+									</div>
+								</div>
+							</div>
+							<!-- tab style -->
+						</div>
+						<!-- #end style-one -->
+
+
+						<!-- style two -->
+						<div class="col-md-6 mb30">
+							<div class="page-tabs-lead mb30">
+								<h4 class="text-light">Style Two - Flip</h4>
+							</div>
+							<!-- tab style -->
+							<div class="clearfix">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#tab-flip-one" data-toggle="tab">Flip One</a></li>
+									<li><a href="#tab-flip-two" data-toggle="tab">Flip Two</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="tab-flip-one">
+										<div class="clearfix">
+											<p>Add <code>tabs-flip</code> class to <code>&lt;tabset&gt;</code> element to create flip tabs.</p>
+											<p class="filler w100"></p>
+											<p class="filler w90"></p>
+											<p class="filler w80"></p>
+											<p class="filler w70"></p>
+											<button class="btn btn-pink btn-sm" data-toggle="tab" >Call To Action</button>
+										</div>
+									</div>
+									<div class="tab-pane" id="tab-flip-two">
+
+										<h5 class="mt0">Hye, I'm John Doe</h5>
+										<address class="mb0">
+											<strong>Minty, Pvt Ltd.</strong><br>
+											334 - Bahadur Chowk, Near Country Club<br>
+											New Delhi, ND 111001<br>
+											<abbr title="Phone">Ph:</abbr> (123) 456-7890
+										</address>
+									</div>
+									
+								</div>
+							</div>
+							<!-- tab style -->
+						</div>
+						<!-- #end style-two -->
+
+					</div> <!-- #end row -->
+
+
+					<!-- row -->
+					<div class="row">
+						<!-- style three -->
+						<div class="col-md-6 mb30">
+							<div class="page-tabs-lead mb30">
+								<h4 class="text-light">Style Three - Fill</h4>
+							</div>
+							<!-- tab style -->
+							<div class="clearfix tabs-fill">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#tab-flip-one-1" data-toggle="tab">Flip One</a></li>
+									<li><a href="#tab-flip-two-1" data-toggle="tab">Flip Two</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="tab-flip-one-1">
+										<div class="clearfix">
+											<p>Add <code>tabs-flip</code> class to <code>&lt;tabset&gt;</code> element to create flip tabs.</p>
+											<p class="filler w100"></p>
+											<p class="filler w90"></p>
+											<p class="filler w80"></p>
+											<p class="filler w70"></p>
+											<button class="btn btn-pink btn-sm" data-toggle="tab" >Call To Action</button>
+										</div>
+									</div>
+									<div class="tab-pane" id="tab-flip-two-1">
+
+										<h5 class="mt0">Hye, I'm John Doe</h5>
+										<address class="mb0">
+											<strong>Minty, Pvt Ltd.</strong><br>
+											334 - Bahadur Chowk, Near Country Club<br>
+											New Delhi, ND 111001<br>
+											<abbr title="Phone">Ph:</abbr> (123) 456-7890
+										</address>
+									</div>
+									
+								</div>
+							</div>
+							<!-- tab style -->
+						</div>
+						<!-- #end style-three -->
+
+						<!-- style four -->
+						<div class="col-md-6 mb30">
+							<div class="page-tabs-lead mb30">
+								<h4 class="text-light">Style Four - Line Arrow</h4>
+							</div>
+							<!-- tab style -->
+							<div class="clearfix tabs-linearrow">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#tab-linearrow-one" data-toggle="tab">Quote</a></li>
+									<li><a href="#tab-linearrow-two" data-toggle="tab">Lorem Ipsum</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="tab-linearrow-one">
+										<p>Add <code>tabs-linearrow</code> class to <code>&lt;tabset&gt;</code> element to create line arrow tabs.</p>
+										<blockquote>
+											<p>Ea nam error audiam, oratio nostrud pro id vulputate.</p>
+											<footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+										</blockquote>
+									</div>
+									<div class="tab-pane" id="tab-linearrow-two">
+										<p>Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
+									</div>
+								</div>
+							</div>
+							<!-- tab style -->
+						</div>
+						<!-- #end style-four -->
+					</div>
+					<!-- #end row -->
+
+					<hr class="dashed"/>
+
+					<!-- row -->
+					<div class="row">
+						<h3 class="text-uppercase small text-bold mb30 ml15">Tab Variations</h3>
+						<!-- variation one -->
+						<div class="col-md-6 mb30">
+							<div class="page-tabs-lead mb30">
+								<h4 class="text-light">Vertical Tabs</h4>
+							</div>
+							<!-- tab style -->
+							<div class="clearfix tabs-vertical">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#tab-vertical-home" data-toggle="tab">Home</a></li>
+									<li><a href="#tab-vertical-about" data-toggle="tab">About</a></li>
+									<li><a href="#tab-vertical-portfolio" data-toggle="tab">Portfolio</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="tab-vertical-home">
+
+										<div class="clearfix">
+											<p>HTML version of tab using bootstrap framework</p>
+											<p>
+												Bestiarum vero nullum iudicium puto. Tenent mordicus. Nam ista vestra: Si gravis, brevis; Quamquam tu hanc copiosiorem etiam soles dicere. Isto modo, ne si avia <strong>quidem eius</strong> nata non esset.
+											</p>
+											<button type="button" class="btn btn-xs btn-gplus ion ion-social-googleplus icon"></button>
+											<button type="button" class="btn btn-xs btn-github ion ion-social-github icon"></button>
+											<button type="button" class="btn btn-xs btn-dribbble ion ion-social-dribbble icon"></button>
+											<button type="button" class="btn btn-xs btn-youtube ion ion-social-youtube icon"></button>
+										</div>
+									</div>
+									<div class="tab-pane" id="tab-vertical-about">
+
+										<h5 class="mt0">Hye, I'm John Doe</h5>
+										<div class="clearfix">
+											<p>Cui Tubuli nomen odio non est? Eam stabilem appellas. Sin tantum modo ad indicia veteris memoriae cognoscenda, curiosorum.</p>
+											<button class="btn btn-pink btn-sm">See My Portfolio</button>
+										</div>
+									</div>
+									<div class="tab-pane" id="tab-vertical-portfolio">
+
+										<p>Philosophi autem in suis lectulis plerumque moriuntur. Non risu potius quam oratione eiciendum? Quid turpius quam sapientis vitam ex insipientium sermone pendere? O magnam vim ingenii causamque iustam, cur nova existeret disciplina! Perge porro.</p>
+										<button class="btn btn-pink btn-sm">Go to Tab 2</button>
+									</div>
+								</div>
+							</div>
+							<!-- tab style -->
+						</div>
+						<!-- #end variation one -->
+
+						<!-- variation two -->
+						<div class="col-md-6 mb30">
+							<div class="page-tabs-lead mb30">
+								<h4 class="text-light">Vertical Tabs - Right</h4>
+							</div>
+							<!-- tab style -->
+							<div class="clearfix tabs-vertical-right">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#tab-vertical-tabOne" data-toggle="tab">Tab One</a></li>
+									<li><a href="#tab-vertical-tabTwo" data-toggle="tab">Tab Two</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="tab-vertical-tabOne">
+										<p>Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
+										<p>Bestiarum vero nullum iudicium puto. Tenent mordicus. Nam ista vestra</p>
+									</div>
+									<div class="tab-pane" id="tab-vertical-tabTwo">
+										<address class="mb0">
+											<strong>Minty, Pvt Ltd.</strong><br>
+											334 - Bahadur Chowk, Near Country Club<br>
+											New Delhi, ND 111001<br>
+											<abbr title="Phone">Ph:</abbr> (123) 456-7890
+										</address>
+									</div>
+								</div>
+							</div>
+							<!-- tab style -->
+						</div>
+						<!-- #end variation two -->
+					</div>
+					<!-- #end row -->
+
+					<!-- row -->
+					<div class="row">
+						<!-- tabs-right -->
+						<div class="col-md-6 mb30">
+							<div class="page-tabs-lead mb30">
+								<h4 class="text-light">Right Tabs</h4>
+							</div>
+							<!-- tab style -->
+							<div class="clearfix tabs-right">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#tab-right-home" data-toggle="tab">Home</a></li>
+									<li><a href="#tab-right-about" data-toggle="tab">About</a></li>
+									<li><a href="#tab-right-portfolio" data-toggle="tab">Portfolio</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="tab-right-home">
+										<div class="clearfix">
+											<p>HTML version of tab using bootstrap framework</p>
+											<p>
+												Bestiarum vero nullum iudicium puto. Tenent mordicus. Nam ista vestra: Si gravis, brevis; Quamquam tu hanc copiosiorem etiam soles dicere. Isto modo, ne si avia <strong>quidem eius</strong> nata non esset.
+											</p>
+											<button type="button" class="btn btn-xs btn-gplus ion ion-social-googleplus icon"></button>
+											<button type="button" class="btn btn-xs btn-github ion ion-social-github icon"></button>
+											<button type="button" class="btn btn-xs btn-dribbble ion ion-social-dribbble icon"></button>
+											<button type="button" class="btn btn-xs btn-youtube ion ion-social-youtube icon"></button>
+										</div>
+									</div>
+									<div class="tab-pane" id="tab-right-about">
+										<h5 class="mt0">Hye, I'm John Doe</h5>
+										<div class="clearfix">
+											<p>Cui Tubuli nomen odio non est? Eam stabilem appellas. Sin tantum modo ad indicia veteris memoriae cognoscenda, curiosorum.</p>
+											<button class="btn btn-pink btn-sm">See My Portfolio</button>
+										</div>
+									</div>
+									<div class="tab-pane" id="tab-right-portfolio">
+										<p>Philosophi autem in suis lectulis plerumque moriuntur. Non risu potius quam oratione eiciendum? Quid turpius quam sapientis vitam ex insipientium sermone pendere? O magnam vim ingenii causamque iustam, cur nova existeret disciplina! Perge porro.</p>
+										<button class="btn btn-pink btn-sm">Go to Tab 2</button>
+									</div>
+								</div>
+							</div>
+							<!-- tab style -->
+						</div>
+						<!-- #end tabs-right -->
+
+
+						<div class="col-md-6 mb30">
+							<div class="page-tabs-lead mb30">
+								<h4 class="text-light">Justified Tabs</h4>
+							</div>
+							<!-- tab style -->
+							<div class="clearfix">
+								<ul class="nav nav-tabs nav-justified">
+									<li class="active"><a href="#tab-justified-home" data-toggle="tab">Home</a></li>
+									<li><a href="#tab-justified-about" data-toggle="tab">About</a></li>
+									<li><a href="#tab-justified-portfolio" data-toggle="tab">Portfolio</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="tab-justified-home">
+										<div class="clearfix">
+											<p>HTML version of tab using bootstrap framework</p>
+											<p>
+												Bestiarum vero nullum iudicium puto. Tenent mordicus. Nam ista vestra: Si gravis, brevis; Quamquam tu hanc copiosiorem etiam soles dicere. Isto modo, ne si avia <strong>quidem eius</strong> nata non esset.
+											</p>
+											<button type="button" class="btn btn-xs btn-gplus ion ion-social-googleplus icon"></button>
+											<button type="button" class="btn btn-xs btn-github ion ion-social-github icon"></button>
+											<button type="button" class="btn btn-xs btn-dribbble ion ion-social-dribbble icon"></button>
+											<button type="button" class="btn btn-xs btn-youtube ion ion-social-youtube icon"></button>
+										</div>
+									</div>
+									<div class="tab-pane" id="tab-justified-about">
+										<h5 class="mt0">Hye, I'm John Doe</h5>
+										<div class="clearfix">
+											<p>Cui Tubuli nomen odio non est? Eam stabilem appellas. Sin tantum modo ad indicia veteris memoriae cognoscenda, curiosorum.</p>
+											<button class="btn btn-pink btn-sm">See My Portfolio</button>
+										</div>
+									</div>
+									<div class="tab-pane" id="tab-justified-portfolio">
+										<p>Philosophi autem in suis lectulis plerumque moriuntur. Non risu potius quam oratione eiciendum? Quid turpius quam sapientis vitam ex insipientium sermone pendere? O magnam vim ingenii causamque iustam, cur nova existeret disciplina! Perge porro.</p>
+										<button class="btn btn-pink btn-sm">Go to Tab 2</button>
+									</div>
+								</div>
+							</div>
+							<!-- tab style -->
+						</div>
+
+					</div>
+					<!-- #end row -->
+
+
+					<!-- row -->
+					<div class="row">
+						<!-- accordion -->
+						<div class="col-sm-6">
+							<h3 class="text-uppercase small text-bold mb30">Accordion</h3>
+							<div class="panel-group" id="accordionDemo">
+								<div class="panel panel-default ng-isolate-scope">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a href="#collapseOne" data-toggle="collapse" class="accordion-toggle" data-parent="#accordionDemo">Group Item One</a>
+										</h4>
+									</div>
+									<div class="panel-collapse collapse in" id="collapseOne">
+										<div class="panel-body">
+											<p class="">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a href="#collapseTwo" class="accordion-toggle" data-toggle="collapse" data-parent="#accordionDemo">Group Item Two</a>
+										</h4>
+									</div>
+									<div class="panel-collapse collapse" id="collapseTwo">
+										<div class="panel-body">
+											<p>The body of the accordion group to fit the contents</p>
+											<button type="button" class="btn btn-xs btn-gplus ion ion-social-googleplus icon"></button>
+											<button type="button" class="btn btn-xs btn-github ion ion-social-github icon"></button>
+											<button type="button" class="btn btn-xs btn-dribbble ion ion-social-dribbble icon"></button>
+											<button type="button" class="btn btn-xs btn-youtube ion ion-social-youtube icon"></button>
+										</div>
+									</div>
+								</div>
+
+								<div class="panel-pink panel">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a href="#collapseThree" class="accordion-toggle" data-toggle="collapse" data-parent="#accordionDemo">
+												I can have markup, too!<i class="right mt2 ion small ion-chevron-right"></i>
+											</a>
+										</h4>
+									</div>
+									<div class="panel-collapse collapse" id="collapseThree">
+										<div class="panel-body">This is just some content to illustrate fancy headings.</div>
+									</div>
+								</div>
+							</div>
+							<!-- #end accordion -->
+						</div>
+					</div>
+					<!-- #end row -->
+
+				</div> <!-- #end page-wrap -->
+			</div> <!-- #end page -->
+		</div> <!-- #end content-container -->
+
+	</div> <!-- #end main-container -->
+
+
+	<!-- theme settings -->
+	<div class="site-settings clearfix hidden-xs">
+		<div class="settings clearfix">
+			<div class="trigger ion ion-settings left"></div>
+			<div class="wrapper left">
+				<ul class="list-unstyled other-settings">
+					<li class="clearfix mb10">
+						<div class="left small">Nav Horizontal</div>
+						<div class="md-switch right">
+							<label>
+								<input type="checkbox" id="navHorizontal"> 
+								<span>&nbsp;</span> 
+							</label>
+						</div>
+						
+						
+					</li>
+					<li class="clearfix mb10">
+						<div class="left small">Fixed Header</div>
+						<div class="md-switch right">
+							<label>
+								<input type="checkbox"  id="fixedHeader"> 
+								<span>&nbsp;</span> 
+							</label>
+						</div>
+					</li>
+					<li class="clearfix mb10">
+						<div class="left small">Nav Full</div>
+						<div class="md-switch right">
+							<label>
+								<input type="checkbox"  id="navFull"> 
+								<span>&nbsp;</span> 
+							</label>
+						</div>
+					</li>
+				</ul>
+				<hr/>
+				<ul class="themes list-unstyled" id="themeColor">
+					<li data-theme="theme-zero" class="active"></li>
+					<li data-theme="theme-one"></li>
+					<li data-theme="theme-two"></li>
+					<li data-theme="theme-three"></li>
+					<li data-theme="theme-four"></li>
+					<li data-theme="theme-five"></li>
+					<li data-theme="theme-six"></li>
+					<li data-theme="theme-seven"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- #end theme settings -->
+
+
+	
+
+	<!-- Dev only -->
+	<!-- Vendors -->
+	<script src="scripts/vendors.js"></script>
+
+	<script src="scripts/plugins/screenfull.js"></script>
+	<script src="scripts/plugins/perfect-scrollbar.min.js"></script>
+	<script src="scripts/plugins/waves.min.js"></script>
+	<script src="scripts/app.js"></script>
+
+</body>
+
+<!-- Mirrored from solutionportal.net/themes/materia/html/ui.tabs.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Feb 2019 07:25:41 GMT -->
+</html>

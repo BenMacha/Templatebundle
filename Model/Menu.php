@@ -136,6 +136,22 @@ class Menu
     }
 
     /**
+     * @return int
+     */
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param int $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+    }
+
+    /**
      * @return array
      */
     public function getChilds()
@@ -150,21 +166,5 @@ class Menu
     {
         $this->childs = $childs;
         ksort($this->childs);
-    }
-
-    /**
-     * @return int
-     */
-    public function getPosition(): ?int
-    {
-        return $this->position;
-    }
-
-    /**
-     * @param int $position
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
     }
 }

@@ -1,4 +1,43 @@
-{% macro input(class,label,from,smallText=null) %}
+{% macro input(class,from,smallText=null) %}
+    <div class="{{ class }}">
+        <div class="form-group">
+            {{ form_label(from) }}
+            {{ form_widget(from,{attr:{class:"form-control"}}) | raw }}
+            <div class="text-danger">{{ form_errors(from) | raw }}</div>
+            {% if smallText is not null %}
+                <small>{{ smallText }}</small>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+{% macro select(class,from,smallText=null) %}
+    <div class="{{ class }}">
+        <div class="form-group">
+            {{ form_label(from) }}
+            {{ form_widget(from,{attr:{class:"form-control select2"}}) | raw }}
+            <div class="text-danger">{{ form_errors(from) | raw }}</div>
+            {% if smallText is not null %}
+                <small>{{ smallText }}</small>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro textarea(class,from,smallText=null) %}
+    <div class="{{ class }}">
+        <div class="form-group">
+            {{ form_label(from) }}
+
+            {{ form_widget(from,{attr:{class:"form-control elastic"}}) | raw }}
+            <div class="text-danger">{{ form_errors(from) | raw }}</div>
+            {% if smallText is not null %}
+                <small>{{ smallText }}</small>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro readonly(class,label,from,smallText=null) %}
     <div class="{{ class }}">
         <div class="form-group">
             {% if label is not null %}
@@ -6,11 +45,45 @@
                     {{ label|raw }}
                 </label>
             {% endif %}
-            {{ form_widget(from,{attr:{class:"form-control"}}) | raw }}
-            <span class="text-danger">{{ form_errors(from) | raw }}</span>
+            {{ form_widget(from,{attr:{class:"form-control",'readonly':true}}) | raw }}
+            <div class="text-danger">{{ form_errors(from) | raw }}</div>
             {% if smallText is not null %}
                 <small>{{ smallText }}</small>
             {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro tag(class,label,from,smallText=null) %}
+    <div class="{{ class }}">
+        <div class="form-group">
+            {% if label is not null %}
+                <label class="control-label">
+                    {{ label|raw }}
+                </label>
+            {% endif %}
+            {{ form_widget(from,{attr:{class:"form-control tokenfield"}}) | raw }}
+            <div class="text-danger">{{ form_errors(from) | raw }}</div>
+            {% if smallText is not null %}
+                <small>{{ smallText }}</small>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro inputIcon(class,label,from,icon=null) %}
+    <div class="{{ class }}">
+        <div class="form-group">
+            {% if label is not null %}
+                <label class="control-label">
+                    {{ label|raw }}
+                </label>
+            {% endif %}
+            <div class="input-group">
+                {{ form_widget(from,{attr:{class:"form-control"}}) | raw }}
+                <span class="input-group-addon">{{ icon }}</span>
+            </div>
+            <span class="text-danger">{{ form_errors(from) | raw }}</span>
         </div>
     </div>
 {% endmacro %}
@@ -68,8 +141,8 @@
                 {{ form_widget(from,{attr:{class:"form-control file-styled"}}) | raw }}
             </div>
             <span class="text-danger">{{ form_errors(from) | raw }}</span>
-            {% if file is not null  and file.path is not defined%}
-                <a target="_blank" href="{{ asset(file) }}" ><span class="icon-file-{{ type }}"> View File</span></a>
+            {% if file is not null  and file.path is not defined %}
+                <a target="_blank" href="{{ asset(file) }}"><span class="icon-file-{{ type }}"> View File</span></a>
             {% endif %}
         </div>
     </div>
@@ -94,13 +167,38 @@
 
 {% macro checkbox(class,label,from,smallText=null) %}
     <div class="{{ class }}">
-        <label for="">  </label>
+        <label for=""> </label>
         <div class="checkbox" style="margin-top:10px;">
-            <label>
-                {{ form_widget(from,{attr:{class:"styled"}}) | raw }}
-                {{ label|raw }}
-            </label>
+            {{ form_widget(from,{attr:{class:"styled"}}) | raw }}
+            {{ label|raw }}
             {{ form_errors(from) | raw }}
         </div>
     </div>
+{% endmacro %}
+
+{% macro inputColorPicker(value,class,label,from,smallText=null) %}
+    <div class="col-md-6" style="margin-top: 22px;">
+        <div class="form-group">
+            {% if label is not null %}
+                <label class="control-label">
+                    {{ label|raw }}
+                </label>
+            {% endif %}
+            {{ form_widget(from,{attr:{class:class,value:value,"data-show-buttons":"false"  }}) | raw }}
+            <div class="text-danger">{{ form_errors(from) | raw }}</div>
+            {% if smallText is not null %}
+                <small>{{ smallText }}</small>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro startFieldSet(titleLegend) %}
+<div class="col-md-9">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">{{ titleLegend }}</legend>
+        {% endmacro %}
+        {% macro endFieldSet() %}
+    </fieldset>
+</div>
 {% endmacro %}

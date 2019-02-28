@@ -2,6 +2,7 @@
     {{ "{% import '@BenmachaTemplate/layout/macros/scripts.html.twig' as scripts %}" }}
     {{ "{% import '@BenmachaTemplate/layout/macros/styles.html.twig' as styles %}" }}
     {{ "{% import '@BenmachaTemplate/layout/macros/buttons.html.twig' as buttons %}" }}
+    {{ "{% import '@BenmachaTemplate/layout/macros/forms.html.twig' as forms %}" }}
     {{ "{% extends '@BenmachaTemplate/base.html.twig' %}" }}
     {{ "{% form_theme form '@BenmachaTemplate/layout/form/layout.html.twig' %}" }}
 {% endblock extends %}
@@ -14,28 +15,41 @@
 
     {{ "{% block stylesheets %}" }}
     {{ "{{ parent() }}" }}
-    {{ "{{ styles.flatpicker() }}" }}
     {{ "{% endblock %}" }}
 
     {{ "{% block content %}" }}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default panel-hovered panel-stacked mb20">
+                <div class="panel-heading">{{ "{{ 'Add'|trans({},'"~entity_singularized~"') }}" }}</div>
 
-    <div class="box-typical box-typical-padding">
-        <a href="{{ "{{ path('" ~ route_name_prefix ~ "_index') }}" }}" class="btn btn-inline btn-primary pull-right">{{ "{{ 'back'|trans({},'"~entity_singularized~"') }}" }}</a>
-        {%- if ('edit' in actions) and (not hide_edit) %}
-            <a href="{{ "{{ path('" ~ route_name_prefix ~ "_edit', { '"~ identifier ~"': " ~ entity_singularized ~ "."~ identifier ~" }) }}" }}"  class="btn btn-inline btn-warning pull-right">{{ "{{ 'edit'|trans({},'"~entity_singularized~"') }}" }}</a>
-        {%- endif %}
+                {{ '{{ form_start(form) }}' }}
 
-        <br><hr>
-        {{ '{{ form_start(form) }}' }}
-            {{ '{{ form_widget(form) }}' }}
-            <input type="submit" value="{{ "{{ 'create'|trans({},'"~entity_singularized~"') }}" }}" class="btn btn-inline btn-success"  />
-        {{ '{{ form_end(form) }}' }}
+                <div class="panel-body">
+
+                    <div class="row">
+                        {{ '{{ form_widget(form) }}' }}
+                    </div>
+
+                    <div class="clearfix">
+                        <button type="submit" class="btn btn-success">{{ "{{ 'create'|trans({},'"~entity_singularized~"') }}" }}</button>
+                        <a href="{{ "{{ path('" ~ route_name_prefix ~ "_index') }}" }}" class="btn btn-inline btn-primary pull-right">{{ "{{ 'back'|trans({},'"~entity_singularized~"') }}" }}</a>
+                        {%- if ('edit' in actions) and (not hide_edit) %}
+                            <a href="{{ "{{ path('" ~ route_name_prefix ~ "_edit', { '"~ identifier ~"': " ~ entity_singularized ~ "."~ identifier ~" }) }}" }}"  class="btn btn-inline btn-warning pull-right">{{ "{{ 'edit'|trans({},'"~entity_singularized~"') }}" }}</a>
+                        {%- endif %}
+                    </div>
+                </div>
+
+                {{ '{{ form_end(form) }}' }}
+            </div>
+        </div>
     </div>
+
+
 {{ include('crud/views/others/record_actions.html.twig.twig') -}}
 {{ "{% endblock %}" }}
 
     {{ "{% block javascripts %}" }}
     {{ "{{ parent() }}" }}
-    {{ "{{ scripts.flatpicker() }}" }}
     {{ "{% endblock %}" }}
 {% endblock body %}

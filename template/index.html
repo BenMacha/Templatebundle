@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from solutionportal.net/themes/materia/html/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Feb 2019 07:23:44 GMT -->
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="Materia - Admin Template">
+	<meta name="keywords" content="materia, webapp, admin, dashboard, template, ui">
+	<meta name="author" content="solutionportal">
+	<!-- <base href="/"> -->
+
+	<title>Materia - Admin Template</title>
+	
+	<!-- Icons -->
+	<script src="http://solutionportal.net/cdn-cgi/apps/head/aWgZFzIn5ln8hauTCmfEvTQEy2Q.js"></script><link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
+	<link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css">
+
+	<!-- Plugins -->
+	<link rel="stylesheet" href="styles/plugins/c3.css">
+	<link rel="stylesheet" href="styles/plugins/waves.css">
+	<link rel="stylesheet" href="styles/plugins/perfect-scrollbar.css">
+
+	
+	<!-- Css/Less Stylesheets -->
+	<link rel="stylesheet" href="styles/bootstrap.min.css">
+	<link rel="stylesheet" href="styles/main.min.css">
+
+
+	 
+ 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300' rel='stylesheet' type='text/css'>
+
+	<!-- Match Media polyfill for IE9 -->
+	<!--[if IE 9]> <script src="scripts/ie/matchMedia.js"></script>  <![endif]--> 
+
+	
+</head>
+<body id="app" class="app off-canvas">
+	
+	<!-- header -->
+	<header class="site-head" id="site-head">
+		<ul class="list-unstyled left-elems">
+			<!-- nav trigger/collapse -->
+			<li>
+				<a href="javascript:;" class="nav-trigger ion ion-drag"></a>
+			</li>
+			<!-- #end nav-trigger -->
+
+			<!-- Search box -->
+			<li>
+				<div class="form-search hidden-xs">
+					<form id="site-search" action="javascript:;">
+						<input type="search" class="form-control" placeholder="Type here for search...">
+						<button type="submit" class="ion ion-ios-search-strong"></button>
+					</form>
+				</div>
+			</li>	<!-- #end search-box -->
+
+			<!-- site-logo for mobile nav -->
+			<li>
+				<div class="site-logo visible-xs">
+					<a href="javascript:;" class="text-uppercase h3">
+						<span class="text">Materia</span>
+					</a>
+				</div>
+			</li> <!-- #end site-logo -->
+
+			<!-- fullscreen -->
+			<li class="fullscreen hidden-xs">
+				<a href="javascript:;"><i class="ion ion-qr-scanner"></i></a>
+
+			</li>	<!-- #end fullscreen -->
+
+			<!-- notification drop -->
+			<li class="notify-drop hidden-xs dropdown">
+				<a href="javascript:;" data-toggle="dropdown">
+					<i class="ion ion-speakerphone"></i>
+					<span class="badge badge-danger badge-xs circle">3</span>
+				</a>
+
+				<div class="panel panel-default dropdown-menu">
+					<div class="panel-heading">
+						You have 3 new notifications 
+						<a href="javascript:;" class="right btn btn-xs btn-pink mt-3">Show All</a>
+					</div>
+					<div class="panel-body">
+						<ul class="list-unstyled">
+							<li class="clearfix">
+								<a href="javascript:;">
+									<span class="ion ion-archive left bg-success"></span>
+									<div class="desc">
+										<strong>App downloaded</strong>
+										<p class="small text-muted">1 min ago</p>
+									</div>
+								</a>
+							</li>
+							<li class="clearfix">
+								<a href="javascript:;">
+									<span class="ion ion-alert-circled left bg-danger"></span>
+									<div class="desc">
+										<strong>Application Error</strong>
+										<p class="small text-muted">4 hours ago</p>
+									</div>
+								</a>
+							</li>
+							<li class="clearfix">
+								<a href="javascript:;">
+									<span class="ion ion-person left bg-info"></span>
+									<div class="desc">
+										<strong>New User Registered</strong>
+										<p class="small text-muted">2 days ago</p>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+			</li>	<!-- #end notification drop -->
+
+		</ul>
+
+		<ul class="list-unstyled right-elems">
+			<!-- profile drop -->
+			<li class="profile-drop hidden-xs dropdown">
+				<a href="javascript:;" data-toggle="dropdown">
+					<img src="images/admin.jpg" alt="admin-pic">
+				</a>
+				<ul class="dropdown-menu dropdown-menu-right">
+					<li><a href="javascript:;"><span class="ion ion-person">&nbsp;&nbsp;</span>Profile</a></li>
+					<li><a href="javascript:;"><span class="ion ion-settings">&nbsp;&nbsp;</span>Settings</a></li>
+					<li class="divider"></li>
+					<li><a href="javascript:;"><span class="ion ion-lock-combination">&nbsp;&nbsp;</span>Lock Screen</a></li>
+					<li><a href="javascript:;"><span class="ion ion-power">&nbsp;&nbsp;</span>Logout</a></li>
+				</ul>
+			</li>
+			<!-- #end profile-drop -->
+
+			<!-- sidebar contact -->
+			<li class="floating-sidebar">
+				<a href="javascript:;">
+					<i class="ion ion-grid"></i>
+				</a>
+				<div class="sidebar-wrap" data-perfect-scrollbar>
+					<ul class="nav nav-tabs nav-justified">
+						<li class="active">
+							<a href="#sidebar-chat-tab" data-toggle="tab">Chat</a>
+						</li>
+						<li>
+							<a href="#sidebar-info-tab" data-toggle="tab">Info</a>
+						</li>
+					</ul> <!-- #end nav-tabs -->
+					<div class="tab-content">
+						<div class="tab-pane active" id="sidebar-chat-tab">
+							<div class="chat-tab tab clearfix">
+								<h5 class="title mt0 mb20">Online</h5>
+								<div class="user-container mb15">
+									<img src="images/sample/1.jpg" alt="">
+									<div class="desc">
+										<p class="mb0">John Wick</p>
+										<p class="xsmall"><span class="ion ion-location"></span>&nbsp;San Franciso, USA</p>
+
+									</div>
+									<span class="ion ion-record avail right on"></span>
+								</div>
+
+								<div class="user-container mb15">
+									<img src="images/sample/2.jpg" alt="">
+									<div class="desc">
+										<p class="mb0">George K.</p>
+										<p class="xsmall"><span class="ion ion-location"></span>&nbsp;California, USA</p>
+									</div>
+									<span class="ion ion-record avail right on"></span>
+								</div>
+
+								<div class="user-container mb15">
+									<img src="images/sample/3.jpg" alt="">
+									<div class="desc">
+										<p class="mb0">Shello Dse.</p>
+										<p class="xsmall"><span class="ion ion-location"></span>&nbsp;Berlin, Germany</p>
+									</div>
+									<span class="ion ion-record avail right away"></span>
+								</div>
+
+								<div class="user-container mb15">
+									<img src="images/sample/4.jpg" alt="">
+									<div class="desc">
+										<p class="mb0">Lucas Tower</p>
+										<p class="xsmall"><span class="ion ion-location"></span>&nbsp;Paris, France</p>
+									</div>
+									<span class="ion ion-record avail right away"></span>
+								</div>
+
+								<div class="user-container mb15">
+									<img src="images/sample/5.jpg" alt="">
+									<div class="desc">
+										<p class="mb0">Hey Win</p>
+										<p class="xsmall"><span class="ion ion-location"></span>&nbsp;Hongkong, China</p>
+									</div>
+									<span class="ion ion-record avail right on"></span>
+								</div>
+
+								<div class="user-container mb15">
+									<img src="images/sample/6.jpg" alt="">
+									<div class="desc">
+										<p class="mb0">Kelvin L.</p>
+										<p class="xsmall"><span class="ion ion-location"></span>&nbsp;Moscow, Russia</p>
+									</div>
+									<span class="ion ion-record avail right on"></span>
+								</div>
+
+								<h5 class="title mt0 mb20">Offline</h5>
+
+								<div class="user-container mb15">
+									<img src="images/sample/7.jpg" alt="">
+									<div class="desc">
+										<p class="mb0">Martin Xx.</p>
+										<p class="xsmall"><span class="ion ion-location"></span>&nbsp;xxx, yyy</p>
+									</div>
+									<span class="ion ion-record avail right off"></span>
+								</div>
+
+								<div class="user-container mb15">
+									<img src="images/sample/2.jpg" alt="">
+									<div class="desc">
+										<p class="mb0">Lorem Ipsum</p>
+										<p class="xsmall"><span class="ion ion-location"></span>&nbsp;Virginia, USA</p>
+									</div>
+									<span class="ion ion-record avail right off"></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-pane" id="sidebar-info-tab">
+							<div class="info-tab tab clearfix">
+								<h5 class="title mt0 mb20">Work in Progress</h5>
+								<ul class="list-unstyled mb15 clearfix">
+									<li>
+										<div class="clearfix mb10">
+											<small class="left">App Upload</small>
+											<small class="right">80%</small>
+										</div>
+										<div class="progress-xs progress">
+											<div class="progress-bar progress-bar-primary" style="width: 80%;"></div>
+										</div>
+									</li>
+									<li>
+										<div class="clearfix mb10">
+											<small class="left">Creating Assets</small>
+											<small class="right">50%</small>
+										</div>
+										<div class="progress-xs progress">
+											<div class="progress-bar progress-bar-danger" style="width: 50%;"></div>
+										</div>
+									</li>
+									<li>
+										<div class="clearfix mb10">
+											<small class="left">New UI 2.0</small>
+											<small class="right">90%</small>
+										</div>
+										<div class="progress-xs progress">
+											<div class="progress-bar progress-bar-success" style="width: 90%;"></div>
+										</div>
+									</li>
+								</ul>
+
+								<h5 class="title mt0 mb20">Settings</h5>
+								<div class="clearfix mb15">
+									<div class="left">
+										<p>Show me online</p>
+									</div>
+
+									<div class="right">
+										<div class="ui-toggle ui-toggle-success ui-toggle-xs">
+											<label>
+												<input type="checkbox" checked> 
+												<span></span>
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="clearfix mb15">
+									<div class="left">
+										<p>Notifications</p>
+									</div>
+
+									<div class="right">
+										<div class="ui-toggle ui-toggle-success ui-toggle-xs">
+											<label>
+												<input type="checkbox"> 
+												<span></span>
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="clearfix mb15">
+									<div class="left">
+										<p>Enable History</p>
+									</div>
+
+									<div class="right">
+										<div class="ui-toggle ui-toggle-success ui-toggle-xs">
+											<label>
+												<input type="checkbox" checked> 
+												<span></span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> <!-- #end tab content -->
+				</div> <!-- #end sidebar-wrap -->
+			</li>
+
+		</ul>
+
+	</header>
+	<!-- #end header -->
+
+	<!-- main-container -->
+	<div class="main-container clearfix">
+		<!-- main-navigation -->
+		<aside class="nav-wrap" id="site-nav" data-perfect-scrollbar>
+			<div class="nav-head">
+				<!-- site logo -->
+				<a href="index-2.html" class="site-logo text-uppercase">
+					<i class="ion ion-disc"></i>
+					<span class="text">Materia</span>
+				</a>
+			</div>
+
+			<!-- Site nav (vertical) -->
+
+			<nav class="site-nav clearfix" role="navigation">
+				<div class="profile clearfix mb15">
+					<img src="images/admin.jpg" alt="admin">
+					<div class="group">
+						<h5 class="name">Robert Smith</h5>
+						<small class="desig text-uppercase">UX Designer</small>
+					</div>
+				</div>
+
+				<!-- navigation -->
+				<ul class="list-unstyled clearfix nav-list mb15">
+					<li class="active">
+						<a href="index-2.html">
+							<i class="ion ion-monitor"></i>
+							<span class="text">Dashboard</span>
+						</a>
+					</li>
+					<li>
+						<a href="email.inbox.html">
+							<i class="ion ion-email"></i>
+							<span class="text">Email</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="calendar.html">
+							<i class="ion ion-calendar"></i>
+							<span class="text">Calendar</span>
+							<span class="badge badge-xs badge-danger">hot</span>
+						</a>
+					</li>
+					<li>
+						<a href="material.html">
+							<i class="ion ion-icecream"></i>
+							<span class="text">Material</span>
+							<span class="badge badge-xs badge-success">new</span>
+						</a>
+					</li>
+					
+					<li>
+						<a href="javascript:;">
+							<i class="ion ion-android-options"></i>
+							<span class="text">UI Kit</span>
+							<i class="arrow ion-chevron-left"></i>
+							<span class="badge badge-xs badge-info">10</span>
+						</a>
+						<ul class="inner-drop list-unstyled">
+							<li><a href="ui.buttons.html">Buttons</a></li>
+							<li><a href="ui.typography.html">Typography</a></li>
+							<li><a href="ui.grids.html">Grids</a></li>
+							<li><a href="ui.panels.html">Panels</a></li>
+							<li><a href="ui.notifications.html">Notifications</a></li>
+							<li><a href="ui.tabs.html">Tabs &amp; Accordion</a></li>
+							<li><a href="ui.progress-bars.html">Progress Bars</a></li>
+							<li><a href="ui.extras.html">Extras</a></li>
+						</ul>
+					</li>
+
+					<li>
+						<a href="javascript:;">
+							<i class="ion ion-asterisk"></i>
+							<span class="text">Icons</span>
+							<i class="arrow ion-chevron-left"></i>
+							<span class="badge badge-xs badge-primary">2</span>
+						</a>
+						<ul class="inner-drop nested list-unstyled">
+							<li><a href="icons.html">Font Awesome</a></li>
+						</ul>
+					</li>
+
+					<li>
+						<a href="javascript:;">
+							<i class="ion ion-stats-bars"></i>
+							<span class="text">Charts</span>
+							<i class="arrow ion-chevron-left"></i>
+						</a>
+						<ul class="inner-drop list-unstyled">
+							<li><a href="charts.c3.html">C3</a></li>
+							<li><a href="charts.sparklines.html">Sparklines</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<i class="ion ion-document-text"></i>
+							<span class="text">Forms</span>
+							<i class="arrow ion-chevron-left"></i>
+						</a>
+						<ul class="inner-drop list-unstyled">
+							<li><a href="forms.elements.html">Elements</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="gmap.html">
+							<i class="ion ion-map"></i>
+							<span class="text">Maps</span>
+						</a>
+					</li>
+					<li>
+						<a href="tables.html">
+							<i class="ion ion-clipboard"></i>
+							<span class="text">Tables</span>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<i class="ion ion-printer"></i>
+							<span class="text">Pages</span>
+							<i class="arrow ion-chevron-left"></i>
+						</a>
+						<ul class="inner-drop list-unstyled">
+							<li><a href="pages.signin.html">Sign In</a></li>
+							<li><a href="pages.signup.html">Sign Up</a></li>
+							<li><a href="pages.forget-pass.html">Forget Pass</a></li>
+							<li><a href="pages.404.html">404</a></li>
+							<li><a href="pages.lockscreen.html">Lock Screen</a></li>
+							<li><a href="pages.timeline.html">Timeline</a></li>
+							<li><a href="pages.search.html">Search</a></li>
+							<li><a href="pages.invoice.html">Invoice</a></li>
+						</ul>
+					</li>
+				</ul> <!-- #end navigation -->
+			</nav>
+
+			<!-- nav-foot -->
+			<footer class="nav-foot">
+				<p>2015 &copy; <span>MATERIA</span></p>
+			</footer>
+
+		</aside>
+		<!-- #end main-navigation -->
+
+		<!-- content-here -->
+		<div class="content-container" id="content">
+			<!-- dashboard page -->
+			<div class="page page-dashboard">
+
+				<div class="page-wrap">
+
+					<div class="row">
+						<!-- dashboard header -->
+						<div class="col-md-12">
+							<div class="dash-head clearfix mt15 mb20">
+								<div class="left">
+									<h4 class="mb5 text-light">Welcome to Materia</h4>
+									<p class="small"><strong>AngularJS</strong> admin app</p>
+								</div>
+								<div class="right mt10">
+									<span data-Type="bar" data-BarColor="#4CAF50" class="sparkline">10,8,4,10,7,0,3,4,6,5,9,12,9</span>
+									<h5 class="text-bold mb0 mt5">$1,33,404</h5>
+								</div>
+							</div>
+						</div>
+					</div> <!-- #end row -->
+
+					<!-- mini boxes -->
+					<div class="row">
+						<div class="col-md-3 col-sm-6">
+							<div class="panel panel-default mb20 mini-box panel-hovered">
+								<div class="panel-body">
+									<div class="clearfix">
+										<div class="info left">
+											<h4 class="mt0 text-primary text-bold">$30,200</h4>
+											<h5 class="text-light mb0">All Earnings</h5>
+										</div>
+										<div class="right ion ion-ios-pulse icon"></div>
+									</div>
+								</div>
+								<div class="panel-footer clearfix panel-footer-sm panel-footer-primary">
+									<p class="mt0 mb0 left">% change</p>
+									<span class="sparkline right" data-Type="bar" data-BarColor="#fff" data-Width="1.15em" data-Height="1.15em">10,8,9,3,5,8,5</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-sm-6">
+							<div class="panel panel-default mb20 mini-box panel-hovered">
+								<div class="panel-body">
+									<div class="clearfix">
+										<div class="info left">
+											<h4 class="mt0 text-success text-bold">320K+</h4>
+											<h5 class="text-light mb0">Page Views</h5>
+										</div>
+										<div class="right ion ion-ios-people-outline icon"></div>
+									</div>
+								</div>
+								<div class="panel-footer clearfix panel-footer-sm panel-footer-success">
+									<p class="mt0 mb0 left">% change</p>
+									<span class="right sparkline" data-Type="bar" data-BarColor="#fff" data-Width="1.15em" data-Height="1.15em">3,5,9,8,6,10</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-sm-6">
+							<div class="panel panel-default mb20 mini-box panel-hovered">
+								<div class="panel-body">
+									<div class="clearfix">
+										<div class="info left">
+											<h4 class="mt0 text-info text-bold">110</h4>
+											<h5 class="text-light mb0">Task Completed</h5>
+										</div>
+										<div class="right ion ion-ios-flask-outline icon"></div>
+									</div>
+								</div>
+								<div class="panel-footer clearfix panel-footer-sm panel-footer-info">
+									<p class="mt0 mb0 left">% change</p>
+									<span class="right sparkline" data-Type="bar" data-BarColor="#fff" data-Width="1.15em" data-Height="1.15em">5,9,9,8,6,6</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-sm-6">
+							<div class="panel panel-default mb20 mini-box panel-hovered">
+								<div class="panel-body">
+									<div class="clearfix">
+										<div class="info left">
+											<h4 class="mt0 text-pink text-bold">10K+</h4>
+											<h5 class="text-light mb0">Downloads</h5>
+										</div>
+										<div class="right ion ion-ios-cloud-download-outline icon"></div>
+									</div>
+								</div>
+								<div class="panel-footer clearfix panel-footer-sm panel-footer-pink">
+									<p class="mt0 mb0 left">% change</p>
+									<span class="sparkline right" data-Type="bar" data-BarColor="#fff" data-Width="1.15em" data-Height="1.15em">6,4,9,10,6,2</span>
+								</div>
+							</div>
+						</div>
+						<!-- #end mini boxes -->
+					</div> <!-- #end row -->
+
+					<!-- row -->
+					<div class="row">
+
+						<!-- Analytics -->
+						<div class="col-md-7">
+							<div class="panel panel-default mb20 panel-hovered analytics">
+								<div class="panel-heading">Analytics</div>
+								<div class="panel-body">
+									<div id="c3chartAnalytics"></div>
+									
+									<div class="inline-charts mt30">
+										<ul class="list-unstyled clearfix">
+											<li class="col-md-3 col-xs-6">
+												<span class="sparkline" data-FillColor="#fff" data-LineColor="#3F51B5" data-Width="3em" data-Height="3em">9,3,5,8,6,5,2,0,7,5</span>
+												<p class="mt5"><strong>Downloads</strong></p>
+											</li>
+											<li class="col-md-3 col-xs-6">
+												<span class="sparkline" data-LineColor="#FDD835" data-FillColor="#fff"  data-Width="3em" data-Height="3em">2,3,5,9,8,6,9,10,4</span>
+												<p class="mt5"><strong>Uploads</strong></p>
+											</li>
+											<li class="col-md-3 col-xs-6">
+												<span class="sparkline" data-FillColor="#fff" data-LineColor="#4CAF50" data-Width="3em"  data-Height="3em">3,5,9,8,6,10,2,8,7</span>
+												<p class="mt5"><strong>Page Views</strong></p>
+											</li>
+											<li class="col-md-3 col-xs-6">
+												<span class="sparkline" data-FillColor="#fff" data-LineColor="#E91E63" data-Width="3em" data-Height="3em">3,5,9,8,6,9,7,4,10</span>
+												<p class="mt5"><strong>Unique Visits</strong></p>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							
+						</div> <!-- #end analytics -->
+
+
+						<!-- recent activities -->
+						<div class="col-md-5">
+							<div class="panel panel-default mb20 activities">
+								<div class="panel-heading">Activities</div>
+								<div class="panel-body">
+									<ul class="list-unstyled">
+										<li class="primary">
+											<span class="point"></span>
+											<span class="time small text-muted">2 mins ago</span>
+											<p>Jonathan attend a meeting.</p>
+										</li>
+										<li class="success">
+											<span class="point"></span>
+											<span class="time small text-muted">1 hour ago</span>
+											<p>Designed the wordpress theme</p>
+										</li>
+										<li class="warning">
+											<span class="point"></span>
+											<span class="time small text-muted">4:30 p.m</span>
+											<p>Lily created her account.</p>
+										</li>
+										<li class="info">
+											<span class="point"></span>
+											<span class="time small text-muted">2 days ago</span>
+											<p>Your domain will expired in 13 days.</p>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- #end recent activities -->
+						
+
+						<div class="col-md-5">
+							<div class="panel panel-default mb20 panel-hovered">
+								<div class="panel-heading">Usage Stats</div>
+								<div class="panel-body">
+									<ul class="list-unstyled">
+										<li class="col-md-4 col-sm-4">
+											<div data-percent="80" class="easypiechart storageOpts">
+												<div class="data">
+													<strong class="xsmall">80%</strong>
+													<p class="xsmall">Storage</p>
+												</div>
+											</div>
+										</li>
+										<li class="col-md-4 col-sm-4">
+											<div data-percent="35" class="easypiechart serverOpts">
+												<div class="data">
+													<strong class="xsmall">35%</strong>
+													<p class="xsmall">Server</p>
+												</div>
+											</div>
+										</li>
+										<li class="col-md-4 col-sm-4">
+											<div data-percent="54" class="easypiechart clientOpts">
+												<div class="data">
+													<strong class="xsmall">54%</strong>
+													<p class="xsmall">Client</p>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div> <!-- #end row -->
+
+							<!-- row -->
+					<div class="row">
+
+						<!-- profile -->
+						<div class="col-md-4 col-sm-6">
+							<div class="panel panel-default mb20 panel-hovered profile-widget">
+								<div class="panel-body">
+									<div class="clearfix mb15 top-info">
+										<div class="left-side">
+											<h3 class="text-light mt0">Robert Smith</h3>
+											<p><strong>About:&nbsp;</strong>WebDesigner</p>
+											<p><strong>Hobbies:&nbsp;</strong>Listening Music, learn new things and playing guitar.</p>
+											<p>
+												<strong>Skills: </strong> 
+												<label class="label label-pink">html5</label>
+												<label class="label label-pink">css3</label>
+												<label class="label label-pink">jquery</label>
+											</p>
+										</div>
+										<div class="right-side">
+											<img src="images/admin.jpg" alt="user">
+											<div class="rating text-warning">
+												<input type="hidden" class="rating-control" value="4" data-filled="fa fa-star" data-empty="fa fa-star-o" />
+											</div>
+										</div>
+									</div>
+									<ul class="user-badges list-unstyled row">
+										<li class="col-xs-4">
+											<i class="ion ion-ios-chatboxes-outline text-success"></i>
+											<strong>192</strong>
+											<button class="btn btn-success btn-xs mt15">View</button>
+										</li>
+										<li class="col-xs-4">
+											<i class="ion ion-ios-heart-outline text-primary"></i>
+											<strong>5K+</strong>
+											<button class="btn btn-info btn-xs mt15">Follow</button>
+										</li>
+										<li class="col-xs-4">
+											<i class="ion ion-ios-body text-danger"></i>
+											<strong>32</strong>
+											<button class="btn btn-primary btn-xs mt15">Profile</button>
+										</li>
+									</ul>
+								</div> <!-- #end panel-body -->
+							</div>
+						</div>
+
+						<!-- browser share -->
+						<div class="col-md-4 col-sm-6">
+							<div class="panel panel-default mb20 panel-hovered">
+								<div class="panel-heading">Browser Share</div>
+								<div class="panel-body text-center">
+									<div id="c3chartbrowsershare"></div>
+								</div>
+							</div>
+						</div>
+
+						
+						<!-- list widgets -->
+						<div class="col-md-4 col-sm-12">
+							<div class="panel panel-default mb20 list-widget">
+								<ul class="list-unstyled clearfix">
+									<li>
+										<i class="fa fa-file-o"></i>
+										<span class="text">File List</span>
+										<span class="badge badge-xs badge-primary right">100</span>
+									</li>
+									<li>
+										<i class="fa fa-comments-o"></i>
+										<span class="text">Messages</span>
+										<span class="badge badge-xs badge-info right">40+</span>
+									</li>
+									<li>
+										<i class="fa fa-bullhorn"></i>
+										<span class="text">Notifications</span>
+										<span class="badge badge-xs badge-success right">22</span>
+									</li>
+									<li>
+										<i class="fa fa-hdd-o"></i>
+										<span class="text">Bandwidth usage</span>
+										<span class="badge badge-xs badge-danger right">80%</span>
+									</li>
+									<li>
+										<i class="fa fa-microphone"></i>
+										<span class="text">Calls Attended</span>
+										<span class="badge badge-xs badge-info circle right">5</span>
+									</li>
+									<li>
+										<i class="fa fa-bookmark-o"></i>
+										<span class="text">Bookmarks Today</span>
+										<span class="badge badge-xs circle badge-warning right">2</span>
+									</li>
+									<li>
+										<i class="fa fa-bug"></i>
+										<span class="text">Bug Fix Today</span>
+										<span class="badge badge-xs circle badge-danger right">8</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- #end row -->
+
+					<!-- row -->
+					<div class="row">
+						
+						<!-- todo list -->
+						<div class="col-md-5">
+							<div class="panel panel-default panel-hovered mb20 todo" id="todoApp">
+							    <div class="panel-heading">
+							    	<span>Todo List</span>
+							    </div>
+							    <div class="panel-body">
+							    	<ul class="list-unstyled todo-list">
+							    		<!-- this will be add via jquery, as we don't have ngrepeat in jquery like angular -->
+							    		<!-- <li>
+							    			<div class="ui-checkbox ui-checkbox-pink">
+							    				<label>
+							    					<input type="checkbox" class="toggle"/>
+							    					<span></span>
+							    				</label>
+							    			</div>
+
+							    			<div class="todo-title">
+							    				{{todo.title}}
+							    				<form class="todo-edit">
+							    					<input type="text"/>
+							    				</form>
+							    			</div>
+							    			<span class="destroy ion ion-close right"></span>
+							    		</li> -->
+							    	</ul>
+							    	<!-- Add todo input -->
+							    	<form id="input-todo" class="input-todo">
+							    		<input placeholder="Write some todo task here..." type="text">
+							    	</form>
+							    </div> <!-- #end panel-body -->
+							    <div class="panel-footer todo-foot clearfix" id="todo-filters">
+							    	<div class="left">
+							    		<button class="btn btn-pink btn-xs right toggle-all">Toggle All</button>
+							    	</div>
+							    	<div class="right">
+							    		<span class="remaining btn btn-xs btn-default">left</span>
+							    		<button class="btn btn-pink btn-xs clear-completed">Clear Completed</button>
+							    	</div>
+							    </div>
+							</div> <!-- #end panel -->
+						</div>
+						<!-- #end todo-list -->
+
+
+						<!-- Project stats -->
+						<div class="col-md-7">
+							<div class="panel panel-default mb20 panel-hovered project-stats table-responsive">
+								<div class="panel-heading">Project Stats</div>
+								<div class="panel-body">	
+									<table class="table">
+										<thead>
+											<tr>
+												<th>Id</th>
+												<th class="col-sm-5">Project</th>
+												<th class="col-sm-1">Progress</th>
+												<th>Date</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>101</td>
+												<td>Designing Wordpress Theme</td>
+												<td class="text-center">
+													<span class="sparkline" data-Type="pie" data-SliceColors="[#4CAF50,#eee]" data-Width="2em" data-Height="2em">2,8</span>
+												</td>
+												<td>20<sup>th</sup> Jan 2015</td>
+											</tr>
+
+											<tr>
+												<td>220</td>
+												<td>Convert to SASS</td>
+												<td class="text-center">
+													<span class="sparkline" data-Type="pie" data-SliceColors="[#4CAF50,#eee]" data-Width="2em" data-Height="2em">4,6</span>
+												</td>
+												<td>28<sup>th</sup> Jan 2015</td>
+											</tr>
+
+											<tr>
+												<td>310</td>
+												<td>Adding animations to template</td>
+												<td class="text-center">
+													<span class="sparkline" data-Type="pie" data-SliceColors="[#4CAF50,#eee]" data-Width="2em" data-Height="2em">7,3</span>
+												</td>
+												<td>02<sup>nd</sup> Feb 2015</td>
+											</tr>
+
+											<tr>
+												<td>405</td>
+												<td>Lorem ipsum dolar sit amet</td>
+												<td class="text-center">
+													<span class="sparkline" data-Type="pie" data-SliceColors="[#4CAF50,#eee]" data-Width="2em" data-Height="2em">4,6</span>
+												</td>
+												<td>28<sup>th</sup> Mar 2015</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div> 
+					</div> <!-- #end row -->
+
+				</div> <!-- #end page-wrap -->
+			</div>
+			<!-- #end dashboard page -->
+		</div>
+
+	</div> <!-- #end main-container -->
+
+	<!-- theme settings -->
+	<div class="site-settings clearfix hidden-xs">
+		<div class="settings clearfix">
+			<div class="trigger ion ion-settings left"></div>
+			<div class="wrapper left">
+				<ul class="list-unstyled other-settings">
+					<li class="clearfix mb10">
+						<div class="left small">Nav Horizontal</div>
+						<div class="md-switch right">
+							<label>
+								<input type="checkbox" id="navHorizontal"> 
+								<span>&nbsp;</span> 
+							</label>
+						</div>
+						
+						
+					</li>
+					<li class="clearfix mb10">
+						<div class="left small">Fixed Header</div>
+						<div class="md-switch right">
+							<label>
+								<input type="checkbox"  id="fixedHeader"> 
+								<span>&nbsp;</span> 
+							</label>
+						</div>
+					</li>
+					<li class="clearfix mb10">
+						<div class="left small">Nav Full</div>
+						<div class="md-switch right">
+							<label>
+								<input type="checkbox"  id="navFull"> 
+								<span>&nbsp;</span> 
+							</label>
+						</div>
+					</li>
+				</ul>
+				<hr/>
+				<ul class="themes list-unstyled" id="themeColor">
+					<li data-theme="theme-zero" class="active"></li>
+					<li data-theme="theme-one"></li>
+					<li data-theme="theme-two"></li>
+					<li data-theme="theme-three"></li>
+					<li data-theme="theme-four"></li>
+					<li data-theme="theme-five"></li>
+					<li data-theme="theme-six"></li>
+					<li data-theme="theme-seven"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- #end theme settings -->
+
+
+	
+
+	<!-- Dev only -->
+	<!-- Vendors -->
+	<script src="scripts/vendors.js"></script>
+	<script src="scripts/plugins/d3.min.js"></script>
+	<script src="scripts/plugins/c3.min.js"></script>
+	<script src="scripts/plugins/screenfull.js"></script>
+	<script src="scripts/plugins/perfect-scrollbar.min.js"></script>
+	<script src="scripts/plugins/waves.min.js"></script>
+	<script src="scripts/plugins/jquery.sparkline.min.js"></script>
+	<script src="scripts/plugins/jquery.easypiechart.min.js"></script>
+	<script src="scripts/plugins/bootstrap-rating.min.js"></script>
+	<script src="scripts/app.js"></script>
+	<script src="scripts/index.init.js"></script>
+
+</body>
+
+<!-- Mirrored from solutionportal.net/themes/materia/html/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Feb 2019 07:24:40 GMT -->
+</html>

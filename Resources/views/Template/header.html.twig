@@ -1,74 +1,16 @@
-<header class="site-header">
-    <div class="container-fluid">
-
-        <a href="#" class="site-logo">
-            <img class="hidden-md-down" src="{{ asset(macha_logo_path) }}" alt="">
-            <img class="hidden-lg-down" src="{{ asset(macha_logo_path_mobile) }}" alt="">
-        </a>
-
-        <button id="show-hide-sidebar-toggle" class="show-hide-sidebar">
-            <span>toggle menu</span>
-        </button>
-
-        <button class="hamburger hamburger--htla">
-            <span>toggle menu</span>
-        </button>
-
-        <div class="site-header-content">
-            <div class="site-header-content-in">
-                <div class="site-header-shown">
-
-                 {#   <div class="dropdown dropdown-lang">
-                        <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                            {% if app.request.locale == 'ar' %}
-                                <span class="flag-icon flag-icon-tn"></span>
-                            {% elseif app.request.locale == 'fr' %}
-                                <span class="flag-icon flag-icon-fr"></span>
-                            {% elseif app.request.locale == 'en' %}
-                                <span class="flag-icon flag-icon-us"></span>
-                            {% elseif app.request.locale == 'it' %}
-                                <span class="flag-icon flag-icon-it"></span>
-                            {% endif %}
-
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <div class="dropdown-menu-col">
-                                <a class="dropdown-item {% if app.request.locale == 'ar' %}current{% endif %}" href="{{ localize_route('ar') }}"><span class="flag-icon flag-icon-tn"></span>عربي</a>
-                                <a class="dropdown-item {% if app.request.locale == 'en' %}current{% endif %}" href="{{ localize_route('en') }}"><span class="flag-icon flag-icon-us"></span>English</a>
-                                <a class="dropdown-item {% if app.request.locale == 'fr' %}current{% endif %}" href="{{ localize_route('fr') }}"><span class="flag-icon flag-icon-fr"></span>Français</a>
-                                <a class="dropdown-item {% if app.request.locale == 'it' %}current{% endif %}" href="{{ localize_route('it') }}"><span class="flag-icon flag-icon-it"></span>Italiano</a>
-                            </div>
-                        </div>
-                    </div>#}
-
-                    <div class="dropdown user-menu">
-                        <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                            {%  if macha_user_picture is defined %}
-                                {% if  attribute(app.user, macha_user_picture) is null %}
-                                    <img src="{{ asset('bundles/benmachatemplate/img/avatar-1-256.png') }}" alt="">
-                                {% else %}
-                                    <img src="{{ asset(attribute(app.user, macha_user_picture)) }} " alt="">
-                                {% endif %}
-
-                            {% else %}
-                                <img src="{{ asset('bundles/benmachatemplate/img/avatar-1-256.png') }}" alt="">
-                            {% endif %}
-
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
-                         {#   <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-user"></span>Profile </a>
-                            <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-cog"></span>Settings</a>
-                            <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-question-sign"></span>Help</a>
-                            <div class="dropdown-divider"></div>#}
-                            <a class="dropdown-item" href="{{ path('logout') }}"><span class="font-icon glyphicon glyphicon-log-out"></span>{{ 'Logout'|trans({},'benmacha') }}</a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-</header>
+<link rel="stylesheet" href="{{ asset('bundles/benmachatemplate/fonts/ionicons/css/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/benmachatemplate/fonts/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/benmachatemplate/styles/plugins/c3.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/benmachatemplate/styles/plugins/waves.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/benmachatemplate/styles/plugins/perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/benmachatemplate/styles/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/benmachatemplate/styles/plugins/sweetalert.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/benmachatemplate/styles/plugins/daterangepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/benmachatemplate/styles/plugins/jquery.lineProgressbar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/benmachatemplate/styles/plugins/multi-select.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/benmachatemplate/styles/plugins/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/benmachatemplate/styles/plugins/datatables/datatables.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/benmachatemplate/styles/plugins/datatables/datatables-net.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/benmachatemplate/styles/main.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/admin/css/custom.css') }}">
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,500,700,300' rel='stylesheet' type='text/css'>

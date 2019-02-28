@@ -1,8 +1,4 @@
 {% macro datatable(path=null,newPath=null,show=null,edit=null,remove=null,columns=null,join=null) %}
-    <script type="text/javascript" src="{{ asset('bundles/benmachatemplate/js/lib/moment/moment-with-locales.min.js') }}"></script>
-    <script src="{{ asset('bundles/benmachatemplate/js/lib/datatables-net/datatables.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('bundles/benmachatemplate/js/lib/datatables-net/responsive-2.1.0/js/dataTables.responsive.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('bundles/benmachatemplate/js/lib/bootstrap-sweetalert/sweetalert.min.js') }}"></script>
 
     {% set columns = DatatableRaw(columns,show,edit,remove) %}
     <script>
@@ -22,8 +18,6 @@
                     {%- endif -%}
 
                     {%- if remove is not null -%}
-                    "selectNone",
-                    "selectAll",
                     {
                         text: '{{ 'Remove'|trans({},'global') }}',
                         className: "btn-danger",
@@ -97,9 +91,10 @@
                 "scrollY": 500,
                 "scrollX": true,
                 "rowId": 't_id',
+                {%- if remove is not null -%}
                 "select": {
                     style: 'multi'
-                },
+                },{% endif %}
                 "scroller": {
                     "loadingIndicator": true
                 },
@@ -145,7 +140,7 @@
 {% endmacro %}
 
 {%- macro select2(class = null) -%}
-    <script src="{{ asset('bundles/benmachatemplate/js/lib/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('bundles/benmachatemplate/scripts/plugins/select2.min.js') }}"></script>
     {%- if class is not null -%}
         <script>
 
