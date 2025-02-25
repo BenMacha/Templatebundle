@@ -1,9 +1,9 @@
 Template Bundle
 ===============
-### By D'Ali Ben Macha <contact@benmacha.tn> [https://dali.benmacha.tn](https://dali.benmacha.tn) ###
 
 Symfony bundle to generate template with a nice design in your Symfony application.
 
+![Support Palestine](https://img.shields.io/badge/🇵🇸%20Support-Palestine-008000?style=flat&logo=data:image/svg+xml;base64,...)
 [![Latest Stable Version](https://poser.pugx.org/benmacha/templatebundle/version)](https://packagist.org/packages/benmacha/templatebundle) [![Total Downloads](https://poser.pugx.org/benmacha/templatebundle/downloads)](https://packagist.org/packages/benmacha/templatebundle) [![Latest Unstable Version](https://poser.pugx.org/benmacha/templatebundle/v/unstable)](//packagist.org/packages/benmacha/templatebundle) [![License](https://poser.pugx.org/benmacha/templatebundle/license)](https://packagist.org/packages/benmacha/templatebundle) 
 
 ## Installation
